@@ -9,12 +9,15 @@ def register_user(body):
     try:
         if body['password'] is None:
             return False
-
         if body['email'] is None:
+            return False
+        if body['first_name'] is None:
+            return False
+        if(body['last_name']) is None:
             return False
 
         hash_pass = encryp_pass(body['password'])
-        new_user = User(email=body['email'], password=hash_pass)
+        new_user = User(first_name=body['first_name'], last_name=body['last_name'], email=body['email'], password=hash_pass)
         db.session.add(new_user)
         db.session.commit()
         return new_user.serialize()
