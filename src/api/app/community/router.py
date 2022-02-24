@@ -8,7 +8,7 @@ communities= Blueprint('communities',__name__)
 
 @communities.route('/register',methods=['POST'])
 def create_community():
-    body=request.get.json()
+    body=request.get_json()
     new_community=register_community(body)
     if new_community is None:
         return jsonify('Internal server error'),500
