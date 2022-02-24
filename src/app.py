@@ -41,6 +41,7 @@ setup_admin(app)
 
 
 app.register_blueprint(users, url_prefix="/api/user")
+app.register_blueprint(communities,url_prefix="/api/community")
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
