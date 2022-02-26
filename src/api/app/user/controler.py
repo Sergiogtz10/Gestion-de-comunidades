@@ -16,13 +16,10 @@ def register_owner(body):
         if(body['last_name']) is None:
             return False
 
-        new_role = db.session.query(Roles).filter(Roles.role_name == 'Propietario').first()
-        if new_role is None:
-            new_role = Roles(role_name='Propietario')
-        db.session.add(new_role)
-        db.session.commit()
+        owner_role = db.session.query(Roles).filter(Roles.role_id == 2).first()
+
         hash_pass = encryp_pass(body['password'])
-        new_user = User(first_name=body['first_name'], last_name=body['last_name'], email=body['email'], password=hash_pass, role_name=new_role.role_name)
+        new_user = User(first_name=body['first_name'], last_name=body['last_name'], email=body['email'], password=hash_pass, role_id=owner_role.role_id)
         db.session.add(new_user)
         db.session.commit()
         return new_user.serialize()
@@ -42,13 +39,9 @@ def register_admin(body):
             return False
         if(body['last_name']) is None:
             return False
-        new_role = db.session.query(Roles).filter(Roles.role_name == 'Administrador').first()
-        if new_role is None:
-            new_role = Roles(role_name='Administrador')
-        db.session.add(new_role)
-        db.session.commit()
+        admin_role = db.session.query(Roles).filter(Roles.role_id == 1).first()
         hash_pass = encryp_pass(body['password'])
-        new_user = User(first_name=body['first_name'], last_name=body['last_name'], email=body['email'], password=hash_pass, role_name=new_role.role_name)
+        new_user = User(first_name=body['first_name'], last_name=body['last_name'], email=body['email'], password=hash_pass, role_id=admin_role.role_id)
         db.session.add(new_user)
         db.session.commit()
         return new_user.serialize()

@@ -5,7 +5,7 @@ class Roles(db.Model):
     role_name = db.Column(db.String(100), unique=False)
 
     def __repr__(self):
-        return '<Roles %r>' % self.role_name
+        return '<Roles %r>' % self.role_id
 
     def serialize(self):
         return {
