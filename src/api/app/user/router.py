@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.app.user.controler import register_owner, register_admin, login_user, get_user_by_id
+from api.app.rel_user_community.controller import create_rel
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
 users = Blueprint('users', __name__)
 
-@users.route('/register/owner', methods=['POST'])
-def create_user_owner():
+@users.route('/register/owner/<community_id>', methods=['POST'])
+def create_user_owner(community_id):
     body = request.get_json()
     new_user = register_owner(body)
     if new_user is None:
@@ -14,6 +15,7 @@ def create_user_owner():
     elif new_user == False:
         return jsonify('Bad Request'), 400
     else:
+        create_rel(community_id, new_user["id"])
         return jsonify(new_user), 201
 
 @users.route('/register/admin', methods=['POST'])
