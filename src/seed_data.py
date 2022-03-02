@@ -8,5 +8,18 @@ data = {
             "role_id": 2,
             "role_name": "Propietario"
         }
+    ],
+
+    "Community":[
+        {
+            
+            "address":"C/ Vilafranca 2, Barcelona",
+            "flats":15
+        },
+        {
+            
+            "address":"C/ Industria 64, Segovia",
+            "flats":34
+        }
     ]
 }
