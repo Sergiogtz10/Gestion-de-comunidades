@@ -1,8 +1,10 @@
 import React from "react";
 import "./home.css";
-import FormAdmin from "../Forms/FormAdmin.jsx"
-import FormOwner from "../Forms/FormOwner.jsx"
-import FormCommunity from "../Forms/FormCommunity.jsx"
+import FormAdmin from "../FormAdmin/FormAdmin.jsx"
+import FormOwner from "../FormOwner/FormOwner.jsx"
+import FormCommunity from "../FormCommunity/FormCommunity.jsx"
+import Login from "../LogIn/LogIn.jsx";
+import Landing from "../Landing/Landing.jsx";
 
 const Home = () => {
 	
@@ -12,6 +14,8 @@ const Home = () => {
 				<FormAdmin />
 				<FormOwner />
 				<FormCommunity />
+				<Login />
+				<Landing />
 	
 		</div>
 	);

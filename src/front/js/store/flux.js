@@ -1,3 +1,6 @@
+import { getUsers, postRegisterAdmin, postLogin, postRegisterOwner, postRegisterUser } from "../Service/URL.js"
+
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -20,6 +23,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
+			
 
 			getMessage: () => {
 				// fetching data from the backend

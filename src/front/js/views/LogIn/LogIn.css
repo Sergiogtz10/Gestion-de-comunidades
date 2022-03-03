@@ -1,0 +1,22 @@
+body{
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+#card{
+    border-radius: 20px;
+    background-color:#f2f7f8;
+    font-weight: 400;
+    color: #335C67;
+}
+
+#title{
+    color: #669bbc;
+}
+#boton{
+    padding: 10px;
+    background-color: #669bbc;
+    border: none;
+    color: white;
+    font-weight: 500; 
+}
+
