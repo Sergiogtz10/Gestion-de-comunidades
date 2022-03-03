@@ -14,18 +14,19 @@ data = {
 
     "Community":[
         {
-            
+            "id":1,
             "address":"C/ Vilafranca 2, Barcelona",
             "flats":15
         },
         {
-            
+            "id":2,
             "address":"C/ Industria 64, Segovia",
             "flats":34
         }
     ],
     "User":[
         {
+            "id":1,
             "first_name":"Marina",
             "last_name":"Rojo",
             "flat_number":"5ºA",
@@ -35,6 +36,7 @@ data = {
             "role_id":1
         },
           {
+            "id":2,
             "first_name":"Mireia",
             "last_name":"Gonzalez",
             "flat_number":"3ºB",
@@ -42,6 +44,18 @@ data = {
             "email":"mireia@gmail.com",
             "password": encryp_pass("1234"),
             "role_id":2
+        }
+    ],
+
+    "Rel_user_community":[
+        {
+            "user_id":1,
+            "community_id":1
+        },
+
+        {
+            "user_id":2,
+            "community_id":1
         }
     ]
 }

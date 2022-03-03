@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.incident.controller import create_common_incident,create_owner_incident,get_incident_by_id,get_incidents,get_owner_incidents,delete_incident,modify_incident
+from api.app.incident.controller import create_incident,get_incidents,get_owner_incidents,delete_incident,modify_incident
 from api.app.user.controler import get_user_by_id
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
@@ -13,9 +13,7 @@ incidents=Blueprint('incidents',__name__)
 def create_common_incidents(community_id):
     body=request.get_json()
     user_id=get_jwt_identity()
-    user=get_user_by_id(user_id["id"])
-    user=user.serialize()
-    new_incident=create_common_incident(body,community_id,user["id"])
+    new_incident=create_incident(body,community_id,user_id["id"], common=True)
     if new_incident is None:
         return jsonify('Internar server error'),500
     elif new_incident==False:
@@ -29,9 +27,7 @@ def create_common_incidents(community_id):
 def create_owner_incidents(community_id):
     body=request.get_json()
     user_id=get_jwt_identity()
-    user=get_user_by_id(user_id["id"])
-    user=user.serialize()
-    new_incident=create_owner_incident(body,community_id,user["id"])
+    new_incident=create_incident(body,community_id,user_id["id"], common=False)
     if new_incident is None:
         return jsonify('Internar server error'),500
     elif new_incident==False:
@@ -51,17 +47,25 @@ def get_incidents():
 
 #route to get all common incidents
 @incidents.route('/common',methods=['GET'])
-def get_all_incidents():
+def get_common_incidents():
     return get_incidents()
     
 #route to delete incidents
 @incidents.route('/<incident_id>',methods=['DELETE'])
+@jwt_required()
 def delete(incident_id):
-    return delete_incident(incident_id)
+    user_id=get_jwt_identity()
+    user=get_user_by_id(user_id["id"])
+    user=user.serialize()
+    return delete_incident(user["role"]["role_id"],incident_id)
 
 
 #route to update incidents
 @incidents.route('/<incident_id>',methods=['PUT'])
+@jwt_required()
 def update(incident_id):
+    user_id=get_jwt_identity()
+    user=get_user_by_id(user_id["id"])
+    user=user.serialize()
     body=request.get_json()
-    return modify_incident(incident_id,body)
+    return modify_incident(user["role"]["role_id"],incident_id,body)
