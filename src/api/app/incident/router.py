@@ -12,7 +12,7 @@ incidents=Blueprint('incidents',__name__)
 @jwt_required()
 def create_common_incidents(community_id):
     body=request.get_json()
-     user_id=get_jwt_identity()
+    user_id=get_jwt_identity()
     user=get_user_by_id(user_id["id"])
     user=user.serialize()
     new_incident=create_common_incident(body,community_id,user["id"])
