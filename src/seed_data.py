@@ -1,3 +1,5 @@
+from api.shared.encrypte_pass import encryp_pass
+
 data = {
     "Roles":[
         {
@@ -20,6 +22,26 @@ data = {
             
             "address":"C/ Industria 64, Segovia",
             "flats":34
+        }
+    ],
+    "User":[
+        {
+            "first_name":"Marina",
+            "last_name":"Rojo",
+            "flat_number":"5ºA",
+            "phone_number":"602602602",
+            "email":"marina@gmail.com",
+            "password": encryp_pass("1234"),
+            "role_id":1
+        },
+          {
+            "first_name":"Mireia",
+            "last_name":"Gonzalez",
+            "flat_number":"3ºB",
+            "phone_number":"602602603",
+            "email":"mireia@gmail.com",
+            "password": encryp_pass("1234"),
+            "role_id":2
         }
     ]
 }
