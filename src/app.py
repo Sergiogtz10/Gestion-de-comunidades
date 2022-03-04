@@ -11,6 +11,7 @@ from api.models.db import db
 from api.app.user.router import users
 from api.app.community.router import communities
 from api.app.incident.router import incidents
+from api.app.bill.router import bills
 from api.admin import setup_admin
 from flask_jwt_extended import JWTManager
 #from models import Person
