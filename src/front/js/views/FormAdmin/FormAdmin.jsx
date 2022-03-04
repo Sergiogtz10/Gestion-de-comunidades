@@ -1,6 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
 import "./FormAdmin.css";
 
+const initialStateErr = {
+  name: "",
+  last_name: "",
+  email: "",
+  phone: "",
+  password: "",
+  repeat_password: "",
+}
 const FormAdmin = () => {
 
   const [admin, setAdmin] = useState({
@@ -12,47 +21,44 @@ const FormAdmin = () => {
     repeat_password: "",
   });
 
-  const [err, setErr] = useState({
-    name: "",
-    last_name:"",
-    email:"",
-    phone: "",
-    password: "",
-    repeat_password: "",
-  });
+  const [err, setErr] = useState(initialStateErr);
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setAdmin({ ...admin, [name]: value });
   };
-  console.log(admin);
 
   const handleClick = (e) => {
+
     e.preventDefault();
+    let newerr = { ...initialStateErr };
+    
     if (admin.name.length == 0) {
-      setErr({ ...err, name: "Introduzca su nombre" });
+      newerr = { ...newerr, name: "Introduzca su nombre" };
     }
     if (admin.last_name.length == 0) {
-      setErr({ ...err, last_name: "Introduzca sus apellidos" });
-    };
+      newerr = { ...newerr, last_name: "Introduzca sus apellidos" };
+    }
     if (admin.email.length == 0) {
-      setErr({ ...err, email: "Introduzca su email" });
-    };
+      newerr = { ...newerr, email: "Introduzca su email" };
+    }
     if (admin.phone.length !== 9) {
-      setErr({ ...err, phone: "Introduzca su móvil" });
-    };
-    if (admin.password.length == 6 ) {
-      setErr({ ...err, password: "Introduzca 6 caracteres" });
+      newerr = { ...newerr, phone: "Introduzca su móvil" };
+    }
+    if (admin.password.length < 6) {
+      newerr = { ...newerr, password: "Introduzca 6 caracteres" };
     }
     if (admin.password !== admin.repeat_password) {
-      setErr({ ...err, repeat_password: "Las contraseñas no coinciden" });
+      newerr = { ...newerr, repeat_password: "Las contraseñas no coinciden" };
     }
+    setErr(newerr);
 
-   
-   
-   
+    if(newerr.name == "" && newerr.last_name == "" && newerr.email == "" && newerr.phone == "" && newerr.password == "" && newerr.repeat_password == ""){
+      
+    }
   };
-
+  console.log(err);
   return (
     <div>
       <h3 id="title" className="text-center  p-3">
@@ -73,8 +79,10 @@ const FormAdmin = () => {
                 name="name"
                 id="Nombre"
               ></input>
-              {<err className="name"></err> != "" ? (
-                <div id="validsize" className="col-12 text-danger">{err.name}</div>
+              {err.name != "" ? (
+                <div id="validsize" className="col-12 text-danger">
+                  {err.name}
+                </div>
               ) : null}
             </div>
             <div>
@@ -87,8 +95,10 @@ const FormAdmin = () => {
                 name="last_name"
                 id="Apellidos"
               ></input>
-            {<err className="name"></err> != "" ? (
-             <div  id="validsize" className="col-12 text-danger">{err.last_name}</div>
+              {err.last_name != "" ? (
+                <div id="validsize" className="col-12 text-danger">
+                  {err.last_name}
+                </div>
               ) : null}
             </div>
           </div>
@@ -103,8 +113,10 @@ const FormAdmin = () => {
                 name="email"
                 id="Email"
               ></input>
-            {<err className="name"></err> != "" ? (
-                <div id="validsize" className="col-12 text-danger">{err.email}</div>
+              {err.email != "" ? (
+                <div id="validsize" className="col-12 text-danger">
+                  {err.email}
+                </div>
               ) : null}
             </div>
             <div>
@@ -117,8 +129,10 @@ const FormAdmin = () => {
                 name="phone"
                 id="Telefono"
               ></input>
-              {<err className="name"></err> != "" ? (
-                <div id="validsize" className="col-12 text-danger">{err.phone}</div>
+              {err.phone != "" ? (
+                <div id="validsize" className="col-12 text-danger">
+                  {err.phone}
+                </div>
               ) : null}
             </div>
           </div>
@@ -134,7 +148,9 @@ const FormAdmin = () => {
                 id="Contraseña"
               ></input>
               {err.password != "" ? (
-                <div id="validsize" className="col-12 text-danger">{err.password}</div>
+                <div id="validsize" className="col-12 text-danger">
+                  {err.password}
+                </div>
               ) : null}
             </div>
 
@@ -149,7 +165,9 @@ const FormAdmin = () => {
                 id="RepetirContraseña"
               ></input>
               {err.repeat_password != "" ? (
-                <div id="validsize" className="col-12 text-danger">{err.repeat_password}</div>
+                <div id="validsize" className="col-12 text-danger">
+                  {err.repeat_password}
+                </div>
               ) : null}
             </div>
           </div>
@@ -166,4 +184,3 @@ const FormAdmin = () => {
 };
 
 export default FormAdmin;
-

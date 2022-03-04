@@ -45,17 +45,17 @@ const Layout = () => {
 				<Landing />
 			</Route>
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
 
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
-      </BrowserRouter>
+      <Route>
+         <h1>Not found!</h1>
+      </Route>
+      </Switch>
+      <Footer />
+    </ScrollToTop>
+    </BrowserRouter>
     </div>
   );
 };

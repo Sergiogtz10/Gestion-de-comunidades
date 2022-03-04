@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LogIn.css"
 
 const Login = () =>{
+
+    const[ login, setLogin] = useState[{
+    name: "",
+    password: "",
+    }]
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setLogin({ ...login, [name]: value });
+    }
+
+    const handleClick = () =>{
+        
+    }
     return (
         <div>
             <h3 id="title"  className="text-center p-3">Log In</h3>
@@ -9,12 +24,12 @@ const Login = () =>{
                 <form> 
                     <div>
                         <label  className="form-label ">Email</label>
-                        <input type="Email" className="form-control" id="Email"></input>
+                        <input type="email" className="form-control" id="Email" name="email"></input>
                     </div>
                     
                     <div className="py-3">
                         <label className="contraseña" className="form-label">Contraseña</label>
-                        <input type="contraseña" className="form-control" id="contraseña"></input>
+                        <input type="password" className="form-control" id="contraseña" name="password"></input>
                     </div>
 
                     <div className="p-3">
