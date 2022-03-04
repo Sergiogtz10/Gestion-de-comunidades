@@ -3,7 +3,7 @@ from flask import jsonify
 
 
 #GET ALL COMMON INCIDENTS
-def get_incidents():
+def get_common():
     incident_list=[]
     incidents=db.session.query(Incident).filter(Incident.common==True)
     

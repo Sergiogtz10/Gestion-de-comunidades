@@ -57,5 +57,34 @@ data = {
             "user_id":2,
             "community_id":1
         }
-    ]
+    ],
+
+    "Incident":[
+    {
+        "bill_id": null,
+        "community_id": 1,
+        "description": "Cristal roto",
+        "id": 1,
+        "severity": "Grave",
+        "user_id": 2,
+        "zone": "Cocina"
+    },
+    {
+        "bill_id": null,
+        "community_id": 1,
+        "description": "Cesped levantado",
+        "id": 2,
+        "severity": "Leve",
+        "user_id": 2,
+        "zone": "Piscina"
+    },
+    {
+        "bill_id": null,
+        "community_id": 1,
+        "description": "No funciona el grifo, no sale agua",
+        "id": 3,
+        "severity": "Medio",
+        "user_id": 1,
+        "zone": "Baño"
+    }
 }

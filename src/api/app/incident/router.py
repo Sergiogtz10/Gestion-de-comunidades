@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.incident.controller import create_incident,get_incidents,get_owner_incidents,delete_incident,modify_incident
+from api.app.incident.controller import create_incident,get_common,get_owner_incidents,delete_incident,modify_incident
 from api.app.user.controler import get_user_by_id
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
@@ -38,7 +38,7 @@ def create_owner_incidents(community_id):
 #route to get particular incidents
 @incidents.route('/particular',methods=['GET'])
 @jwt_required()
-def get_incidents():
+def get_particular_incidents():
     user_id=get_jwt_identity()
     user=get_user_by_id(user_id["id"])
     user=user.serialize()
@@ -48,7 +48,7 @@ def get_incidents():
 #route to get all common incidents
 @incidents.route('/common',methods=['GET'])
 def get_common_incidents():
-    return get_incidents()
+    return get_common()
     
 #route to delete incidents
 @incidents.route('/<incident_id>',methods=['DELETE'])
