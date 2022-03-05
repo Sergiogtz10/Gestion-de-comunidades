@@ -7,11 +7,11 @@ const Navbar = () => {
       <aside className="sidebar">
         <nav className="navbar">
           <ul>
-            <li className="active">HOME</li>
-            <li className="active">INCIDENCIAS</li>
-            <li className="active">ACTIVIDADES</li>
-            <li className="active">FACTURAS</li>
-            <li className="active">PROVEEDORES</li>
+            <li className="nav-element">HOME</li>
+            <li className="nav-element">INCIDENCIAS</li>
+            <li className="nav-element">ACTIVIDADES</li>
+            <li className="nav-element">FACTURAS</li>
+            <li className="nav-element">PROVEEDORES</li>
           </ul>
         </nav>
       </aside>

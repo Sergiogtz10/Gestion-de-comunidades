@@ -7,9 +7,11 @@
 
 .navbar {
   position: relative;
-  margin: 0 15%;
-  text-align: right;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: bold;
+  margin: 2%;
+  text-align: left;
+}
+
+.nav-element {
+  list-style-type: none;
+  padding: 1rem;
 }
