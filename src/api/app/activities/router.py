@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.activities.controller import create_new_activity, delete_activity
+from api.app.activities.controller import create_new_activity, delete_activity, modify_activity, get_activities_by_community_id
 from api.app.user.controler import get_user_by_id
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -24,5 +24,18 @@ def new_activity_create(community_id):
 def delete(activity_id):
     user_id = get_jwt_identity()
     user = get_user_by_id(user_id["id"]).serialize()
-    print(user)
     return delete_activity(user["role"]["role_id"], activity_id)
+
+#MODIFY ACTIVITY
+@activity.route('/modify/<activity_id>', methods=['PUT'])
+@jwt_required()
+def activity_modify(activity_id):
+    user_id = get_jwt_identity()
+    user = get_user_by_id(user_id["id"]).serialize()
+    body = request.get_json()
+    return modify_activity(user['role']['role_id'], activity_id, body)
+
+#GET ACTIVITY BY COMMUNITY ID
+@activity.route('/<community_id>', methods=['GET'])
+def activity_by_community_get(community_id):
+    return get_activities_by_community_id(community_id)
