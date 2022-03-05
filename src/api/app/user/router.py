@@ -33,7 +33,7 @@ def create_user_admin():
 def user_login():
     body = request.get_json()
     token = login_user(body)
-
+    print(token)
     if token == 'user not exist':
         return jsonify(token), 404
 
