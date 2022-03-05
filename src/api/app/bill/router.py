@@ -1,21 +1,26 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
+from api.app.bill.controller import create_bill,get_all_bills,modify_bill
+from api.app.incident.controller import add_bill
+from api.app.user.controler import get_user_by_id
+from api.models.index import Bill
 
 
 
 bills=Blueprint('bills',__name__)
 
 #route to create bills
-@bills.route('/<incident_id>',methods=['POST'])
+@bills.route('/<community_id>/<incident_id>',methods=['POST'])
 @jwt_required()
-def create(incident_id):
+def create(community_id,incident_id):
     body=request.get_json()
     user_id=get_jwt_identity()
     user=get_user_by_id(user_id["id"])
     user=user.serialize()
-    new_bill=create_bill(body,incident_id,user["role"]["role_id"])
+    new_bill=create_bill(body,community_id,user["role"]["role_id"])
     #modificar el registro de incidencia asignandole la factura
+    add_bill(new_bill["id"],incident_id, user["role"]["role_id"])
 
     if new_bill is None:
         return jsonify('Internal server error'),500
@@ -40,11 +45,3 @@ def update(incident_id):
     return modify_bill(user["role"]["role_id"],bill_id,body)
 
 
-#route to delete bills
-@bills.route('/<bill_id>',methods=['DELETE'])
-@jwt_required()
-def delete(bill_id):
-    user_id=get_jwt_identity()
-    user=get_user_by_id(user_id["id"])
-    user=user.serialize()
-    return delete_bill(user["role"]["role_id"],bill_id)
