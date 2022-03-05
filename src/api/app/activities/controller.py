@@ -1,7 +1,6 @@
 from flask import jsonify
 from api.models.index import db, Activities
 from api.app.community.controller import get_community_by_id
-from api.app.user.controler import get_user_by_id
 
 
 def get_activity_by_id(id):
@@ -30,20 +29,23 @@ def create_new_activity(body, community_id):
         print('[ERROR CREATE ACTIVITY: ]', err)
         return None
 
-def delete_activity(id_activity):
+def delete_activity(role_id, id_activity):
     try:
-        Activities.query.filter(Activities.id == id_activity).delete()
-        db.session.commit()
-        return jsonify('Actividad Borrada')
+        if verify_user_admin(role_id):
+            Activities.query.filter(Activities.id == id_activity).delete()
+            db.session.commit()
+            return jsonify("Actividad borrada"), 200
+        else:
+            return jsonify("No estás autorizado"), 401
 
     except Exception as err:
         db.session.rollback()
-        print('[ERROR DELETE ACTIVITY: ]', err)
+        print('[ERROR DELETE ACTIVITY]: ', err)
         return None
 
 
 
-def verify_user(role_id):
+def verify_user_admin(role_id):
     if role_id == 1:
         return True
     else:
