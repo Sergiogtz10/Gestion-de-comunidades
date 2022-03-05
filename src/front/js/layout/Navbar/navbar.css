@@ -1,17 +1,22 @@
 .sidebar {
   position: fixed;
-  width: 15%;
+  width: 15vw;
   height: 100vh;
-  background-color: blue;
+  background-color: #2a9d8f;
 }
 
 .navbar {
   position: relative;
-  margin: 2%;
   text-align: left;
+  padding: 0;
+  display: block;
 }
 
 .nav-element {
   list-style-type: none;
   padding: 1rem;
+  width: 100%;
+}
+.nav-element:hover {
+  background-color: #47e2d03f;
 }
