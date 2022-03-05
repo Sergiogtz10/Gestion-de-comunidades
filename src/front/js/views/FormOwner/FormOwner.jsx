@@ -79,36 +79,36 @@ const FormOwner = () =>{
                             {err.name != "" ?(<div id="validsize" className="col-12 text-danger">{err.name}</div>) : null}
                         </div>
                         <div className="px-3">
-                            <label className="Apellidos" className="form-label">Apellidos</label>
+                            <label  className="form-label">Apellidos</label>
                             <input type="text" className="form-control" name="last_name" id="Apellidos"></input>
                             {err.last_name != "" ?(<div id="validsize" className="col-12 text-danger">{err.last_name}</div>) : null}
                         </div>
                         <div className="px-3">
-                            <label className="Piso" className="form-label">Piso</label>
+                            <label  className="form-label">Piso</label>
                             <input type="text" className="form-control" name="flat" id="Piso"></input>
                             {err.flat != "" ?(<div id="validsize" className="col-12 text-danger">{err.flat}</div>) : null}
                         </div>
                     </div>
                     <div className="mb-3 d-flex">
                         <div className="px-3">
-                            <label className="Email" className="form-label">Email</label>
+                            <label  className="form-label">Email</label>
                             <input type="email" className="form-control" name="email" id="Email"></input>
                             {err.email != "" ?(<div id="validsize" className="col-12 text-danger">{err.email}</div>) : null}
                         </div>
                         <div>
-                            <label className="Telefono" className="form-label">Telefono</label>
+                            <label  className="form-label">Telefono</label>
                             <input type="number" className="form-control" name="phone" id="Telefono"></input>
                             {err.phone != "" ?(<div id="validsize" className="col-12 text-danger">{err.phone}</div>) : null}
                         </div>
                     </div>
                     <div className="mb-3 d-flex">
                         <div className="px-3">
-                            <label className="Contraseña" className="form-label">Contraseña</label>
+                            <label  className="form-label">Contraseña</label>
                             <input type="password" className="form-control" name="password" id="Contraseña"></input>
                             {err.password != "" ?(<div id="validsize" className="col-12 text-danger">{err.password}</div>) : null}
                         </div>
                         <div>
-                            <label className="RepetirContraseña" className="form-label">Repetir contraseña</label>
+                            <label  className="form-label">Repetir contraseña</label>
                             <input type="password" className="form-control" name="repeat_password"id="RepetirContraseña"></input>
                             {err.repeat_password != "" ?(<div id="validsize" className="col-12 text-danger">{err.repeat_password}</div>) : null}
                         </div>

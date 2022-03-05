@@ -28,34 +28,28 @@ const Layout = () => {
             <Route exact path="/">
               <Home />
             </Route>
-
-			<Route exact path="/form/admin">
-				<FormAdmin />
-			</Route>
-		
-			<Route exact path="/form/community">
-				<FormCommunity />
-			</Route>
-
-			<Route exact path="/form/owner">
-				<FormOwner />
-			</Route>
-
-			<Route exact path="/landing">
-				<Landing />
-			</Route>
-
-      <Route exact path="/login">
-        <Login />
-      </Route>
-
-      <Route>
-         <h1>Not found!</h1>
-      </Route>
-      </Switch>
-      <Footer />
-    </ScrollToTop>
-    </BrowserRouter>
+            <Route exact path="/form/admin">
+              <FormAdmin />
+            </Route>
+            <Route exact path="/form/community">
+              <FormCommunity />
+            </Route>
+            <Route exact path="/form/owner">
+              <FormOwner />
+            </Route>
+            <Route exact path="/landing">
+              <Landing />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route>
+              <h1>Not found!</h1>
+            </Route>
+          </Switch>
+          <Footer />
+        </ScrollToTop>
+      </BrowserRouter>
     </div>
   );
 };

@@ -3,22 +3,22 @@ const URL = "https://3000-jesusbruque-finalproyect-qufm2qz40is.ws-eu34xl.gitpod.
 //Users
 
 export const getUsers = () => {
-	const API = URL + "/users"
+	const API = URL + "/api/users"
 	return fetch(API);
 };
 
 export const postRegisterAdmin= () => {
-	const API = URL + "/users/register/admin"
+	const API = URL + "/api/users/register/admin"
 	return fetch(API);
 };
 
 export const postRegisterOwner= () => {
-	const API = URL + "/users/register/owner/<community_id>"
+	const API = URL + "/api/users/register/owner/<community_id>"
 	return fetch(API);
 };
 
 export const postLogin= () => {
-	const API = URL + "/users/login"
+	const API = URL + "/api/users/login"
 	return fetch(API);
 };
 

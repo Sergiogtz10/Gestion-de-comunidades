@@ -10,9 +10,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {},
     actions: {
-
+      
       // Users
-	  
       login: (email, password) => {
         fetch(postLogin(), {
           method: "POST",
@@ -25,13 +24,15 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((response) => response.json())
             .then((data) => {
               if (data.new_token === undefined) {
-                return ("Ha ocurrido un error");
+                return console.log("Ha ocurrido un error");
               } else {
-                return ("Ha accedido correctamente");
+                return console.log("Ha accedido correctamente");
               };
               localStorage.setItem("jwt-token", data.new_token);
             })
-			.c
+            .catch((error) =>
+            console.log("Error loading login from backend", error)
+          )
         });
       },
     },
