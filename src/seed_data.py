@@ -85,7 +85,8 @@ data = {
             "id": 1,
             "severity": "Grave",
             "user_id": 2,
-            "zone": "Cocina"
+            "zone": "Cocina",
+            "common": False
         },
         {
             "bill_id": 2,
@@ -94,7 +95,8 @@ data = {
             "id": 2,
             "severity": "Leve",
             "user_id": 2,
-            "zone": "Piscina"
+            "zone": "Piscina",
+            "common": True
         },
         {
             "bill_id": 3,
@@ -103,7 +105,8 @@ data = {
             "id": 3,
             "severity": "Medio",
             "user_id": 1,
-            "zone": "Baño"
+            "zone": "Baño",
+            "common": False
         }
     ]
 }
