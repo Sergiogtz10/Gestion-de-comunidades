@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./layout.css";
 
 //Layout Components
 import Navbar from "./Navbar/Navbar.jsx";
@@ -10,8 +11,8 @@ const Layout = (props) => {
       <header>
         <Navbar />
       </header>
-      <div>{props.children}</div>
-      <footer>footer</footer>
+      <div className="content">{props.children}</div>
+      <footer className="footer">footer</footer>
     </>
   );
 };

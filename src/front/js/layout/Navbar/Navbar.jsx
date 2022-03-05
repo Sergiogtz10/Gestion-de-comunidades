@@ -3,22 +3,19 @@ import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <div id="navbar" className="d-flex align-items-center">
-      <ul>
-        <li>
-          <a href="#home">Home</a>
-        </li>
-        <li>
-          <a href="#news">News</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
-        <li>
-          <a href="#about">About</a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <aside className="sidebar">
+        <nav className="navbar">
+          <ul>
+            <li className="active">HOME</li>
+            <li className="active">INCIDENCIAS</li>
+            <li className="active">ACTIVIDADES</li>
+            <li className="active">FACTURAS</li>
+            <li className="active">PROVEEDORES</li>
+          </ul>
+        </nav>
+      </aside>
+    </>
   );
 };
 
