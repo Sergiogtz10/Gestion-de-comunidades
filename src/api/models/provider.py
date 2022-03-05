@@ -1,7 +1,7 @@
 from api.models.db import db
 
 
-class Progit chevider(db.Model):
+class Provider(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
 
