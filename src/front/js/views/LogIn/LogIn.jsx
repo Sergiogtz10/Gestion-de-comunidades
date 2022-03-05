@@ -8,10 +8,10 @@ const initialStateErr ={
 
 const Login = () =>{
 
-    const[ login, setLogin] = useState[{
+    const[ login, setLogin] = useState({
     email: "",
     password: "",
-    }]
+    })
 
     const[ err, setErr]= useState({ initialStateErr})
 
@@ -40,7 +40,7 @@ const Login = () =>{
         <div>
             <h3 id="title"  className="text-center p-3">Log In</h3>
             <div className="container fluid card text-center justify-content-center p-4" id="card" style={{width: "400px"}}>
-                <form> 
+                <form onSubmit={handleClick} onChange={handleChange}> 
                     <div>
                         <label  className="form-label ">Email</label>
                         <input type="email" className="form-control" id="Email" name="email"></input>

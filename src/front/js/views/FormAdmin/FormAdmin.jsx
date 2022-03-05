@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import "./FormAdmin.css";
 
+import { postRegisterAdmin } from "../../Service/users";
+
 const initialStateErr = {
   name: "",
   last_name: "",
@@ -9,9 +11,8 @@ const initialStateErr = {
   phone: "",
   password: "",
   repeat_password: "",
-}
+};
 const FormAdmin = () => {
-
   const [admin, setAdmin] = useState({
     name: "",
     last_name: "",
@@ -30,10 +31,9 @@ const FormAdmin = () => {
   };
 
   const handleClick = (e) => {
-
     e.preventDefault();
     let newerr = { ...initialStateErr };
-    
+
     if (admin.name.length == 0) {
       newerr = { ...newerr, name: "Introduzca su nombre" };
     }
@@ -54,8 +54,20 @@ const FormAdmin = () => {
     }
     setErr(newerr);
 
-    if(newerr.name == "" && newerr.last_name == "" && newerr.email == "" && newerr.phone == "" && newerr.password == "" && newerr.repeat_password == ""){
-      
+    if (
+      newerr.name == "" &&
+      newerr.last_name == "" &&
+      newerr.email == "" &&
+      newerr.phone == "" &&
+      newerr.password == "" &&
+      newerr.repeat_password == ""
+    ) {
+      console.log("todo bien en el fecth");
+      let newUserAdmin = { ...admin };
+      delete newUserAdmin.repeat_password;
+      postRegisterAdmin(newUserAdmin)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
     }
   };
   console.log(err);
@@ -86,9 +98,7 @@ const FormAdmin = () => {
               ) : null}
             </div>
             <div>
-              <label className="Apellidos" className="form-label">
-                Apellidos
-              </label>
+              <label className="form-label">Apellidos</label>
               <input
                 type="text"
                 className="form-control"
@@ -104,9 +114,7 @@ const FormAdmin = () => {
           </div>
           <div className="mb-3 d-flex">
             <div className="px-3">
-              <label className="Email" className="form-label">
-                Email
-              </label>
+              <label className="form-label">Email</label>
               <input
                 type="email"
                 className="form-control"
@@ -120,9 +128,7 @@ const FormAdmin = () => {
               ) : null}
             </div>
             <div>
-              <label className="Telefono" className="form-label">
-                Telefono
-              </label>
+              <label className="form-label">Telefono</label>
               <input
                 type="number"
                 className="form-control"
@@ -138,9 +144,7 @@ const FormAdmin = () => {
           </div>
           <div className="mb-3 d-flex">
             <div className="px-3">
-              <label className="Contraseña" className="form-label">
-                Contraseña
-              </label>
+              <label className="form-label">Contraseña</label>
               <input
                 type="password"
                 className="form-control"
@@ -155,9 +159,7 @@ const FormAdmin = () => {
             </div>
 
             <div>
-              <label className="RepetirContraseña" className="form-label">
-                Repetir contraseña
-              </label>
+              <label className="form-label">Repetir contraseña</label>
               <input
                 type="password"
                 className="form-control"
