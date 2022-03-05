@@ -23,7 +23,6 @@ def register_owner(body):
         owner_role = db.session.query(Roles).filter(Roles.role_id == 2).first()
 
         hash_pass = encryp_pass(body['password'])
-        print(body['phone_number'])
         new_user = User(first_name=body['first_name'], last_name=body['last_name'], email=body['email'], password=hash_pass, role_id=owner_role.role_id, flat_number=body['flat_number'], phone_number=body['phone_number'])
         db.session.add(new_user)
         db.session.commit()
