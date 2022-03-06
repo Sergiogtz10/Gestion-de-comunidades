@@ -1,7 +1,7 @@
 @media only screen and (min-width: 801px) {
   .sidebar {
     position: fixed;
-    width: 15vw;
+    width: 20vw;
     height: 100vh;
     background-color: #2a9d8f;
   }
@@ -17,7 +17,7 @@
     list-style-type: none;
     padding: 1rem;
     width: 100%;
-    color: black;
+    color: rgb(59, 59, 59);
   }
   .nav-element:hover {
     background-color: #47e2d03f;
@@ -38,14 +38,36 @@
     margin-left: auto;
   }
 
-  #offcanvas-navbar {
-    width: 100vw;
-  }
   nav {
     background-color: black;
     height: 4rem;
   }
+
   .sidebar {
     display: none;
+  }
+
+  .nav-element-mobile {
+    list-style-type: none;
+    padding: 1rem;
+    width: 100%;
+    color: black;
+  }
+  .nav-element-mobile:hover {
+    background-color: #47e2d03f;
+    color: red;
+  }
+  .nav-element-mobile:active {
+    background-color: #47e2d03f;
+    color: red;
+  }
+
+  #offcanvas-navbar {
+    width: 100vw;
+    background-color: antiquewhite;
+  }
+
+  #home-link {
+    margin-top: 4rem;
   }
 }

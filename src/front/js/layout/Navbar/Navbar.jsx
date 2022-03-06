@@ -5,6 +5,7 @@ import "./navbar.css";
 const Navbar = () => {
   return (
     <>
+      {/* NAVBAR MOBILE ONLY */}
       <nav className="d-flex align-items-center navbar-mobile">
         <button
           className="d-flex btn btn-primary me-2"
@@ -35,7 +36,7 @@ const Navbar = () => {
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-            Offcanvas
+            LOGO
           </h5>
           <button
             type="button"
@@ -44,42 +45,29 @@ const Navbar = () => {
             aria-label="Close"
           ></button>
         </div>
-        <div className="offcanvas-body">
-          <div>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
-          </div>
-          <div className="dropdown mt-3">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-            >
-              Dropdown button
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="offcanvas-body p-0">
+          <ul className="m-0 p-0">
+            <li className="nav-element-mobile nav-link" id="home-link">
+              HOME
+            </li>
+            <li className="nav-element-mobile nav-link">INCIDENCIAS</li>
+            <li className="nav-element-mobile nav-link">ACTIVIDADES</li>
+            <li className="nav-element-mobile nav-link">FACTURAS</li>
+            <li className="nav-element-mobile ">PROVEEDORES</li>
+          </ul>
         </div>
       </div>
 
-      <nav className="sidebar navbar"></nav>
+      {/* NAVBAR DESKTOP ONLY */}
+      <nav className="sidebar navbar">
+        <ul className="m-0 p-0">
+          <li className="nav-element">HOME</li>
+          <li className="nav-element">INCIDENCIAS</li>
+          <li className="nav-element">ACTIVIDADES</li>
+          <li className="nav-element">FACTURAS</li>
+          <li className="nav-element">PROVEEDORES</li>
+        </ul>
+      </nav>
     </>
   );
 };
