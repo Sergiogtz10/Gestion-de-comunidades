@@ -18,6 +18,7 @@ const Login = () =>{
     const[ err, setErr]= useState({ initialStateErr})
 
     const[redirect, setRedirect]=useState(false)
+
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -40,8 +41,9 @@ const Login = () =>{
         if(newerr.password == "" && newerr.password == "") {
             console.log("todo bien en el fetch login");
             postLogin(login)
-                .then((response) => console.log(response))
-                .catch((error) => console.log(error));
+            .then((response) => response.json())
+            .then(()=>setRedirect(true))
+            .catch((error) => console.log(error));
         }
     }
     return (
