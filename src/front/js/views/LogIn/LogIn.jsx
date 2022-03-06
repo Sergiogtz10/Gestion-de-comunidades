@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { postLogin } from "../../Service/users";
 import "./LogIn.css"
 
@@ -16,6 +17,7 @@ const Login = () =>{
 
     const[ err, setErr]= useState({ initialStateErr})
 
+    const[redirect, setRedirect]=useState(false)
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -37,7 +39,7 @@ const Login = () =>{
 
         if(newerr.password == "" && newerr.password == "") {
             console.log("todo bien en el fetch login");
-            postLogin()
+            postLogin(login)
                 .then((response) => console.log(response))
                 .catch((error) => console.log(error));
         }
@@ -64,7 +66,8 @@ const Login = () =>{
                     </div>
                           
                 </form>
-            </div>
+            </div> 
+            {redirect ? <Redirect to= "/"></Redirect>: null}
         </div>
         
     );

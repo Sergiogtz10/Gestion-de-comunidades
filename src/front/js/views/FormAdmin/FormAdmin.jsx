@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-
+import { Redirect } from "react-router-dom";
 import "./FormAdmin.css";
 
 import { postRegisterAdmin } from "../../Service/users";
 
 const initialStateErr = {
-  name: "",
+  first_name: "",
   last_name: "",
   email: "",
-  phone: "",
+  phone_number: "",
   password: "",
   repeat_password: "",
 };
 const FormAdmin = () => {
   const [admin, setAdmin] = useState({
-    name: "",
+    first_name: "",
     last_name: "",
     email: "",
-    phone: "",
+    phone_number: "",
     password: "",
     repeat_password: "",
   });
+  const[redirect, setRedirect]=useState(false)
 
   const [err, setErr] = useState(initialStateErr);
 
@@ -34,8 +35,8 @@ const FormAdmin = () => {
     e.preventDefault();
     let newerr = { ...initialStateErr };
 
-    if (admin.name.length == 0) {
-      newerr = { ...newerr, name: "Introduzca su nombre" };
+    if (admin.first_name.length == 0) {
+      newerr = { ...newerr, first_name: "Introduzca su nombre" };
     }
     if (admin.last_name.length == 0) {
       newerr = { ...newerr, last_name: "Introduzca sus apellidos" };
@@ -43,8 +44,8 @@ const FormAdmin = () => {
     if (admin.email.length == 0) {
       newerr = { ...newerr, email: "Introduzca su email" };
     }
-    if (admin.phone.length !== 9) {
-      newerr = { ...newerr, phone: "Introduzca su móvil" };
+    if (admin.phone_number.length !== 9) {
+      newerr = { ...newerr, phone_number: "Introduzca su móvil" };
     }
     if (admin.password.length < 6) {
       newerr = { ...newerr, password: "Introduzca 6 caracteres" };
@@ -55,10 +56,10 @@ const FormAdmin = () => {
     setErr(newerr);
 
     if (
-      newerr.name == "" &&
+      newerr.first_name == "" &&
       newerr.last_name == "" &&
       newerr.email == "" &&
-      newerr.phone == "" &&
+      newerr.phone_number == "" &&
       newerr.password == "" &&
       newerr.repeat_password == ""
     ) {
@@ -66,7 +67,8 @@ const FormAdmin = () => {
       let newUserAdmin = { ...admin };
       delete newUserAdmin.repeat_password;
       postRegisterAdmin(newUserAdmin)
-        .then((response) => console.log(response))
+        .then((response) => response.json())
+        .then(()=>setRedirect(true))
         .catch((error) => console.log(error));
     }
   };
@@ -88,12 +90,12 @@ const FormAdmin = () => {
               <input
                 type="text"
                 className="form-control shadow-sm"
-                name="name"
+                name="first_name"
                 id="Nombre"
               ></input>
-              {err.name != "" ? (
+              {err.first_name != "" ? (
                 <div id="validsize" className="col-12 text-danger">
-                  {err.name}
+                  {err.first_name}
                 </div>
               ) : null}
             </div>
@@ -132,12 +134,12 @@ const FormAdmin = () => {
               <input
                 type="number"
                 className="form-control shadow-sm"
-                name="phone"
+                name="phone_number"
                 id="Telefono"
               ></input>
-              {err.phone != "" ? (
+              {err.phone_number != "" ? (
                 <div id="validsize" className="col-12 text-danger">
-                  {err.phone}
+                  {err.phone_number}
                 </div>
               ) : null}
             </div>
@@ -181,6 +183,7 @@ const FormAdmin = () => {
           </div>
         </form>
       </div>
+      {redirect ? <Redirect to= "/login"></Redirect>: null}
     </div>
   );
 };

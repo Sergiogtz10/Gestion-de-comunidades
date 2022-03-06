@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import "./FormOwner.css"
 
 import { postRegisterOwner } from "../../Service/users";
 
 const initialStateErr = {
-    name: "",
+    first_name: "",
     last_name: "",
-    flat:"",
+    flat_number:"",
     email: "",
-    phone: "",
+    phone_number: "",
     password: "",
     repeat_password: "",
 }
@@ -16,15 +17,17 @@ const initialStateErr = {
 const FormOwner = () =>{
 
     const [owner, setOwner] = useState({
-        name: "",
+        first_name: "",
         last_name: "",
-        flat:"",
+        flat_number:"",
         email: "",
-        phone: "",
+        phone_number: "",
         password: "",
         repeat_password: "",
     });
     
+    const[redirect, setRedirect]=useState(false)
+
     const [err, setErr] = useState(initialStateErr);
 
     const handleChange = (e) => {
@@ -40,20 +43,20 @@ const FormOwner = () =>{
 
         let newerr = { ...initialStateErr };
         
-        if (owner.name.length == 0) {
-          newerr = { ...newerr, name: "Introduzca su nombre" };
+        if (owner.first_name.length == 0) {
+          newerr = { ...newerr, first_name: "Introduzca su nombre" };
         }
         if (owner.last_name.length == 0) {
           newerr = { ...newerr, last_name: "Introduzca sus apellidos" };
         }
-        if(owner.flat.length == 0){
-            newerr = { ...newerr, flat: "Introduzca su piso"}
+        if(owner.flat_number.length == 0){
+            newerr = { ...newerr, flat_number: "Introduzca su piso"}
         }
         if (owner.email.length == 0) {
           newerr = { ...newerr, email: "Introduzca su email" };
         }
-        if (owner.phone.length !== 9) {
-          newerr = { ...newerr, phone: "Introduzca su móvil" };
+        if (owner.phone_number.length !== 9) {
+          newerr = { ...newerr, phone_number: "Introduzca su móvil" };
         }
         if (owner.password.length < 6) {
           newerr = { ...newerr, password: "Introduzca 6 caracteres" };
@@ -63,13 +66,14 @@ const FormOwner = () =>{
         }  
         setErr(newerr);
 
-        if(newerr.name == "" && newerr.last_name == "" && newerr.flat == "" && newerr.email == "" && newerr.phone == "" && newerr.password == "" && newerr.repeat_password == ""){
+        if(newerr.first_name == "" && newerr.last_name == "" && newerr.flat_number == "" && newerr.email == "" && newerr.phone_number == "" && newerr.password == "" && newerr.repeat_password == ""){
             console.log("todo bien en el fetch owner");
             let newUserOwner = { ...owner };
             delete newUserOwner.repeat_password;
             postRegisterOwner(newUserOwner)
-                .then((response) => console.log(response))
-                .catch((error) => console.log(error));
+            .then((response) => response.json())
+            .then(()=>setRedirect(true))
+            .catch((error) => console.log(error));
         }
     };
     return(
@@ -82,8 +86,8 @@ const FormOwner = () =>{
                     <div className="mb-3 d-flex">
                         <div className="px-3">
                             <label  className="form-label text-center ">Nombre</label>
-                            <input type="text" className="form-control shadow-sm" name="name" id="Nombre"></input>
-                            {err.name != "" ?(<div id="validsize" className="col-12 text-danger">{err.name}</div>) : null}
+                            <input type="text" className="form-control shadow-sm" name="first_name" id="Nombre"></input>
+                            {err.first_name != "" ?(<div id="validsize" className="col-12 text-danger">{err.first_name}</div>) : null}
                         </div>
                         <div className="px-3">
                             <label  className="form-label">Apellidos</label>
@@ -92,8 +96,8 @@ const FormOwner = () =>{
                         </div>
                         <div className="px-3">
                             <label  className="form-label">Piso</label>
-                            <input type="text" className="form-control shadow-sm" name="flat" id="Piso"></input>
-                            {err.flat != "" ?(<div id="validsize" className="col-12 text-danger">{err.flat}</div>) : null}
+                            <input type="text" className="form-control shadow-sm" name="flat_number" id="Piso"></input>
+                            {err.flat_number != "" ?(<div id="validsize" className="col-12 text-danger">{err.flat_number}</div>) : null}
                         </div>
                     </div>
                     <div className="mb-3 d-flex">
@@ -104,8 +108,8 @@ const FormOwner = () =>{
                         </div>
                         <div>
                             <label  className="form-label">Telefono</label>
-                            <input type="number" className="form-control shadow-sm" name="phone" id="Telefono"></input>
-                            {err.phone != "" ?(<div id="validsize" className="col-12 text-danger">{err.phone}</div>) : null}
+                            <input type="number" className="form-control shadow-sm" name="phone_number" id="Telefono"></input>
+                            {err.phone_number != "" ?(<div id="validsize" className="col-12 text-danger">{err.phone_number}</div>) : null}
                         </div>
                     </div>
                     <div className="mb-3 d-flex">
@@ -126,6 +130,7 @@ const FormOwner = () =>{
                 </form>
             </div>
         </div>
+        {redirect ? <Redirect to= "/login"></Redirect>: null}
     </div>
 )
 }
