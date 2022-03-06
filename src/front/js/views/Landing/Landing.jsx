@@ -3,20 +3,22 @@ import "./Landing.css"
 
 const Landing = () =>{
     return(
-        <div>
-            <div className="jumbotron">
-                <h1 className="display-4">Bienvenido a tu aplicación de gestión de comunidades</h1>
-                <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr className="my-4"></hr>
-                
-                    <div className="p-3">
-                        <button type="submit" className="btn btn-primary" id="boton">Registrar comunidad</button>
+        
+        <div id="back" className="container-fluid">
+            <div className="container py-5">
+                <div className="d-flex flex-column flex-lg-row align-items-center mx-5 ">
+                    <div className="col-md-8 ps-3 ps-lg-5 p-5">
+                        <h1>Master Key</h1>
+                        <p className="text-muted fs-5">Master Key es la aplicación que hará la relación con tu comunidad de vecinos más sencilla y agradable</p>
+                        <div className="d-flex flex-column col-md-5 gap-4 justify-content-center">
+                        <button type="button" className="btn btn-success">Registrarse como administrador</button>
+                        <button   type="button" className="btn btn-success">Log In</button>
+                        </div>
                     </div>
-                    <div className="p-3">
-                        <button type="submit" className="btn btn-primary" id="boton">Log In</button>
-                    </div>
+                    <img src="https://perezparras.com/wp-content/uploads/2018/09/Neighbours-in-building-434KB-790x790.png" alt="" className="rounded-circle img-fluid col-md-3  ms-lg-2"></img>
                 </div>
             </div>
+        </div>
     );
 }
 

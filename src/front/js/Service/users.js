@@ -13,29 +13,27 @@ export const postRegisterAdmin= (user) => {
 	}
 };
 
-export const postRegisterOwner= (name, last_name,flat, email, phone, password, repeat_password) => {
+export const postRegisterOwner= (user) => {
 	const API = URL + "/api/users/register/owner/<community_id>"
 	return fetch(API),{
 		method: "POST",
         mode: "cors",
         headers: {
-            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({name:name, last_name:last_name,flat:flat, email: email, phone:phone, password: password, repeat_password:repeat_password })
+        body: JSON.stringify(user)
 	};
 };
 
-export const postLogin= (email, password) => {
+export const postLogin= (login) => {
 	const API = URL + "/api/users/login"
 	return fetch(API),{
 		method: "POST",
         mode: "cors",
         headers: {
-        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
         },
-		body: JSON.stringify({ email: email, password: password })
+		body: JSON.stringify(login)
 	};
 };
 

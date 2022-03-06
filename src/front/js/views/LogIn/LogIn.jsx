@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { postLogin } from "../../Service/users";
 import "./LogIn.css"
 
 const initialStateErr ={
@@ -34,22 +35,27 @@ const Login = () =>{
         }  
         setErr(newerr);
 
-        if(newerr.password == "" && newerr.password == "") {}
+        if(newerr.password == "" && newerr.password == "") {
+            console.log("todo bien en el fetch login");
+            postLogin()
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));
+        }
     }
     return (
         <div>
-            <h3 id="title"  className="text-center p-3">Log In</h3>
+            <h3 id="title"  className="text-center p-3 fw-bolder">Log In</h3>
             <div className="container fluid card text-center justify-content-center p-4" id="card" style={{width: "400px"}}>
                 <form onSubmit={handleClick} onChange={handleChange}> 
                     <div>
                         <label  className="form-label ">Email</label>
-                        <input type="email" className="form-control" id="Email" name="email"></input>
+                        <input type="email" className="form-control shadow-sm" id="Email" name="email"></input>
                         {err.email != "" ?(<div id="validsize" className="col-12 text-danger">{err.email}</div>) : null}
                     </div>
                     
                     <div className="py-3">
                         <label  className="form-label">Contraseña</label>
-                        <input type="password" className="form-control" id="contraseña" name="password"></input>
+                        <input type="password" className="form-control shadow-sm" id="contraseña" name="password"></input>
                         {err.password != "" ?(<div id="validsize" className="col-12 text-danger">{err.password}</div>) : null}
                     </div>
 

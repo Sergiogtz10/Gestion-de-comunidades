@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { postRegisterCommunity } from "../../Service/community";
 import "./FormCommunity.css"
 
 const initialStateErr = {
@@ -34,7 +35,11 @@ const FormCommunity = () =>{
         setErr(newerr);
 
         if(newerr.address == "" && newerr.number_house == ""){
-            
+            console.log("todo bien en el fetch community");
+            let newCommunity = { ...owner };
+            postRegisterCommunity(newCommunity)
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));   
         }
     };
     

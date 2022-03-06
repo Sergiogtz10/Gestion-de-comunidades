@@ -1,20 +1,24 @@
 body{
-    background-color: white;
+    background-color: rgb(172, 175, 171);
     font-family: 'Montserrat', sans-serif;
 }
 #card{
     border-radius: 20px;
-    background-color:#f2f7f8;
-    font-weight: 400;
-    color: #335C67;
+    background-color:white;
+    font-weight: 300;
+    color: rgb(127, 126, 143);
+    
 }
 
 #title{
-    color: #669bbc;
+    color: white; 
+    font-weight: 400;
+    font-size: xx-large;
+
 }
 #boton{
     padding: 10px;
-    background-color: #669bbc;
+    background-color:green;
     border: none;
     color: white;
     font-weight: 500; 

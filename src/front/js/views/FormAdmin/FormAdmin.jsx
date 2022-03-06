@@ -62,7 +62,7 @@ const FormAdmin = () => {
       newerr.password == "" &&
       newerr.repeat_password == ""
     ) {
-      console.log("todo bien en el fecth");
+      console.log("todo bien en el fetch admin");
       let newUserAdmin = { ...admin };
       delete newUserAdmin.repeat_password;
       postRegisterAdmin(newUserAdmin)
@@ -74,7 +74,7 @@ const FormAdmin = () => {
   return (
     <div>
       <h3 id="title" className="text-center  p-3">
-        Formulario de registro para el administrador
+        Registrarse como administrador
       </h3>
       <div
         className="container fluid card text-center justify-content-center p-4"
@@ -87,7 +87,7 @@ const FormAdmin = () => {
               <label className="form-label">Nombre</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="name"
                 id="Nombre"
               ></input>
@@ -101,7 +101,7 @@ const FormAdmin = () => {
               <label className="form-label">Apellidos</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="last_name"
                 id="Apellidos"
               ></input>
@@ -117,7 +117,7 @@ const FormAdmin = () => {
               <label className="form-label">Email</label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="email"
                 id="Email"
               ></input>
@@ -131,7 +131,7 @@ const FormAdmin = () => {
               <label className="form-label">Telefono</label>
               <input
                 type="number"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="phone"
                 id="Telefono"
               ></input>
@@ -147,7 +147,7 @@ const FormAdmin = () => {
               <label className="form-label">Contraseña</label>
               <input
                 type="password"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="password"
                 id="Contraseña"
               ></input>
@@ -162,7 +162,7 @@ const FormAdmin = () => {
               <label className="form-label">Repetir contraseña</label>
               <input
                 type="password"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="repeat_password"
                 id="RepetirContraseña"
               ></input>
