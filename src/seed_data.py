@@ -14,16 +14,34 @@ data = {
 
     "Community":[
         {
-            "id":1,
-            "address":"C/ Vilafranca 2, Barcelona",
-            "flats":15
+            "id": 1,
+            "address": "C/ Vilafranca 2, Barcelona",
+            "flats": 15
         },
         {
-            "id":2,
-            "address":"C/ Industria 64, Segovia",
-            "flats":34
+            "id": 2,
+            "address": "C/ Industria 64, Segovia",
+            "flats": 34
         }
     ],
+
+    "Activities":[
+        {
+            "day": "17/02/2024",
+            "time": "16:50h",
+            "description": "Reparación del ascensor.",
+            "severity": "Importante",
+            "community_id": 1
+        },
+        {
+            "day": "11/06/2023",
+            "time": "18:30h",
+            "description": "Reunión de vecinos.",
+            "severity": "Muy importante",
+            "community_id": 1
+        }
+    ],
+
     "User":[
         {
             "id":1,

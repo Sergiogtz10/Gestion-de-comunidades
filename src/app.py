@@ -10,6 +10,7 @@ from api.utils import APIException, generate_sitemap
 from api.models.db import db
 from api.app.user.router import users
 from api.app.community.router import communities
+from api.app.activities.router import activity
 from api.app.incident.router import incidents
 from api.app.bill.router import bills
 from api.admin import setup_admin
@@ -44,7 +45,8 @@ setup_admin(app)
 
 
 app.register_blueprint(users, url_prefix="/api/user")
-app.register_blueprint(communities,url_prefix="/api/community")
+app.register_blueprint(communities, url_prefix="/api/community")
+app.register_blueprint(activity, url_prefix="/api/activities")
 app.register_blueprint(incidents,url_prefix="/api/incident")
 app.register_blueprint(bills,url_prefix="/api/bill")
 
