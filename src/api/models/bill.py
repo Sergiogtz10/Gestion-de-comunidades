@@ -10,7 +10,7 @@ class Bill(db.Model):
     date=db.Column(db.DateTime,nullable=True)
     community_id=db.Column(db.Integer,db.ForeignKey('community.id'), nullable=False)
     community=db.relationship(Community,backref="bill")
-    provider_id= db.Column(db.Integer,db.ForeignKey('provider.id'),nullable=False)
+    provider_id= db.Column(db.Integer,db.ForeignKey('provider.id'))
     provider=db.relationship(Provider,backref="bill")
 
 
