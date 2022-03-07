@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { postRegisterCommunity } from "../../Service/community";
 import "./FormCommunity.css"
 
 const initialStateErr = {
     address:"",
-    number_house:""  
+    flats:""  
 }
 
 const FormCommunity = () =>{
 
     const[community, setCommunity]=useState({
         address:"",
-        number_house:""
+        flats:""
     });
+    const[redirect, setRedirect]=useState(false)
 
     const[err, setErr]=useState(initialStateErr);
 
@@ -29,17 +31,18 @@ const FormCommunity = () =>{
         if(community.address.length == 0){
             newerr ={ ...newerr, address: "Introduzca su dirección"}
         }
-        if(community.number_house == 0){
-            newerr ={...newerr, number_house: "Introduzca el número de viviendas"}
+        if(community.flats == 0){
+            newerr ={...newerr, flats: "Introduzca el número de viviendas"}
         }
         setErr(newerr);
 
-        if(newerr.address == "" && newerr.number_house == ""){
+        if(newerr.address == "" && newerr.flats == ""){
             console.log("todo bien en el fetch community");
-            let newCommunity = { ...owner };
+            let newCommunity = { ...community };
             postRegisterCommunity(newCommunity)
-                .then((response) => console.log(response))
-                .catch((error) => console.log(error));   
+            .then((response) => response.json())
+            .then(()=>setRedirect(true))
+            .catch((error) => console.log(error));   
         }
     };
     
@@ -56,8 +59,8 @@ const FormCommunity = () =>{
                         </div>
                         <div className="px-3">
                             <label  className="form-label">Número de viviendas</label>
-                            <input type="number" className="form-control" name="number_house" id="Numviviendas"></input>
-                            {err.number_house != "" ?(<div id="validsize" className="col-12 text-danger">{err.number_house}</div>) : null}
+                            <input type="number" className="form-control" name="flats" id="Numviviendas"></input>
+                            {err.flats != "" ?(<div id="validsize" className="col-12 text-danger">{err.flats}</div>) : null}
                         </div>
                     </div>
     
@@ -67,6 +70,7 @@ const FormCommunity = () =>{
                           
                 </form>
             </div>
+            {redirect ? <Redirect to= "/login"></Redirect>: null}
         </div>
         
     );

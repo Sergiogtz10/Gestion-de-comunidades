@@ -2,16 +2,15 @@ import { URL } from "./URL";
 
 //communities
 
-export const postRegisterCommunity = (community) => {
+export const postRegisterCommunity = (newCommunity) => {
 	const API = URL + "/api/communities/register/<user_id>"
-	return fetch(API),{
+	return fetch(API,{
 		method: "POST",
-        mode: "cors",
         headers: {
         "Content-Type": "application/json",
         },
-		body: JSON.stringify(community)
+		body: JSON.stringify(newCommunity)
 
-	}
+	})
 };
 
