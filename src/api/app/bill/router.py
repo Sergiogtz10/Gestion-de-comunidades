@@ -31,13 +31,14 @@ def create(community_id,incident_id):
 
 #route to get bills
 @bills.route('/<community_id>',methods=['GET'])
+@jwt_required()
 def get_bills(community_id):
     return get_all_bills(community_id)
 
 #route to modify bills
 @bills.route('/<bill_id>',methods=['PUT'])
 @jwt_required()
-def update(incident_id):
+def update(bill_id):
     user_id=get_jwt_identity()
     user=get_user_by_id(user_id["id"])
     user=user.serialize()

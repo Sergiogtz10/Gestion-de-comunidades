@@ -63,17 +63,20 @@ data = {
         {
             "id":1,
             "amount":200,
-            "details": "Reparar cristal"
+            "details": "Reparar cristal",
+            "community_id":1
         },
         {
             "id":2,
             "amount":100,
-            "details": "Reparar cesped dañado"
+            "details": "Reparar cesped dañado",
+            "community_id":1
         },
         {
             "id":3,
             "amount":100,
-            "details": "Cambio de grifo"
+            "details": "Cambio de grifo",
+            "community_id":2
         }
     ],
 
