@@ -41,6 +41,20 @@ data = {
             "community_id": 1
         }
     ],
+     "Expenses":[
+        {
+            "concept": "IBERDROLA",
+            "amount": "250",
+            "date": "30/03/2022",
+            "community_id": 1
+        },
+        {
+            "concept": "ASCENSORES TRESA",
+            "amount": "300",
+            "date": "30/03/2022",
+            "community_id": 1
+        }
+    ],
 
     "User":[
         {
