@@ -7,4 +7,5 @@ from api.models.rel_user_community import Rel_user_community
 from api.models.incident import Incident
 from api.models.bill import Bill
 from api.models.activities import Activities
+from api.models.provider import Provider
 

@@ -76,25 +76,44 @@ data = {
             "community_id":1
         }
     ],
+    "Provider":[
+         {
+            "id":1,
+            "name": "Piscinas",
+            "service": "Servicio de limpieza y mantenimiento de piscinas",
+            "logo": "xxxxxxxxx",
+            "community_id":1
+        },
+        {
+            "id":2,
+            "name": "Jardinería López",
+            "service": "Servicio de mantenimiento de jardines",
+            "logo": "xxxxxxxxx",
+            "community_id":1
+        }
+    ],
 
     "Bill":[
         {
             "id":1,
             "amount":200,
             "details": "Reparar cristal",
-            "community_id":1
+            "community_id":1,
+            "provider_id":1
         },
         {
             "id":2,
             "amount":100,
             "details": "Reparar cesped dañado",
-            "community_id":1
+            "community_id":1,
+            "provider_id":1
         },
         {
             "id":3,
             "amount":100,
             "details": "Cambio de grifo",
-            "community_id":2
+            "community_id":2,
+            "provider_id":2
         }
     ],
 
@@ -107,7 +126,8 @@ data = {
             "severity": "Grave",
             "user_id": 2,
             "zone": "Cocina",
-            "common": False
+            "common": False,
+            
         },
         {
             "bill_id": 2,
@@ -129,5 +149,6 @@ data = {
             "zone": "Baño",
             "common": False
         }
-    ]
+    ],
+    
 }
