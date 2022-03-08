@@ -12,13 +12,13 @@ const Layout = (props) => {
         <Navbar />
       </header>
       <div className="content">{props.children}</div>
-      <footer className="footer">footer</footer>
+      <footer className="footer text-center">footer</footer>
     </>
   );
 };
 
 Layout.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.object,
 };
 
 export default Layout;

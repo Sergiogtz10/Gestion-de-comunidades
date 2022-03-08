@@ -1,9 +1,12 @@
-@media only screen and (min-width: 801px) {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+@media only screen and (min-width: 1100px) {
   .sidebar {
     position: fixed;
     width: 15vw;
     height: 100vh;
     background: #2a9d8f;
+    font-family: "Montserrat", sans-serif;
   }
 
   .navbar {
@@ -16,24 +19,52 @@
   .nav-element {
     display: block;
     list-style-type: none;
-    padding: 1rem;
+    color: white;
     width: 100%;
   }
   .nav-element:hover {
     background-color: #47e2d03f;
+    color: white;
   }
   .nav-element:active {
     background-color: #264653;
-    color: white;
   }
 
   .navbar-mobile {
     max-height: 0;
     overflow: hidden;
   }
+
+  .link-tag {
+    text-decoration: none;
+    color: white;
+  }
+  .link-tag:hover {
+    color: white;
+  }
+  .link-tag:active {
+    color: #e9c46a;
+  }
+
+  .text-navbar-router {
+    padding-left: 0 !important;
+    padding: 1rem;
+  }
+
+  .navbar-icon {
+    margin: 0;
+    padding: 0;
+    height: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  #navbar-desktop-logo {
+    height: 5rem;
+  }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1099px) {
   svg {
     height: 2rem;
     width: 2rem;
@@ -69,7 +100,7 @@
 
   #offcanvas-navbar {
     width: 100vw;
-    background-color: antiquewhite;
+    background-color: #2a9d8f;
   }
 
   #home-link {
