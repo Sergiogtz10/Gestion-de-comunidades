@@ -1,7 +1,8 @@
 from api.models.index import db, Bill
 from flask import jsonify
 
-
+admin=1
+owner=2
 
 #GET ALL BILLS
 def get_all_bills(community_id):
@@ -55,7 +56,7 @@ def modify_bill(role_id,bill_id,body):
 
 
 def verify_admin(role_id):
-    if role_id == 1:
+    if role_id == admin:
         return True
     else:
         return False
