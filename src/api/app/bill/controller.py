@@ -1,6 +1,7 @@
 from api.models.index import db, Bill
 from flask import jsonify
 
+#admin and owner ids
 admin=1
 owner=2
 
