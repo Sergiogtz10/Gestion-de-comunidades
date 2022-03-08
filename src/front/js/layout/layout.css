@@ -1,7 +1,8 @@
 .content {
   position: relative;
-  width: 80%;
+  width: 85%;
   float: right;
+  height: 100vh;
 }
 
 .footer {

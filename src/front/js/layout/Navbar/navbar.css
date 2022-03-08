@@ -1,9 +1,9 @@
 @media only screen and (min-width: 801px) {
   .sidebar {
     position: fixed;
-    width: 20vw;
+    width: 15vw;
     height: 100vh;
-    background-color: #2a9d8f;
+    background: #2a9d8f;
   }
 
   .navbar {
@@ -14,14 +14,19 @@
   }
 
   .nav-element {
+    display: block;
     list-style-type: none;
     padding: 1rem;
     width: 100%;
-    color: rgb(59, 59, 59);
   }
   .nav-element:hover {
     background-color: #47e2d03f;
   }
+  .nav-element:active {
+    background-color: #264653;
+    color: white;
+  }
+
   .navbar-mobile {
     max-height: 0;
     overflow: hidden;
