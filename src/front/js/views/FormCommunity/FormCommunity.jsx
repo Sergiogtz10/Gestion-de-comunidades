@@ -29,7 +29,7 @@ const FormCommunity = () =>{
         let newerr = { ...initialStateErr };
 
         if(community.address.length == 0){
-            newerr ={ ...newerr, address: "Introduzca su dirección"}
+            newerr ={ ...newerr, address: "Introduzca la dirección de la comunidad"}
         }
         if(community.flats == 0){
             newerr ={...newerr, flats: "Introduzca el número de viviendas"}
@@ -48,24 +48,26 @@ const FormCommunity = () =>{
     
     return (
         <div>
-            <h3 id="title" className="text-center p-3">Formulario de registro para la comunidad</h3>
-            <div className="container fluid card text-center justify-content-center p-4" id="card" style={{width: "700px"}}>
+            
+            <div className="container-fluid card text-center p-3" id="card" style={{width: "700px"}}>
+            <h4 id="title" className="text-center p-1">Registrar comunidad</h4>
+            <hr class="my-3"></hr>
                 <form onChange={handleChange} onSubmit={handleClick}> 
                     <div className="mb-3 d-flex">
                         <div className="px-3">
                             <label  className="form-label ">Dirección</label>
-                            <input type="text" className="form-control" name="address" id="address" ></input>
-                            {err.address != "" ?(<div id="validsize" className="col-12 text-danger">{err.address}</div>) : null}
+                            <input type="text" className="form-control" name="address" id="address" placeholder="Dirección: calle y número" ></input>
+                            {err.address != "" ?(<div id="valid">{err.address}</div>) : null}
                         </div>
                         <div className="px-3">
                             <label  className="form-label">Número de viviendas</label>
-                            <input type="number" className="form-control" name="flats" id="Numviviendas"></input>
-                            {err.flats != "" ?(<div id="validsize" className="col-12 text-danger">{err.flats}</div>) : null}
+                            <input type="number" className="form-control" name="flats" id="Numviviendas" placeholder="Número de viviendas"></input>
+                            {err.flats != "" ?(<div id="valid">{err.flats}</div>) : null}
                         </div>
                     </div>
     
                     <div className="p-3">
-                        <button type="submit" className="btn btn-primary" id="boton">Registrar comunidad</button>
+                        <button type="submit" className="btn btn-primary" id="boton">Registrar</button>
                     </div>
                           
                 </form>

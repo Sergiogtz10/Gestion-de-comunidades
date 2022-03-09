@@ -4,6 +4,7 @@ export const postRegisterAdmin = (user) => {
   const API = URL + "/api/user/register/admin";
   return fetch(API, {
     method: "POST",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },
@@ -11,8 +12,8 @@ export const postRegisterAdmin = (user) => {
   });
 };
 
-export const postRegisterOwner = (user) => {
-  const API = URL + "/api/user/register/owner/<community_id>";
+export const postRegisterOwner = (user,community_id) => {
+  const API = URL + "/api/user/register/owner/" + community_id;
   return (fetch(API,{
       method: "POST",
       headers: {

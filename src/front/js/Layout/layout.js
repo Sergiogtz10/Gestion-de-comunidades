@@ -9,6 +9,7 @@ import FormAdmin from "../views/FormAdmin/FormAdmin.jsx";
 import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
+import Profile from "../views/Profile/Profile.jsx";
 
 
 import injectContext from "../store/appContext";
@@ -34,7 +35,7 @@ const Layout = () => {
             <Route exact path="/form/community">
               <FormCommunity />
             </Route>
-            <Route exact path="/form/owner">
+            <Route exact path="/form/owner/:id">
               <FormOwner />
             </Route>
             <Route exact path="/landing">
@@ -42,6 +43,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
             </Route>
             <Route>
               <h1>Not found!</h1>

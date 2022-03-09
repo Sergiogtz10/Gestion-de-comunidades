@@ -48,23 +48,25 @@ const Login = () =>{
     }
     return (
         <div>
-            <h3 id="title"  className="text-center p-3 fw-bolder">Log In</h3>
+            
             <div className="container fluid card text-center justify-content-center p-4" id="card" style={{width: "400px"}}>
+                <h4 id="title"  className="text-center font-weight-bold">Login</h4>
+                <hr class="my-3"></hr>
                 <form onSubmit={handleClick} onChange={handleChange}> 
                     <div>
                         <label  className="form-label ">Email</label>
-                        <input type="email" className="form-control shadow-sm" id="Email" name="email"></input>
-                        {err.email != "" ?(<div id="validsize" className="col-12 text-danger">{err.email}</div>) : null}
+                        <input type="email" className="form-control shadow-sm" id="Email" placeholder="Email" name="email"></input>
+                        {err.email != "" ?(<div id="valid">{err.email}</div>) : null}
                     </div>
                     
                     <div className="py-3">
                         <label  className="form-label">Contraseña</label>
-                        <input type="password" className="form-control shadow-sm" id="contraseña" name="password"></input>
-                        {err.password != "" ?(<div id="validsize" className="col-12 text-danger">{err.password}</div>) : null}
+                        <input type="password" className="form-control shadow-sm" id="contraseña"  placeholder="Contraseña" name="password"></input>
+                        {err.password != "" ?(<div id="valid">{err.password}</div>) : null}
                     </div>
 
                     <div className="p-3">
-                        <button type="submit" className="btn btn-primary" id="boton">Log In</button>
+                        <button type="submit" className="btn btn-primary" id="boton">Entrar</button>
                     </div>
                           
                 </form>

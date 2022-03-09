@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import "./FormAdmin.css";
 
 import { postRegisterAdmin } from "../../Service/users";
@@ -21,7 +21,11 @@ const FormAdmin = () => {
     password: "",
     repeat_password: "",
   });
-  const[redirect, setRedirect]=useState(false)
+
+  const community_id = useParams();
+  console.log(community_id);
+
+  const [redirect, setRedirect] = useState(false);
 
   const [err, setErr] = useState(initialStateErr);
 
@@ -66,23 +70,18 @@ const FormAdmin = () => {
       console.log("todo bien en el fetch admin");
       let newUserAdmin = { ...admin };
       delete newUserAdmin.repeat_password;
-      postRegisterAdmin(newUserAdmin)
+      postRegisterAdmin(newUserAdmin, community_id.id)
         .then((response) => response.json())
-        .then(()=>setRedirect(true))
+        .then(() => setRedirect(true))
         .catch((error) => console.log(error));
     }
   };
   console.log(err);
   return (
-    <div>
-      <h3 id="title" className="text-center  p-3">
-        Registrarse como administrador
-      </h3>
-      <div
-        className="container fluid card text-center justify-content-center p-4"
-        id="card"
-        style={{ width: "700px" }}
-      >
+    <div className="p-5">
+      <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "700px" }}>
+        <h4 id="title" className="text-center p-1">Registrarse como administrador</h4>
+        <hr class="my-3"></hr>
         <form onChange={handleChange} onSubmit={handleClick}>
           <div className="mb-3 d-flex">
             <div className="px-3">
@@ -92,9 +91,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="first_name"
                 id="Nombre"
+                placeholder="Nombre"
               ></input>
               {err.first_name != "" ? (
-                <div id="validsize" className="col-12 text-danger">
+                <div>
                   {err.first_name}
                 </div>
               ) : null}
@@ -106,9 +106,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="last_name"
                 id="Apellidos"
+                placeholder="Apellidos"
               ></input>
               {err.last_name != "" ? (
-                <div id="validsize" className="col-12 text-danger">
+                <div id="valid">
                   {err.last_name}
                 </div>
               ) : null}
@@ -122,9 +123,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="email"
                 id="Email"
+                placeholder="Email"
               ></input>
               {err.email != "" ? (
-                <div id="validsize" className="col-12 text-danger">
+                <div id="valid">
                   {err.email}
                 </div>
               ) : null}
@@ -136,9 +138,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="phone_number"
                 id="Telefono"
+                placeholder="Teléfono"
               ></input>
               {err.phone_number != "" ? (
-                <div id="validsize" className="col-12 text-danger">
+                <div id="valid">
                   {err.phone_number}
                 </div>
               ) : null}
@@ -152,9 +155,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="password"
                 id="Contraseña"
+                placeholder="Contraseña"
               ></input>
               {err.password != "" ? (
-                <div id="validsize" className="col-12 text-danger">
+                <div id="valid" >
                   {err.password}
                 </div>
               ) : null}
@@ -167,9 +171,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="repeat_password"
                 id="RepetirContraseña"
+                placeholder="Repetir"
               ></input>
               {err.repeat_password != "" ? (
-                <div id="validsize" className="col-12 text-danger">
+                <div id="valid">
                   {err.repeat_password}
                 </div>
               ) : null}
@@ -183,7 +188,7 @@ const FormAdmin = () => {
           </div>
         </form>
       </div>
-      {redirect ? <Redirect to= "/login"></Redirect>: null}
+      {redirect ? <Redirect to="/form/community"></Redirect> : null}
     </div>
   );
 };
