@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
 @media only screen and (min-width: 1322px) {
+  aside {
+    position: relative;
+  }
+
   .sidebar {
     position: fixed;
     width: 15vw;
@@ -84,6 +88,37 @@
 
   #dropdown-incidencias {
     cursor: pointer;
+  }
+
+  #avatar {
+    position: absolute;
+
+    bottom: 0.7rem;
+
+    width: 100%;
+  }
+  #avatar-button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+  #avatar-icon {
+    height: 2.6rem;
+    margin-left: 1rem;
+  }
+  #avatar-menu {
+    background-color: #264653;
+    color: white;
+    height: 100% !important;
+    padding: 1rem;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    width: 60%;
+  }
+  #cross {
+    color: black;
+    padding: 0.5rem;
   }
 }
 
