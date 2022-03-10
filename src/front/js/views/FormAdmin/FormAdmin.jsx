@@ -1,6 +1,7 @@
-import React, { useState} from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../store/appContext";
 
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "./FormAdmin.css";
 
 import { postRegisterAdmin } from "../../Service/users";
@@ -14,6 +15,7 @@ const initialStateErr = {
   repeat_password: "",
 };
 const FormAdmin = () => {
+  const {store, actions} = useContext(Context);
   const [admin, setAdmin] = useState({
     first_name: "",
     last_name: "",
@@ -70,16 +72,24 @@ const FormAdmin = () => {
       postRegisterAdmin(newUserAdmin)
         .then((response) => response.json())
         .then((data) => {
-        console.log(data)
-        setRedirect(true)})
+          console.log(data);
+          actions.setRegisteradmin(data);
+          setRedirect(true);
+        })
         .catch((error) => console.log(error));
     }
   };
   console.log(err);
   return (
     <div className="p-5">
-      <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "700px" }}>
-        <h4 id="title" className="text-center p-1">Registrarse como administrador</h4>
+      <div
+        className="container fluid card text-center justify-content-center p-3"
+        id="card"
+        style={{ width: "700px" }}
+      >
+        <h4 id="title" className="text-center p-1">
+          Registrarse como administrador
+        </h4>
         <hr class="my-3"></hr>
         <form onChange={handleChange} onSubmit={handleClick}>
           <div className="mb-3 d-flex">
@@ -92,11 +102,7 @@ const FormAdmin = () => {
                 id="Nombre"
                 placeholder="Nombre"
               ></input>
-              {err.first_name != "" ? (
-                <div>
-                  {err.first_name}
-                </div>
-              ) : null}
+              {err.first_name != "" ? <div>{err.first_name}</div> : null}
             </div>
             <div>
               <label className="form-label">Apellidos</label>
@@ -108,9 +114,7 @@ const FormAdmin = () => {
                 placeholder="Apellidos"
               ></input>
               {err.last_name != "" ? (
-                <div id="valid">
-                  {err.last_name}
-                </div>
+                <div id="valid">{err.last_name}</div>
               ) : null}
             </div>
           </div>
@@ -124,11 +128,7 @@ const FormAdmin = () => {
                 id="Email"
                 placeholder="Email"
               ></input>
-              {err.email != "" ? (
-                <div id="valid">
-                  {err.email}
-                </div>
-              ) : null}
+              {err.email != "" ? <div id="valid">{err.email}</div> : null}
             </div>
             <div>
               <label className="form-label">Telefono</label>
@@ -140,9 +140,7 @@ const FormAdmin = () => {
                 placeholder="Teléfono"
               ></input>
               {err.phone_number != "" ? (
-                <div id="valid">
-                  {err.phone_number}
-                </div>
+                <div id="valid">{err.phone_number}</div>
               ) : null}
             </div>
           </div>
@@ -156,11 +154,7 @@ const FormAdmin = () => {
                 id="Contraseña"
                 placeholder="Contraseña"
               ></input>
-              {err.password != "" ? (
-                <div id="valid" >
-                  {err.password}
-                </div>
-              ) : null}
+              {err.password != "" ? <div id="valid">{err.password}</div> : null}
             </div>
 
             <div>
@@ -173,9 +167,7 @@ const FormAdmin = () => {
                 placeholder="Repetir"
               ></input>
               {err.repeat_password != "" ? (
-                <div id="valid">
-                  {err.repeat_password}
-                </div>
+                <div id="valid">{err.repeat_password}</div>
               ) : null}
             </div>
           </div>

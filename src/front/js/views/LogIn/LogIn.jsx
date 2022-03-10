@@ -42,7 +42,10 @@ const Login = () =>{
             console.log("todo bien en el fetch login");
             postLogin(login)
             .then((response) => response.json())
-            .then(()=>setRedirect(true))
+            .then((data)=>{
+                localStorage.setItem("token", data.token);
+                setRedirect(true);
+            })
             .catch((error) => console.log(error));
         }
     }

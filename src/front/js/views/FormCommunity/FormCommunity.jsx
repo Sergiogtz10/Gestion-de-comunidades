@@ -18,7 +18,7 @@ const FormCommunity = () =>{
     const[redirect, setRedirect]=useState(false)
 
     const[err, setErr]=useState(initialStateErr);
-
+    console.log(store)
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -40,7 +40,7 @@ const FormCommunity = () =>{
         if(newerr.address == "" && newerr.flats == ""){
             console.log("todo bien en el fetch community");
             let newCommunity = { ...community };
-            postRegisterCommunity(newCommunity, store.registercommunity.id)
+            postRegisterCommunity(newCommunity, store.registerAdminUser.id)
             .then((response) => response.json())
             .then(()=>setRedirect(true))
             .catch((error) => console.log(error));   
