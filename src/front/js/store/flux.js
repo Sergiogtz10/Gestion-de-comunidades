@@ -1,7 +1,13 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
-    store: {},
-    actions: {},
+    store: {
+      incidents: [],
+    },
+    actions: {
+      getIncidents: () => {
+        console.log("devolviendo incidencias");
+      },
+    },
   };
 };
 
