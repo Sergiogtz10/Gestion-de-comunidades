@@ -87,7 +87,7 @@ const FormOwner = () => {
   };
   return (
     <div>
-      <div>
+      <div className="p-5">
         <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "700px" }}>
         <h4 id="title" className="text-center p-1">Registrase como propietario</h4>
         <hr class="my-3"></hr>

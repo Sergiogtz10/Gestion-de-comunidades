@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
+import { Context } from "../../store/appContext";
 import { Redirect } from "react-router-dom";
 import { postRegisterCommunity } from "../../Service/community";
 import "./FormCommunity.css"
@@ -9,7 +10,7 @@ const initialStateErr = {
 }
 
 const FormCommunity = () =>{
-
+    const { store, actions } = useContext(Context)
     const[community, setCommunity]=useState({
         address:"",
         flats:""
@@ -39,7 +40,7 @@ const FormCommunity = () =>{
         if(newerr.address == "" && newerr.flats == ""){
             console.log("todo bien en el fetch community");
             let newCommunity = { ...community };
-            postRegisterCommunity(newCommunity)
+            postRegisterCommunity(newCommunity, store.registercommunity.id)
             .then((response) => response.json())
             .then(()=>setRedirect(true))
             .catch((error) => console.log(error));   
@@ -47,7 +48,7 @@ const FormCommunity = () =>{
     };
     
     return (
-        <div>
+        <div className="p-5">
             
             <div className="container-fluid card text-center p-3" id="card" style={{width: "700px"}}>
             <h4 id="title" className="text-center p-1">Registrar comunidad</h4>

@@ -4,7 +4,6 @@ export const postRegisterAdmin = (user) => {
   const API = URL + "/api/user/register/admin";
   return fetch(API, {
     method: "POST",
-    mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import React, { useState} from "react";
+
+import { Redirect} from "react-router-dom";
 import "./FormAdmin.css";
 
 import { postRegisterAdmin } from "../../Service/users";
@@ -21,10 +22,6 @@ const FormAdmin = () => {
     password: "",
     repeat_password: "",
   });
-
-  const community_id = useParams();
-  console.log(community_id);
-
   const [redirect, setRedirect] = useState(false);
 
   const [err, setErr] = useState(initialStateErr);
@@ -70,9 +67,11 @@ const FormAdmin = () => {
       console.log("todo bien en el fetch admin");
       let newUserAdmin = { ...admin };
       delete newUserAdmin.repeat_password;
-      postRegisterAdmin(newUserAdmin, community_id.id)
+      postRegisterAdmin(newUserAdmin)
         .then((response) => response.json())
-        .then(() => setRedirect(true))
+        .then((data) => {
+        console.log(data)
+        setRedirect(true)})
         .catch((error) => console.log(error));
     }
   };
