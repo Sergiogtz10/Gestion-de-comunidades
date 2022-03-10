@@ -75,6 +75,23 @@ def modify_incident(role_id,incident_id,body):
         print('[ERROR]: ',err)
         return None
 
+#ADD  BILL   
+def add_bill(bill_id,incident_id, role_id):
+    try:
+        if verify_admin(role_id):
+            incident=Incident.query.get(incident_id)
+            incident.bill_id=bill_id
+            db.session.commit()
+            return incident.serialize(),200
+        else:
+            return jsonify("User not authorized"),401
+
+    except Exception as err:
+        db.session.rollback()
+        print('[ERROR]: ',err)
+        return None
+
+
 
 def verify_admin(role_id):
     if role_id == 1:
