@@ -1,3 +1,5 @@
+import { getIncidents } from "../service/incident.js";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -5,7 +7,19 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       getIncidents: () => {
-        console.log("devolviendo incidencias");
+        const store = getStore();
+        store.incidents = [];
+        getIncidents()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((incident) => {
+              setStore({ ...store, incidents: [...store.incidents, incident] });
+            });
+          })
+          .catch((err) => console.error(err));
+      },
+      deleteIncident: () => {
+        console.log("borrando");
       },
     },
   };
