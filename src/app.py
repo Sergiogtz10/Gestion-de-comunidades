@@ -56,6 +56,7 @@ app.register_blueprint(activity, url_prefix="/api/activities")
 app.register_blueprint(incidents,url_prefix="/api/incident")
 app.register_blueprint(bills,url_prefix="/api/bill")
 
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
