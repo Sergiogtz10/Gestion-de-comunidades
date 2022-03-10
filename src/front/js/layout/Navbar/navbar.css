@@ -62,6 +62,10 @@
   #navbar-desktop-logo {
     height: 5rem;
   }
+
+  #dropdown-incidencias {
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 1099px) {
