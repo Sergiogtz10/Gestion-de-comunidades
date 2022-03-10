@@ -117,6 +117,27 @@ data = {
         }
     ],
 
+    "Bill":[
+        {
+            "id":1,
+            "amount":200,
+            "details": "Reparar cristal",
+            "community_id":1
+        },
+        {
+            "id":2,
+            "amount":100,
+            "details": "Reparar cesped dañado",
+            "community_id":1
+        },
+        {
+            "id":3,
+            "amount":100,
+            "details": "Cambio de grifo",
+            "community_id":2
+        }
+    ],
+
     "Incident":[
         {
             "bill_id": 1,
@@ -126,8 +147,7 @@ data = {
             "severity": "Grave",
             "user_id": 2,
             "zone": "Cocina",
-            "common": False,
-            
+            "common": False
         },
         {
             "bill_id": 2,
@@ -149,6 +169,5 @@ data = {
             "zone": "Baño",
             "common": False
         }
-    ],
-    
+    ]
 }
