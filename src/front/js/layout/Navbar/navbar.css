@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1322px) {
   .sidebar {
     position: fixed;
     width: 15vw;
@@ -48,7 +48,12 @@
 
   .text-navbar-router {
     padding-left: 0 !important;
-    padding: 1rem;
+    padding: 2rem;
+  }
+
+  .text-navbar-router-dropdown {
+    padding-left: 0 !important;
+    padding: 0.8rem;
   }
 
   .navbar-icon {
@@ -59,8 +64,22 @@
     margin-left: 1rem;
   }
 
+  .dropdown-incidents-li {
+    background-color: #82fff013;
+    font-size: 0.9rem;
+  }
+  .dropdown-incidents-li:hover {
+    background-color: #47e2d03f;
+  }
+
+  .separation {
+    background-color: #e9c56a69;
+    height: 1px;
+    width: 95%;
+  }
+
   #navbar-desktop-logo {
-    height: 5rem;
+    height: 6rem;
   }
 
   #dropdown-incidencias {
@@ -68,7 +87,7 @@
   }
 }
 
-@media only screen and (max-width: 1099px) {
+@media only screen and (max-width: 1321px) {
   svg {
     height: 2rem;
     width: 2rem;
@@ -103,7 +122,6 @@
   }
 
   #offcanvas-navbar {
-    width: 100vw;
     background-color: #2a9d8f;
   }
 

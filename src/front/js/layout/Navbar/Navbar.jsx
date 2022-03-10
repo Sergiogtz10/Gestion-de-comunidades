@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import temporaryLogo from "../../../img/MasterKeyLogo.png";
+import logo from "../../../img/MasterKeyLogo.png";
 
 const Navbar = () => {
   const [incidentsDropdown, setIncidentsDropdown] = useState(false);
@@ -76,10 +76,10 @@ const Navbar = () => {
       <aside className="sidebar m-0 p-0">
         <nav className="navbar m-0 p-0">
           <div>
-            <img id="navbar-desktop-logo" src={temporaryLogo} alt="" />
+            <img id="navbar-desktop-logo" src={logo} alt="" />
           </div>
           <ul className="m-0 p-0">
-            <li className="nav-element nav-link m-0 p-0 mt-5">
+            <li className="nav-element nav-link m-0 p-0 mt-4">
               <Link to="/" className="link-tag">
                 <div
                   className="d-flex align-items-center"
@@ -97,7 +97,9 @@ const Navbar = () => {
                 </div>
               </Link>
             </li>
-
+            <div className="d-flex justify-content-center">
+              <div className="separation"></div>
+            </div>
             <li className="nav-element nav-link m-0 p-0">
               <div
                 className="d-flex align-items-center"
@@ -118,11 +120,50 @@ const Navbar = () => {
 
             {incidentsDropdown ? (
               <>
-                <li className="nav-element nav-link m-0 p-0">PARTICULARES</li>
-                <li className="nav-element nav-link m-0 p-0">COMUNES</li>
+                <li className="nav-element nav-link m-0 p-0 dropdown-incidents-li">
+                  <Link to="/incidencias/particulares" className="link-tag">
+                    <div className="d-flex align-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="#e9c46a"
+                        className="bi bi-person-fill navbar-icon mb-1 ps-3"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      </svg>
+                      <p className="text-navbar-router-dropdown m-0">
+                        Particulares
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+                <li className="nav-element nav-link m-0 p-0 dropdown-incidents-li">
+                  <Link to="/incidencias/comunidad" className="link-tag">
+                    <div className="d-flex align-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="#e9c46a"
+                        className="bi bi-people-fill navbar-icon mb-1 ps-3"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
+                        />
+                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                      </svg>
+                      <p className="text-navbar-router-dropdown m-0">
+                        Comunidad
+                      </p>
+                    </div>
+                  </Link>
+                </li>
               </>
             ) : null}
-
+            <div className="d-flex justify-content-center">
+              <div className="separation"></div>
+            </div>
             <li className="nav-element nav-link m-0 p-0">
               <Link to="/actividades" className="link-tag">
                 <div
@@ -142,6 +183,9 @@ const Navbar = () => {
                 </div>
               </Link>
             </li>
+            <div className="d-flex justify-content-center">
+              <div className="separation"></div>
+            </div>
             <li className="nav-element nav-link m-0 p-0">
               <Link to="/facturas" className="link-tag">
                 <div
@@ -160,6 +204,9 @@ const Navbar = () => {
                 </div>
               </Link>
             </li>
+            <div className="d-flex justify-content-center">
+              <div className="separation"></div>
+            </div>
             <li className="nav-element nav-link m-0 p-0">
               <Link to="/proveedores" className="link-tag">
                 <div
