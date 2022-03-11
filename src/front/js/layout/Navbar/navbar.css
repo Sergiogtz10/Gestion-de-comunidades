@@ -20,34 +20,9 @@
     display: block;
   }
 
-  .nav-element {
-    display: block;
-    list-style-type: none;
-    color: white;
-    width: 100%;
-  }
-  .nav-element:hover {
-    background-color: #47e2d03f;
-    color: white;
-  }
-  .nav-element:active {
-    background-color: #264653;
-  }
-
   .navbar-mobile {
     max-height: 0;
     overflow: hidden;
-  }
-
-  .link-tag {
-    text-decoration: none;
-    color: white;
-  }
-  .link-tag:hover {
-    color: white;
-  }
-  .link-tag:active {
-    color: #e9c46a;
   }
 
   .text-navbar-router {
