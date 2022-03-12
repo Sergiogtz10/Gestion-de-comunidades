@@ -9,6 +9,8 @@ import FormAdmin from "../views/FormAdmin/FormAdmin.jsx";
 import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
+import Profile from "../views/Profile/profile.jsx";
+
 
 
 import injectContext from "../store/appContext";
@@ -43,6 +45,9 @@ const Layout = () => {
             <Route exact path="/login">
               <Login />
             </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
@@ -56,18 +61,4 @@ const Layout = () => {
 
 export default injectContext(Layout);
 
-/*
-<Route exact path="/FormAdmin" />
-<Route exact path="/FormCommunity" />
-<Route exact path="/FormOwner" />
-<Route exact path="/Landing" />
-<Route exact path="/LogIn" /> 
 
-
-import FormAdmin from "../views/Forms/FormAdmin";
-import FormCommunity from "../views/Forms/FormCommunity";
-import FormOwner from "../views/Forms/FormOwner";
-import Landing from "../views/Landing/Landing";
-import Login from "../views/LogIn/LogIn";
-
-*/
