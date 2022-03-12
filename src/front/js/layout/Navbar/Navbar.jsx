@@ -7,6 +7,7 @@ import logo from "../../../img/MasterKeyLogo.png";
 
 //components
 import NavbarLinkDesktop from "../../component/NavbarLinkDesktop/NavbarLinkDesktop.jsx";
+import SettingsNavbar from "../../component/SettingsNavbar/SettingsNavbar.jsx";
 
 const Navbar = () => {
   const [incidentsDropdown, setIncidentsDropdown] = useState(false);
@@ -82,11 +83,17 @@ const Navbar = () => {
       <aside className="sidebar m-0 p-0">
         <nav className="navbar m-0 p-0">
           <div>
-            <img id="navbar-desktop-logo" src={logo} alt="" />
+            <img
+              className="ms-2 mt-2"
+              id="navbar-desktop-logo"
+              src={logo}
+              alt=""
+            />
           </div>
+          <p id="logo-name-desktop">MasterKey</p>
           <ul className="m-0 p-0">
             <NavbarLinkDesktop
-              individualClassLi="mt-4"
+              individualClassLi="mt-5"
               link="/"
               clickFunction={handleClick}
               icon={
@@ -221,40 +228,7 @@ const Navbar = () => {
             />
           </ul>
         </nav>
-
-        <div id="avatar" className="d-flex align-items-end">
-          <button id="avatar-button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#e9c46a"
-              className="bi bi-person-circle"
-              viewBox="0 0 16 16"
-              id="avatar-icon"
-            >
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-              <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-            </svg>
-          </button>
-          <div id="avatar-menu">
-            <div id="cross">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-x-lg"
-                viewBox="0 0 16 16"
-              >
-                <path d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
-                <path d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
-              </svg>
-            </div>
-            <Link to="/perfil" className="link-tag">
-              <p className="m-0 pb-2 w-100">Mi Perfil</p>
-            </Link>
-            <p className="m-0">Logout</p>
-          </div>
-        </div>
+        <SettingsNavbar />
       </aside>
     </>
   );
