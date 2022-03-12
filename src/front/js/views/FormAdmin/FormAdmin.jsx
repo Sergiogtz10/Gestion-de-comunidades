@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../store/appContext";
+
 import { Redirect } from "react-router-dom";
 import "./FormAdmin.css";
 
@@ -13,6 +15,7 @@ const initialStateErr = {
   repeat_password: "",
 };
 const FormAdmin = () => {
+  const {store, actions} = useContext(Context);
   const [admin, setAdmin] = useState({
     first_name: "",
     last_name: "",
@@ -21,7 +24,7 @@ const FormAdmin = () => {
     password: "",
     repeat_password: "",
   });
-  const[redirect, setRedirect]=useState(false)
+  const [redirect, setRedirect] = useState(false);
 
   const [err, setErr] = useState(initialStateErr);
 
@@ -68,21 +71,26 @@ const FormAdmin = () => {
       delete newUserAdmin.repeat_password;
       postRegisterAdmin(newUserAdmin)
         .then((response) => response.json())
-        .then(()=>setRedirect(true))
+        .then((data) => {
+          console.log(data);
+          actions.setRegisteradmin(data);
+          setRedirect(true);
+        })
         .catch((error) => console.log(error));
     }
   };
   console.log(err);
   return (
-    <div>
-      <h3 id="title" className="text-center  p-3">
-        Registrarse como administrador
-      </h3>
+    <div className="p-5">
       <div
-        className="container fluid card text-center justify-content-center p-4"
+        className="container fluid card text-center justify-content-center p-3"
         id="card"
         style={{ width: "700px" }}
       >
+        <h4 id="title" className="text-center p-1">
+          Registrarse como administrador
+        </h4>
+        <hr className="my-3"></hr>
         <form onChange={handleChange} onSubmit={handleClick}>
           <div className="mb-3 d-flex">
             <div className="px-3">
@@ -92,12 +100,9 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="first_name"
                 id="Nombre"
+                placeholder="Nombre"
               ></input>
-              {err.first_name != "" ? (
-                <div id="validsize" className="col-12 text-danger">
-                  {err.first_name}
-                </div>
-              ) : null}
+              {err.first_name != "" ? <div>{err.first_name}</div> : null}
             </div>
             <div>
               <label className="form-label">Apellidos</label>
@@ -106,11 +111,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="last_name"
                 id="Apellidos"
+                placeholder="Apellidos"
               ></input>
               {err.last_name != "" ? (
-                <div id="validsize" className="col-12 text-danger">
-                  {err.last_name}
-                </div>
+                <div id="valid">{err.last_name}</div>
               ) : null}
             </div>
           </div>
@@ -122,25 +126,21 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="email"
                 id="Email"
+                placeholder="Email"
               ></input>
-              {err.email != "" ? (
-                <div id="validsize" className="col-12 text-danger">
-                  {err.email}
-                </div>
-              ) : null}
+              {err.email != "" ? <div id="valid">{err.email}</div> : null}
             </div>
             <div>
               <label className="form-label">Telefono</label>
               <input
-                type="number"
+                type="text"
                 className="form-control shadow-sm"
                 name="phone_number"
                 id="Telefono"
+                placeholder="Teléfono"
               ></input>
               {err.phone_number != "" ? (
-                <div id="validsize" className="col-12 text-danger">
-                  {err.phone_number}
-                </div>
+                <div id="valid">{err.phone_number}</div>
               ) : null}
             </div>
           </div>
@@ -152,12 +152,9 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="password"
                 id="Contraseña"
+                placeholder="Contraseña"
               ></input>
-              {err.password != "" ? (
-                <div id="validsize" className="col-12 text-danger">
-                  {err.password}
-                </div>
-              ) : null}
+              {err.password != "" ? <div id="valid">{err.password}</div> : null}
             </div>
 
             <div>
@@ -167,11 +164,10 @@ const FormAdmin = () => {
                 className="form-control shadow-sm"
                 name="repeat_password"
                 id="RepetirContraseña"
+                placeholder="Repetir"
               ></input>
               {err.repeat_password != "" ? (
-                <div id="validsize" className="col-12 text-danger">
-                  {err.repeat_password}
-                </div>
+                <div id="valid">{err.repeat_password}</div>
               ) : null}
             </div>
           </div>
@@ -183,7 +179,7 @@ const FormAdmin = () => {
           </div>
         </form>
       </div>
-      {redirect ? <Redirect to= "/login"></Redirect>: null}
+      {redirect ? <Redirect to="/form/community"></Redirect> : null}
     </div>
   );
 };

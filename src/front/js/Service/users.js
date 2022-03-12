@@ -11,8 +11,8 @@ export const postRegisterAdmin = (user) => {
   });
 };
 
-export const postRegisterOwner = (user) => {
-  const API = URL + "/api/user/register/owner/<community_id>";
+export const postRegisterOwner = (user,community_id) => {
+  const API = URL + "/api/user/register/owner/" + community_id;
   return (fetch(API,{
       method: "POST",
       headers: {

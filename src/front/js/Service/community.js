@@ -2,8 +2,8 @@ import { URL } from "./URL";
 
 //communities
 
-export const postRegisterCommunity = (newCommunity) => {
-	const API = URL + "/api/communities/register/<user_id>"
+export const postRegisterCommunity = (newCommunity, user_id) => {
+	const API = URL + "/api/community/register/" + user_id;
 	return fetch(API,{
 		method: "POST",
         headers: {

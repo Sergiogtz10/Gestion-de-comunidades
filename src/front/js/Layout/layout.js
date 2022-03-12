@@ -9,7 +9,7 @@ import FormAdmin from "../views/FormAdmin/FormAdmin.jsx";
 import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
-import Profile from "../views/Profile/profile.jsx";
+import Profile from "../views/Profile/Profile.jsx";
 
 
 
@@ -36,7 +36,7 @@ const Layout = () => {
             <Route exact path="/form/community">
               <FormCommunity />
             </Route>
-            <Route exact path="/form/owner">
+            <Route exact path="/form/owner/:id">
               <FormOwner />
             </Route>
             <Route exact path="/landing">
@@ -60,5 +60,4 @@ const Layout = () => {
 };
 
 export default injectContext(Layout);
-
 

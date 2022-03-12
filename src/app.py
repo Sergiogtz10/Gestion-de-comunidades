@@ -13,6 +13,8 @@ from api.app.user.router import users
 from api.app.community.router import communities
 from api.app.activities.router import activity
 from api.app.incident.router import incidents
+from api.app.bill.router import bills
+from api.app.provider.router import providers
 from api.admin import setup_admin
 from flask_jwt_extended import JWTManager
 #from models import Person
@@ -53,6 +55,9 @@ app.register_blueprint(users, url_prefix="/api/user")
 app.register_blueprint(communities, url_prefix="/api/community")
 app.register_blueprint(activity, url_prefix="/api/activities")
 app.register_blueprint(incidents,url_prefix="/api/incident")
+app.register_blueprint(bills,url_prefix="/api/bill")
+app.register_blueprint(providers,url_prefix="/api/provider")
+
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
