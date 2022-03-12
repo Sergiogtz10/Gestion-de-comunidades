@@ -17,14 +17,34 @@ const Incidencias = () => {
     actions.getIncidents();
   }, []);
 
-  const handleChange = (inc, e) => {
+  const severityChange = (inc, e) => {
     const newIncident = {
       description: inc.description,
       zone: inc.zone,
       severity: e.target.value,
     };
     setIncident(newIncident);
-    modifyIncidents(inc.id, newIncident);
+    actions.modifyIncidents(inc.id, newIncident);
+  };
+
+  const descriptionChange = (inc, e) => {
+    const newIncident = {
+      description: e.target.value,
+      zone: inc.zone,
+      severity: inc.severity,
+    };
+    setIncident(newIncident);
+    actions.modifyIncidents(inc.id, newIncident);
+  };
+
+  const zoneChange = (inc, e) => {
+    const newIncident = {
+      description: inc.description,
+      zone: e.target.value,
+      severity: inc.severity,
+    };
+    setIncident(newIncident);
+    actions.modifyIncidents(inc.id, newIncident);
   };
 
   return (
@@ -58,8 +78,20 @@ const Incidencias = () => {
             return (
               <tr key={index}>
                 <th scope="row">1</th>
-                <td>{inc.description}</td>
-                <td>{inc.zone}</td>
+                <td>
+                  <input
+                    defaultValue={inc.description}
+                    className="form-control"
+                    onChange={(e) => descriptionChange(inc, e)}
+                  ></input>
+                </td>
+                <td>
+                  <input
+                    defaultValue={inc.zone}
+                    className="form-control"
+                    onChange={(e) => zoneChange(inc, e)}
+                  ></input>
+                </td>
                 <td>
                   <select
                     className="form-select"
@@ -70,7 +102,7 @@ const Incidencias = () => {
                         ? "Media"
                         : "Grave"
                     }
-                    onChange={(e) => handleChange(inc, e)}
+                    onChange={(e) => severityChange(inc, e)}
                   >
                     <option value="Leve">Leve</option>
                     <option value="Media">Media</option>

@@ -15,7 +15,7 @@ export const modifyIncidents = async (incident_id, body) => {
       "Content-Type": "application/json",
 
       Authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NzA4NTE5OCwianRpIjoiYzg1ZDJiMjMtMjZmNC00N2UwLWFmM2EtNmY5MWU2NmExZjYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MX0sIm5iZiI6MTY0NzA4NTE5OCwiZXhwIjoxNjQ3MDg2MDk4fQ.885uSpa9fzZCmrptoj1yKqmm0cv1ujHhXi_LHvZLLqE",
+        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NzA4OTU4NSwianRpIjoiY2RkNDFlNzItM2ExMy00OTE0LWJiMzQtMGU1Mjg4YzE1OWMzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MX0sIm5iZiI6MTY0NzA4OTU4NSwiZXhwIjoxNjQ3MDkwNDg1fQ.2eaxoc9n4WolHwHtUDmdH1AK0_IlUlIQmwDnIJkASrM",
     },
     body: JSON.stringify({
       description: body.description,

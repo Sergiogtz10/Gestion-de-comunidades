@@ -18,6 +18,19 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
+
+      modifyIncidents: (id, newIncident) => {
+        const store = getStore();
+        modifyIncidents(id, newIncident)
+          .then((res) => res.json())
+          .then((data) => {
+            const resetIncidents = store.incidents.filter(
+              (incident) => incident.id != id
+            );
+            setStore({ ...store, incidents: resetIncidents });
+            setStore({ ...store, incidents: [...store.incidents, data] });
+          });
+      },
       deleteIncident: () => {
         console.log("borrando");
       },
