@@ -1,14 +1,31 @@
 import React from "react";
 import { useContext, useEffect } from "react";
+import { useState } from "react";
+import { modifyIncidents } from "../../service/incident.js";
 import { Context } from "../../store/appContext.js";
 import "./incidencias.css";
 
 const Incidencias = () => {
   const { store, actions } = useContext(Context);
+  const [incident, setIncident] = useState({
+    description: "",
+    severity: "",
+    zone: "",
+  });
 
   useEffect(() => {
     actions.getIncidents();
   }, []);
+
+  const handleChange = (inc, e) => {
+    const newIncident = {
+      description: inc.description,
+      zone: inc.zone,
+      severity: e.target.value,
+    };
+    setIncident(newIncident);
+    modifyIncidents(inc.id, newIncident);
+  };
 
   return (
     <div className="container m-auto mt-5">
@@ -37,28 +54,31 @@ const Incidencias = () => {
           </tr>
         </thead>
         <tbody>
-          {store.incidents.map((incident, index) => {
-            console.log(incident);
+          {store.incidents.map((inc, index) => {
             return (
               <tr key={index}>
                 <th scope="row">1</th>
-                <td>{incident.description}</td>
-                <td>{incident.zone}</td>
+                <td>{inc.description}</td>
+                <td>{inc.zone}</td>
                 <td>
                   <select
                     className="form-select"
-                    aria-label="Default select example"
+                    defaultValue={
+                      inc.severity == "Leve"
+                        ? "Leve"
+                        : inc.severity == "Media"
+                        ? "Media"
+                        : "Grave"
+                    }
+                    onChange={(e) => handleChange(inc, e)}
                   >
-                    <option value="1">Leve</option>
-                    <option value="2">Media</option>
-                    <option value="3">Grave</option>
+                    <option value="Leve">Leve</option>
+                    <option value="Media">Media</option>
+                    <option value="Grave">Grave</option>
                   </select>
                 </td>
                 <td>
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                  >
+                  <select className="form-select">
                     <option value="1">Recibida</option>
                     <option value="2">En proceso</option>
                     <option value="3">Solucionada</option>

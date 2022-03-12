@@ -1,4 +1,5 @@
 import { getIncidents } from "../service/incident.js";
+import { modifyIncidents } from "../service/incident.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -8,7 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       getIncidents: () => {
         const store = getStore();
-        store.incidents = [];
         getIncidents()
           .then((res) => res.json())
           .then((data) => {
