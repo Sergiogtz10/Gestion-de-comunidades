@@ -9,7 +9,7 @@ import FormAdmin from "../views/FormAdmin/FormAdmin.jsx";
 import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
-import Profile from "../views/Profile/Profile.jsx";
+
 
 
 import injectContext from "../store/appContext";
@@ -68,7 +68,7 @@ export default injectContext(Layout);
 <Route exact path="/LogIn" /> 
 
 
-import FormAdmin from "../views/Forms/FormAdmin";
+import FormAdmin from "../views/gitForms/FormAdmin";
 import FormCommunity from "../views/Forms/FormCommunity";
 import FormOwner from "../views/Forms/FormOwner";
 import Landing from "../views/Landing/Landing";
