@@ -7,6 +7,7 @@ class Incident(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     common=db.Column(db.Boolean(),nullable=False)
     severity=db.Column(db.String(50))
+    state=db.Column(db.String(50))
     description=db.Column(db.String(250), nullable=False)
     zone=db.Column(db.String(50),nullable=False)
     user_id=db.Column(db.Integer,db.ForeignKey('user.id'))
@@ -27,6 +28,7 @@ class Incident(db.Model):
             "id": self.id,
             "severity":self.severity,
             "description":self.description,
+            "state":self.state,
             "zone":self.zone,
             "user_id":self.user_id,
             "bill_id":self.bill_id,
