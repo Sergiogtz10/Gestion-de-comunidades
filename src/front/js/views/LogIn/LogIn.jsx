@@ -53,7 +53,7 @@ const Login = () =>{
         <div className="p-5">
             <div className="container fluid card text-center justify-content-center p-4" id="card" style={{width: "400px"}}>
                 <h4 id="title"  className="text-center font-weight-bold">Login</h4>
-                <hr class="my-3"></hr>
+                <hr className="my-3"></hr>
                 <form onSubmit={handleClick} onChange={handleChange}> 
                     <div>
                         <label  className="form-label ">Email</label>

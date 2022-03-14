@@ -90,7 +90,7 @@ const FormOwner = () => {
       <div className="p-5">
         <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "700px" }}>
         <h4 id="title" className="text-center p-1">Registrase como propietario</h4>
-        <hr class="my-3"></hr>
+        <hr className="my-3"></hr>
           <form onChange={handleChange} onSubmit={handleClick}>
             <div className="mb-3 d-flex container-fluid">
               <div className="px-3">
@@ -158,7 +158,7 @@ const FormOwner = () => {
               <div>
                 <label className="form-label">Telefono</label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control shadow-sm"
                   name="phone_number"
                   id="Telefono"

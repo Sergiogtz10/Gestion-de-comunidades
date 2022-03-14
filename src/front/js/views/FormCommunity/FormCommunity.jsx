@@ -52,7 +52,7 @@ const FormCommunity = () =>{
             
             <div className="container-fluid card text-center p-3" id="card" style={{width: "700px"}}>
             <h4 id="title" className="text-center p-1">Registrar comunidad</h4>
-            <hr class="my-3"></hr>
+            <hr className="my-3"></hr>
                 <form onChange={handleChange} onSubmit={handleClick}> 
                     <div className="mb-3 d-flex">
                         <div className="px-3">

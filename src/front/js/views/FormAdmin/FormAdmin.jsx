@@ -90,7 +90,7 @@ const FormAdmin = () => {
         <h4 id="title" className="text-center p-1">
           Registrarse como administrador
         </h4>
-        <hr class="my-3"></hr>
+        <hr className="my-3"></hr>
         <form onChange={handleChange} onSubmit={handleClick}>
           <div className="mb-3 d-flex">
             <div className="px-3">
@@ -133,7 +133,7 @@ const FormAdmin = () => {
             <div>
               <label className="form-label">Telefono</label>
               <input
-                type="number"
+                type="text"
                 className="form-control shadow-sm"
                 name="phone_number"
                 id="Telefono"

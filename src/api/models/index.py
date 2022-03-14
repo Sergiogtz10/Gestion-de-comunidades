@@ -8,4 +8,5 @@ from api.models.incident import Incident
 from api.models.expenses import Expenses
 from api.models.bill import Bill
 from api.models.activities import Activities
+from api.models.provider import Provider
 

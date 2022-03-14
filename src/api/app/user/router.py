@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.user.controler import register_owner, register_admin, login_user, get_user_by_id
+from api.app.user.controller import register_owner, register_admin, login_user, get_user_by_id
 from api.app.rel_user_community.controller import create_rel
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
