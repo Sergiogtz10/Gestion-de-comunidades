@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { Context } from "../../store/appContext.js";
 import { Link } from "react-router-dom";
 import { getDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
 
 const Profile = () => {
-
+  const {store, actions} = useContext(Context)
   const[ dataUser, setDataUser] = useState({});
   const getdata = async () => {
     try{
