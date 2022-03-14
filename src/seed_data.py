@@ -14,20 +14,12 @@ data = {
 
     "Community":[
         {
-<<<<<<< HEAD
-            
-=======
             "id": 9991,
->>>>>>> develop
             "address": "C/ Vilafranca 2, Barcelona",
             "flats": 15
         },
         {
-<<<<<<< HEAD
-            
-=======
             "id": 9992,
->>>>>>> develop
             "address": "C/ Industria 64, Segovia",
             "flats": 34
         }
@@ -80,11 +72,7 @@ data = {
 
     "User":[
         {
-<<<<<<< HEAD
-            
-=======
             "id":9991,
->>>>>>> develop
             "first_name":"Marina",
             "last_name":"Rojo",
             "flat_number":"5ºA",
@@ -94,11 +82,7 @@ data = {
             "role_id":1
         },
           {
-<<<<<<< HEAD
-            
-=======
             "id":9992,
->>>>>>> develop
             "first_name":"Mireia",
             "last_name":"Gonzalez",
             "flat_number":"3ºB",
@@ -162,35 +146,6 @@ data = {
     ],
 
     "Incident":[
-<<<<<<< HEAD
-    {
-        "community_id": 1,
-        "description": "Cristal roto",
-        
-        "severity": "Grave",
-        "user_id": 2,
-        "zone": "Cocina",
-        "common": False
-    },
-    {
-        "community_id": 1,
-        "description": "Cesped levantado",
-        
-        "severity": "Leve",
-        "user_id": 2,
-        "zone": "Piscina",
-        "common": True
-    },
-    {
-        "community_id": 1,
-        "description": "No funciona el grifo, no sale agua",
-        
-        "severity": "Medio",
-        "user_id": 1,
-        "zone": "Baño",
-        "common": False
-    }
-=======
         {
             "bill_id": 9991,
             "community_id": 9991,
@@ -221,6 +176,5 @@ data = {
             "zone": "Baño",
             "common": False
         }
->>>>>>> develop
     ]
 }
