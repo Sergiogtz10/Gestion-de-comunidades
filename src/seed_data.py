@@ -141,7 +141,7 @@ data = {
             "user_id": 9992,
             "zone": "Cocina",
             "common": False,
-            "state":"Recibido"
+            "status":"Recibido"
         },
         {
             "bill_id": 9992,
@@ -152,7 +152,7 @@ data = {
             "user_id": 9992,
             "zone": "Piscina",
             "common": True,
-            "state":"En proceso"
+            "status":"En proceso"
         },
         {
             "bill_id": 9993,
@@ -163,7 +163,7 @@ data = {
             "user_id": 9991,
             "zone": "Baño",
             "common": False,
-            "state":"Recibido"
+            "status":"Recibido"
         }
     ]
 }

@@ -31,7 +31,7 @@ def get_owner_incidents(user_id):
 #CREATE COMMON INCIDENT
 def create_incident(body,community_id,user_id,common):
     try: 
-        new_incident=Incident(common=common,severity=body['severity'],description=body['description'],zone=body['zone'],community_id=community_id, user_id=user_id, state="Recibido")
+        new_incident=Incident(common=common,severity=body['severity'],description=body['description'],zone=body['zone'],community_id=community_id, user_id=user_id, status="Recibido")
         db.session.add(new_incident)
         db.session.commit()
         return new_incident.serialize()
@@ -63,7 +63,7 @@ def modify_incident(role_id,incident_id,body):
         if verify_admin(role_id):
             incident=Incident.query.get(incident_id)
             incident.severity=body['severity']
-            incident.state=body['state']
+            incident.status=body['status']
             incident.description=body['description']
             incident.zone=body['zone']
             db.session.commit()
