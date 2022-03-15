@@ -7,11 +7,12 @@ import logo from "../../../img/MasterKeyLogo.png";
 
 //components
 import NavbarLinkDesktop from "../../component/NavbarLinkDesktop/NavbarLinkDesktop.jsx";
-import SettingsNavbar from "../../component/SettingsNavbar/SettingsNavbar.jsx";
+import SettingsIcon from "../../component/SettingsIcon/SettingsIcon.jsx";
+import SettingsMenu from "../../component/SettingsMenu/SettingsMenu.jsx";
 
 const Navbar = () => {
   const [incidentsDropdown, setIncidentsDropdown] = useState(false);
-  const [avatarInfo, setAvatarInfo] = useState(false);
+  const [settingsMenu, setSettingsMenu] = useState(false);
 
   const handleIncidentsClick = () => {
     if (!incidentsDropdown) {
@@ -24,7 +25,21 @@ const Navbar = () => {
   const handleClick = () => {
     if (incidentsDropdown) {
       setIncidentsDropdown(false);
+    } else if (settingsMenu) {
+      setSettingsMenu(false);
     }
+  };
+
+  const handleSettingsIconClick = () => {
+    if (!settingsMenu) {
+      setSettingsMenu(true);
+    } else {
+      setSettingsMenu(false);
+    }
+  };
+
+  const handleSettingsCrossClick = () => {
+    setSettingsMenu(false);
   };
 
   console.log({ incidentsDropdown });
@@ -228,7 +243,10 @@ const Navbar = () => {
             />
           </ul>
         </nav>
-        <SettingsNavbar />
+        {settingsMenu ? (
+          <SettingsMenu clickCrossFunction={handleSettingsCrossClick} />
+        ) : null}
+        <SettingsIcon clickFunction={handleSettingsIconClick} />
       </aside>
     </>
   );

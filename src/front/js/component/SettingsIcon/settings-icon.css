@@ -1,0 +1,20 @@
+#settings-icon {
+  height: 1.8rem;
+  margin-left: 0.5rem;
+}
+#settings-icon:hover {
+  height: 1.9rem;
+}
+
+#settings {
+  position: absolute;
+  bottom: 0.8rem;
+  width: 100%;
+}
+
+#settings-button {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  background: none;
+}
