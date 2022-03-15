@@ -1,11 +1,13 @@
-import { getIncidents } from "../service/incident.js";
-import { modifyIncidents } from "../service/incident.js";
+import { getIncidents } from "../Service/incident.js";
+import { modifyIncidents } from "../Service/incident.js";
+import { getUser } from "../Service/incident.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       incidents: [],
       registerAdminUser: {},
+      user: {},
     },
     actions: {
       getToken: () => {
@@ -20,7 +22,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         setStore({ ...store, registerAdminUser: user });
       },
-
+      getUser: () => {
+        const store = getStore();
+        getUser()
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, user: data });
+          })
+          .catch((err) => console.error(err));
+      },
       getIncidents: () => {
         const store = getStore();
         getIncidents()

@@ -1,4 +1,4 @@
-import { URL } from "./URL.js";
+import { URL, getToken } from "../Service/URL.js";
 
 export const getIncidents = async () => {
   const API = URL + `/api/incident/common`;
@@ -9,13 +9,13 @@ export const getIncidents = async () => {
 
 export const modifyIncidents = async (incident_id, body) => {
   const API = URL + `/api/incident/` + incident_id;
+  const token = getToken();
   return await fetch(API, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
 
-      Authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NzM3MTEyNSwianRpIjoiYTY1YTAwYTAtOTEyYy00OTNjLWJkMTEtMDE4OTc0MGQ5NzcyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MX0sIm5iZiI6MTY0NzM3MTEyNSwiZXhwIjoxNjQ3MzcyMDI1fQ.zNKWyP3t_lbXaiDHJD5gRMBQRNwdpfLzHlvoB_OuWmE",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       description: body.description,
@@ -23,5 +23,18 @@ export const modifyIncidents = async (incident_id, body) => {
       zone: body.zone,
       status: body.status,
     }),
+  });
+};
+
+export const getUser = async () => {
+  const API = URL + `/api/user/`;
+  const token = getToken();
+  return await fetch(API, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+
+      Authorization: `Bearer ${token}`,
+    },
   });
 };

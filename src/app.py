@@ -57,10 +57,6 @@ app.register_blueprint(activity, url_prefix="/api/activities")
 app.register_blueprint(incidents,url_prefix="/api/incident")
 app.register_blueprint(bills,url_prefix="/api/bill")
 app.register_blueprint(providers,url_prefix="/api/provider")
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

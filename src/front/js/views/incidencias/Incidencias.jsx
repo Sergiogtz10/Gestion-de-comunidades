@@ -15,6 +15,7 @@ const Incidencias = () => {
 
   useEffect(() => {
     actions.getIncidents();
+    actions.getUser();
   }, []);
 
   const severityChange = (inc, e) => {

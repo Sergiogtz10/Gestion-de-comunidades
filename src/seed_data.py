@@ -173,26 +173,6 @@ data = {
 
     "Incident":[
         {
-<<<<<<< HEAD
-            "bill_id": 1,
-            "community_id": 1,
-            "description": "Cristal roto",
-            "id": 1,
-            "severity": "Grave",
-            "user_id": 2,
-            "zone": "Cocina",
-            "common": False,
-            "status":"Recibido"
-            
-        },
-        {
-            "bill_id": 2,
-            "community_id": 1,
-            "description": "Cesped levantado",
-            "id": 2,
-            "severity": "Leve",
-            "user_id": 2,
-=======
             "bill_id": 9991,
             "community_id": 9991,
             "description": "Cristal roto",
@@ -210,35 +190,20 @@ data = {
             "id": 9992,
             "severity": "Leve",
             "user_id": 9992,
->>>>>>> develop
             "zone": "Piscina",
             "common": True,
             "status":"En proceso"
         },
         {
-<<<<<<< HEAD
-            "bill_id": 3,
-            "community_id": 1,
-            "description": "No funciona el grifo, no sale agua",
-            "id": 3,
-            "severity": "Medio",
-            "user_id": 1,
-=======
             "bill_id": 9993,
             "community_id": 9991,
             "description": "No funciona el grifo, no sale agua",
             "id": 9993,
             "severity": "Medio",
             "user_id": 9991,
->>>>>>> develop
             "zone": "Baño",
             "common": False,
             "status":"Recibido"
         }
-<<<<<<< HEAD
-    ],
-    
-=======
     ]
->>>>>>> develop
 }
