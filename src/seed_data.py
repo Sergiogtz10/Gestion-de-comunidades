@@ -14,12 +14,12 @@ data = {
 
     "Community":[
         {
-            "id": 1,
+            "id": 9991,
             "address": "C/ Vilafranca 2, Barcelona",
             "flats": 15
         },
         {
-            "id": 2,
+            "id": 9992,
             "address": "C/ Industria 64, Segovia",
             "flats": 34
         }
@@ -31,20 +31,34 @@ data = {
             "time": "16:50h",
             "description": "Reparación del ascensor.",
             "severity": "Importante",
-            "community_id": 1
+            "community_id": 9991
         },
         {
             "day": "11/06/2023",
             "time": "18:30h",
             "description": "Reunión de vecinos.",
             "severity": "Muy importante",
+            "community_id": 9991
+        }
+    ],
+     "Expenses":[
+        {
+            "concept": "IBERDROLA",
+            "amount": "250",
+            "date": "30/03/2022",
+            "community_id": 1
+        },
+        {
+            "concept": "ASCENSORES TRESA",
+            "amount": "300",
+            "date": "30/03/2022",
             "community_id": 1
         }
     ],
 
     "User":[
         {
-            "id":1,
+            "id":9991,
             "first_name":"Marina",
             "last_name":"Rojo",
             "flat_number":"5ºA",
@@ -54,7 +68,7 @@ data = {
             "role_id":1
         },
           {
-            "id":2,
+            "id":9992,
             "first_name":"Mireia",
             "last_name":"Gonzalez",
             "flat_number":"3ºB",
@@ -67,13 +81,53 @@ data = {
 
     "Rel_user_community":[
         {
-            "user_id":1,
-            "community_id":1
+            "user_id":9991,
+            "community_id":9991
         },
 
         {
-            "user_id":2,
-            "community_id":1
+            "user_id":9992,
+            "community_id":9991
+        }
+    ],
+    "Provider":[
+         {
+            "id":9991,
+            "name": "Piscinas",
+            "service": "Servicio de limpieza y mantenimiento de piscinas",
+            "logo": "xxxxxxxxx",
+            "community_id":9991
+        },
+        {
+            "id":9992,
+            "name": "Jardinería López",
+            "service": "Servicio de mantenimiento de jardines",
+            "logo": "xxxxxxxxx",
+            "community_id":9991
+        }
+    ],
+
+    "Bill":[
+        {
+            "id":9991,
+            "amount":200,
+            "details": "Reparar cristal",
+            "community_id":9991,
+            "provider_id":9991
+        },
+        {
+            "id":9992,
+            "amount":100,
+            "details": "Reparar cesped dañado",
+            "community_id":9991,
+            "provider_id":9991
+        },
+        {
+            "id":9993,
+            "amount":100,
+            "details": "Cambio de grifo",
+            "community_id":9992,
+            "provider_id":9992
         }
     ],
     "Provider":[
@@ -119,6 +173,7 @@ data = {
 
     "Incident":[
         {
+<<<<<<< HEAD
             "bill_id": 1,
             "community_id": 1,
             "description": "Cristal roto",
@@ -137,21 +192,53 @@ data = {
             "id": 2,
             "severity": "Leve",
             "user_id": 2,
+=======
+            "bill_id": 9991,
+            "community_id": 9991,
+            "description": "Cristal roto",
+            "id": 9991,
+            "severity": "Grave",
+            "user_id": 9992,
+            "zone": "Cocina",
+            "common": False,
+            "status":"Recibido"
+        },
+        {
+            "bill_id": 9992,
+            "community_id": 9991,
+            "description": "Cesped levantado",
+            "id": 9992,
+            "severity": "Leve",
+            "user_id": 9992,
+>>>>>>> develop
             "zone": "Piscina",
             "common": True,
             "status":"En proceso"
         },
         {
+<<<<<<< HEAD
             "bill_id": 3,
             "community_id": 1,
             "description": "No funciona el grifo, no sale agua",
             "id": 3,
             "severity": "Medio",
             "user_id": 1,
+=======
+            "bill_id": 9993,
+            "community_id": 9991,
+            "description": "No funciona el grifo, no sale agua",
+            "id": 9993,
+            "severity": "Medio",
+            "user_id": 9991,
+>>>>>>> develop
             "zone": "Baño",
             "common": False,
             "status":"Recibido"
         }
+<<<<<<< HEAD
     ],
     
+=======
+    ]
+>>>>>>> develop
 }
