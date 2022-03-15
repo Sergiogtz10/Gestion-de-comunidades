@@ -2,7 +2,7 @@
   position: relative;
   width: 85%;
   float: right;
-  height: 100vh;
+  flex-grow: 1;
 }
 
 .footer {

@@ -2,6 +2,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+//import general style
+import "./index.css";
+
 //import your own components
 import AppRouter from "./AppRouter.jsx";
 

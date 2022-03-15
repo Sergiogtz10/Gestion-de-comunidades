@@ -81,13 +81,8 @@
     width: 2rem;
   }
 
-  button {
-    margin-left: auto;
-  }
-
   nav {
-    background-color: black;
-    height: 4rem;
+    background-color: transparent;
   }
 
   .sidebar {
@@ -115,5 +110,11 @@
 
   #home-link {
     margin-top: 4rem;
+  }
+
+  #button-mobile-nav {
+    background-color: transparent;
+    color: #2a9d8f;
+    border: none;
   }
 }
