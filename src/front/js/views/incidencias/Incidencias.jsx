@@ -1,7 +1,6 @@
 import React from "react";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { modifyIncidents } from "../../service/incident.js";
 import { Context } from "../../store/appContext.js";
 import "./incidencias.css";
 
@@ -11,6 +10,7 @@ const Incidencias = () => {
     description: "",
     severity: "",
     zone: "",
+    status: "",
   });
 
   useEffect(() => {
@@ -22,6 +22,18 @@ const Incidencias = () => {
       description: inc.description,
       zone: inc.zone,
       severity: e.target.value,
+      status: inc.status,
+    };
+    setIncident(newIncident);
+    actions.modifyIncidents(inc.id, newIncident);
+  };
+
+  const statusChange = (inc, e) => {
+    const newIncident = {
+      description: inc.description,
+      zone: inc.zone,
+      severity: inc.severity,
+      status: e.target.value,
     };
     setIncident(newIncident);
     actions.modifyIncidents(inc.id, newIncident);
@@ -32,6 +44,7 @@ const Incidencias = () => {
       description: e.target.value,
       zone: inc.zone,
       severity: inc.severity,
+      status: inc.status,
     };
     setIncident(newIncident);
     actions.modifyIncidents(inc.id, newIncident);
@@ -42,6 +55,7 @@ const Incidencias = () => {
       description: inc.description,
       zone: e.target.value,
       severity: inc.severity,
+      status: inc.status,
     };
     setIncident(newIncident);
     actions.modifyIncidents(inc.id, newIncident);
@@ -82,14 +96,22 @@ const Incidencias = () => {
                   <input
                     defaultValue={inc.description}
                     className="form-control"
-                    onChange={(e) => descriptionChange(inc, e)}
+                    onKeyDown={(e) => {
+                      if (e.keyCode == 13 || e.keyCode == 9) {
+                        descriptionChange(inc, e);
+                      }
+                    }}
                   ></input>
                 </td>
                 <td>
                   <input
                     defaultValue={inc.zone}
                     className="form-control"
-                    onChange={(e) => zoneChange(inc, e)}
+                    onKeyDown={(e) => {
+                      if (e.keyCode == 13 || e.keyCode == 9) {
+                        zoneChange(inc, e);
+                      }
+                    }}
                   ></input>
                 </td>
                 <td>
@@ -110,10 +132,20 @@ const Incidencias = () => {
                   </select>
                 </td>
                 <td>
-                  <select className="form-select">
-                    <option value="1">Recibida</option>
-                    <option value="2">En proceso</option>
-                    <option value="3">Solucionada</option>
+                  <select
+                    className="form-select"
+                    defaultValue={
+                      inc.status == "Recibido"
+                        ? "Recibido"
+                        : inc.status == "En proceso"
+                        ? "En proceso"
+                        : "Solucionado"
+                    }
+                    onChange={(e) => statusChange(inc, e)}
+                  >
+                    <option value="Recibido">Recibido</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Solucionado">Solucionado</option>
                   </select>
                 </td>
                 <td>

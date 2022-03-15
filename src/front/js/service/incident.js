@@ -15,12 +15,13 @@ export const modifyIncidents = async (incident_id, body) => {
       "Content-Type": "application/json",
 
       Authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NzA4OTU4NSwianRpIjoiY2RkNDFlNzItM2ExMy00OTE0LWJiMzQtMGU1Mjg4YzE1OWMzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MX0sIm5iZiI6MTY0NzA4OTU4NSwiZXhwIjoxNjQ3MDkwNDg1fQ.2eaxoc9n4WolHwHtUDmdH1AK0_IlUlIQmwDnIJkASrM",
+        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NzM3MTEyNSwianRpIjoiYTY1YTAwYTAtOTEyYy00OTNjLWJkMTEtMDE4OTc0MGQ5NzcyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MX0sIm5iZiI6MTY0NzM3MTEyNSwiZXhwIjoxNjQ3MzcyMDI1fQ.zNKWyP3t_lbXaiDHJD5gRMBQRNwdpfLzHlvoB_OuWmE",
     },
     body: JSON.stringify({
       description: body.description,
       severity: body.severity,
       zone: body.zone,
+      status: body.status,
     }),
   });
 };

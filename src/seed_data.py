@@ -127,6 +127,7 @@ data = {
             "user_id": 2,
             "zone": "Cocina",
             "common": False,
+            "status":"Recibido"
             
         },
         {
@@ -137,7 +138,8 @@ data = {
             "severity": "Leve",
             "user_id": 2,
             "zone": "Piscina",
-            "common": True
+            "common": True,
+            "status":"En proceso"
         },
         {
             "bill_id": 3,
@@ -147,7 +149,8 @@ data = {
             "severity": "Medio",
             "user_id": 1,
             "zone": "Baño",
-            "common": False
+            "common": False,
+            "status":"Recibido"
         }
     ],
     
