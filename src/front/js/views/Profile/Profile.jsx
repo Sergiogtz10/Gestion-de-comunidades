@@ -1,18 +1,30 @@
-import React, {useState, useEffect, useContext} from "react";
-import { Context } from "../../store/appContext.js";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
 
 const Profile = () => {
-  const {store, actions} = useContext(Context)
-  const[ dataUser, setDataUser] = useState({});
-  const getdata = async () => {
+  
+  const[ dataUser, setDataUser] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+  });
+  
+    const getdata = async () => {
     try{
       const response = await getDataUsers();
       const data =  await response.json();
       console.log(data);
-
+      let newUser = {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone_number: data.phone_number,  
+      }
+      setDataUser(newUser);
+      console.log(newUser)
     }catch(error){
       console.log(error)
     }
@@ -24,15 +36,15 @@ const Profile = () => {
 
   return (
     <div>
-      <h3 className="container fluid">Nombre de usuario</h3>
+      <h3 className="container fluid">{dataUser.first_name}</h3>
       <div id="card" className="container fluid card p-4" style={{width: "700px"}} >
       <h4 id="titlecardprofile">Datos personales</h4>
         <div>
             <ul className="list-group list-group-flush">
-              <li className="list-group-item">Nombre</li>
-              <li className="list-group-item">Apellidos</li>
-              <li className="list-group-item">Email</li>
-              <li className="list-group-item">Teléfono</li>
+              <li className="list-group-item">{dataUser.first_name}</li>
+              <li className="list-group-item">{dataUser.last_name}</li>
+              <li className="list-group-item">{dataUser.email}</li>
+              <li className="list-group-item">{dataUser.phone_number}</li>
             </ul>
             <div className="p-1">
               <button type="submit" className="btn btn-primary" id="boton">

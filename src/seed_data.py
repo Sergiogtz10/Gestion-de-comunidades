@@ -154,7 +154,8 @@ data = {
             "severity": "Grave",
             "user_id": 9992,
             "zone": "Cocina",
-            "common": False
+            "common": False,
+            "status":"Recibido"
         },
         {
             "bill_id": 9992,
@@ -164,7 +165,8 @@ data = {
             "severity": "Leve",
             "user_id": 9992,
             "zone": "Piscina",
-            "common": True
+            "common": True,
+            "status":"En proceso"
         },
         {
             "bill_id": 9993,
@@ -174,7 +176,8 @@ data = {
             "severity": "Medio",
             "user_id": 9991,
             "zone": "Baño",
-            "common": False
+            "common": False,
+            "status":"Recibido"
         }
     ]
 }

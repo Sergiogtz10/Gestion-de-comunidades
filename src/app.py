@@ -58,7 +58,7 @@ app.register_blueprint(activity, url_prefix="/api/activities")
 app.register_blueprint(incidents,url_prefix="/api/incident")
 app.register_blueprint(bills,url_prefix="/api/bill")
 app.register_blueprint(providers,url_prefix="/api/provider")
-app.register_blueprint(expenses, name="<some_unique_name>",url_prefix="/api/expenses")
+app.register_blueprint(expenses,name="<some_unique_name>",url_prefix="/api/expenses")
 
 
 # Handle/serialize errors like a JSON object
