@@ -1,5 +1,10 @@
-from api.models.index import db, Rel_user_community
+from api.models.index import db, Rel_user_community,User
 from flask import jsonify
+
+def getCommunity_by_user_id(user_id):
+    rel= db.session.query(Rel_user_community).filter(Rel_user_community.user_id==user_id).first()
+    
+    return rel.community_id
 
 def create_rel(community_id, user_id):
     try:

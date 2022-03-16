@@ -1,6 +1,6 @@
-import { getIncidents } from "../Service/incident.js";
-import { modifyIncidents } from "../Service/incident.js";
+import { getIncidents, modifyIncidents } from "../Service/incident.js";
 import { getUser } from "../Service/incident.js";
+import { getCommunity_by_user_id } from "../Service/rel.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       incidents: [],
       registerAdminUser: {},
       user: {},
+      community: "",
     },
     actions: {
       getToken: () => {
@@ -29,6 +30,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             setStore({ ...store, user: data });
           })
+          .catch((err) => console.error(err));
+      },
+
+      getCommunity: () => {
+        const store = getStore();
+        getCommunity_by_user_id()
+          .then((res) => res.json())
+          .then((data) => setStore({ ...store, community: data }))
           .catch((err) => console.error(err));
       },
       getIncidents: () => {

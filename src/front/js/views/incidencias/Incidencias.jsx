@@ -16,8 +16,10 @@ const Incidencias = () => {
   useEffect(() => {
     actions.getIncidents();
     actions.getUser();
+    actions.getCommunity();
   }, []);
 
+  console.log(store.community);
   const severityChange = (inc, e) => {
     const newIncident = {
       description: inc.description,
