@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => {
             setStore({ ...store, user: data });
+            console.log(store.user.role.role_id);
           })
           .catch((err) => console.error(err));
       },

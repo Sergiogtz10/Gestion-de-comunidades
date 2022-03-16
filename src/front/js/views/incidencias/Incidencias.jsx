@@ -1,17 +1,10 @@
 import React from "react";
 import { useContext, useEffect } from "react";
-import { useState } from "react";
 import { Context } from "../../store/appContext.js";
 import "./incidencias.css";
 
 const Incidencias = () => {
   const { store, actions } = useContext(Context);
-  const [incident, setIncident] = useState({
-    description: "",
-    severity: "",
-    zone: "",
-    status: "",
-  });
 
   useEffect(() => {
     actions.getIncidents();
@@ -27,7 +20,7 @@ const Incidencias = () => {
       severity: e.target.value,
       status: inc.status,
     };
-    setIncident(newIncident);
+
     actions.modifyIncidents(inc.id, newIncident);
   };
 
@@ -38,7 +31,7 @@ const Incidencias = () => {
       severity: inc.severity,
       status: e.target.value,
     };
-    setIncident(newIncident);
+
     actions.modifyIncidents(inc.id, newIncident);
   };
 
@@ -49,7 +42,7 @@ const Incidencias = () => {
       severity: inc.severity,
       status: inc.status,
     };
-    setIncident(newIncident);
+
     actions.modifyIncidents(inc.id, newIncident);
   };
 
@@ -60,7 +53,7 @@ const Incidencias = () => {
       severity: inc.severity,
       status: inc.status,
     };
-    setIncident(newIncident);
+
     actions.modifyIncidents(inc.id, newIncident);
   };
 
@@ -71,6 +64,7 @@ const Incidencias = () => {
         <button type="button" className="btn btn-secondary col-2 mx-4">
           Añadir incidencia
         </button>
+
         <form className="form-inline col-5">
           <input
             className="form-control mr-sm-2"
