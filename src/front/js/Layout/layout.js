@@ -11,6 +11,7 @@ import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
 import Profile from "../views/Profile/Profile.jsx";
 import Incidencias from "../views/incidencias/Incidencias.jsx";
+import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
 
 import injectContext from "../store/appContext";
 import { Footer } from "./Footer/footer.jsx";
@@ -49,6 +50,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/incidencias/comunidad">
               <Incidencias />
+            </Route>
+            <Route exact path="/formNuevaIncidencia">
+              <FormNewIncident />
             </Route>
             <Route>
               <h1>Not found!</h1>

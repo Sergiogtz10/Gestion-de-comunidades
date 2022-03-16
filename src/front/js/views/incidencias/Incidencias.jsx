@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../../store/appContext.js";
 import "./incidencias.css";
 
@@ -62,9 +63,12 @@ const Incidencias = () => {
       <h1>Incidencias de la comunidad</h1>
       <div className="navbar row">
         {store.role.role_id == 1 ? (
-          <button type="button" className="btn btn-secondary col-2 mx-4">
+          <Link
+            className="btn btn-secondary col-2 mx-4"
+            to="/formNuevaIncidencia"
+          >
             Añadir incidencia
-          </button>
+          </Link>
         ) : (
           ""
         )}

@@ -74,7 +74,7 @@ def login_user(body):
         if validate_pass == False:
             return 'pass not iqual'
 
-        new_token = create_access_token(identity={'id': user.id})
+        new_token = create_access_token(identity={'id': user.id}, expires_delta=False)
         return { 'token': new_token }
         
     except Exception as err:
