@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       incidents: [],
       registerAdminUser: {},
-      user: {},
+      role: {},
       community: "",
     },
     actions: {
@@ -28,8 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         getUser()
           .then((res) => res.json())
           .then((data) => {
-            setStore({ ...store, user: data });
-            console.log(store.user.role.role_id);
+            setStore({ ...store, role: data.role });
           })
           .catch((err) => console.error(err));
       },
