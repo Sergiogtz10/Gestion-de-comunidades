@@ -41,20 +41,6 @@ data = {
             "community_id": 9991
         }
     ],
-     "Expenses":[
-        {
-            "concept": "IBERDROLA",
-            "amount": "250",
-            "date": "30/03/2022",
-            "community_id": 1
-        },
-        {
-            "concept": "ASCENSORES TRESA",
-            "amount": "300",
-            "date": "30/03/2022",
-            "community_id": 1
-        }
-    ],
 
     "User":[
         {
@@ -132,42 +118,42 @@ data = {
     ],
     "Provider":[
          {
-            "id":1,
+            "id":9991,
             "name": "Piscinas",
             "service": "Servicio de limpieza y mantenimiento de piscinas",
             "logo": "xxxxxxxxx",
-            "community_id":1
+            "community_id":9991
         },
         {
-            "id":2,
+            "id":9992,
             "name": "Jardinería López",
             "service": "Servicio de mantenimiento de jardines",
             "logo": "xxxxxxxxx",
-            "community_id":1
+            "community_id":9991
         }
     ],
 
     "Bill":[
         {
-            "id":1,
+            "id":9991,
             "amount":200,
             "details": "Reparar cristal",
-            "community_id":1,
-            "provider_id":1
+            "community_id":9991,
+            "provider_id":9991
         },
         {
-            "id":2,
+            "id":9992,
             "amount":100,
             "details": "Reparar cesped dañado",
-            "community_id":1,
-            "provider_id":1
+            "community_id":9991,
+            "provider_id":9991
         },
         {
-            "id":3,
+            "id":9993,
             "amount":100,
             "details": "Cambio de grifo",
-            "community_id":2,
-            "provider_id":2
+            "community_id":9992,
+            "provider_id":9992
         }
     ],
 
