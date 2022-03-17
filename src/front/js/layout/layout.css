@@ -1,15 +1,39 @@
-.content {
-  position: relative;
-  width: 85%;
-  float: right;
-  flex-grow: 1;
+@media only screen and (min-width: 1322px) {
+  .content {
+    position: relative;
+    width: 84%;
+    float: right;
+  }
+  #footer-separation {
+    width: 84%;
+    float: right;
+    min-height: 2rem;
+  }
+  .footer {
+    position: fixed;
+    width: 84.9%;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
 }
-
-.footer {
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  background-color: red;
-  z-index: -1;
-  position: absolute;
+@media only screen and (max-width: 1321px) {
+  .content {
+    width: 100%;
+    margin-top: 3rem;
+  }
+  #footer-separation {
+    min-height: 2rem;
+  }
+  .footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
 }

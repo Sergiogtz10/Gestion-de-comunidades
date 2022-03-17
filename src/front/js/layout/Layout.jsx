@@ -12,6 +12,7 @@ const Layout = (props) => {
         <Navbar />
       </header>
       <div className="content">{props.children}</div>
+      <div id="footer-separation"></div>
       <footer className="footer text-center">footer</footer>
     </>
   );
