@@ -1,4 +1,5 @@
 import { URL, getToken } from "../Service/URL.js";
+import { getCommunity_by_user_id } from "./rel.js";
 
 export const getIncidents = async () => {
   const API = URL + `/api/incident/common`;
@@ -48,5 +49,19 @@ export const getUser = async () => {
 
       Authorization: `Bearer ${token}`,
     },
+  });
+};
+
+export const createIncident = async (body_parameters, community_id) => {
+  const API = URL + `/api/incident/common/` + community_id;
+  const token = getToken();
+  return await fetch(API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body_parameters),
   });
 };

@@ -1,4 +1,5 @@
 import {
+  createIncident,
   deleteIncidents,
   getIncidents,
   modifyIncidents,
@@ -99,8 +100,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
-      createNewIncident: (body, community, user, common) => {
-        console.log(body, community, user, common);
+      createNewIncident: (body, community) => {
+        createIncident(body, community)
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
       },
       addBill: () => {
         console.log("añadiendo factura");

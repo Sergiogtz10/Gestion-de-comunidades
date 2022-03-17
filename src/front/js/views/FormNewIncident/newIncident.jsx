@@ -16,8 +16,8 @@ const FormNewIncident = () => {
 
   const createIncident = (e) => {
     e.preventDefault();
-    let body = { description, zone, severity };
-    actions.createNewIncident(body, store.community, store.user_id, true);
+    let body_parameters = { description, zone, severity };
+    actions.createNewIncident(body_parameters, store.community);
   };
 
   return (
