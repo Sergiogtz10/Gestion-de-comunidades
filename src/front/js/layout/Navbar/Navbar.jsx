@@ -20,12 +20,16 @@ const Navbar = () => {
     } else {
       setIncidentsDropdown(false);
     }
+    if (settingsMenu) {
+      setSettingsMenu(false);
+    }
   };
 
   const handleClick = () => {
     if (incidentsDropdown) {
       setIncidentsDropdown(false);
-    } else if (settingsMenu) {
+    }
+    if (settingsMenu) {
       setSettingsMenu(false);
     }
   };
