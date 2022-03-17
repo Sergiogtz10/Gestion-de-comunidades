@@ -16,5 +16,16 @@ export const getDataUsers = () =>{
 }
 
 export const putDataUsers = () =>{
+  const API = URL + "/api/user/modify";
+  const token = getToken();
+  return fetch(API, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    
+    Authorization: `Bearer ${token} `
+    },
+    
+  });
   
 }
