@@ -26,6 +26,18 @@ export const modifyIncidents = async (incident_id, body) => {
   });
 };
 
+export const deleteIncidents = async (incident_id) => {
+  const API = URL + `/api/incident/` + incident_id;
+  const token = getToken();
+  return await fetch(API, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const getUser = async () => {
   const API = URL + `/api/user/`;
   const token = getToken();

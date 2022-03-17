@@ -1,4 +1,8 @@
-import { getIncidents, modifyIncidents } from "../Service/incident.js";
+import {
+  deleteIncidents,
+  getIncidents,
+  modifyIncidents,
+} from "../Service/incident.js";
 import { getUser } from "../Service/incident.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 
@@ -64,8 +68,30 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ ...store, incidents: [...store.incidents, data] });
           });
       },
-      deleteIncident: () => {
+      deleteIncident: (incident_id) => {
         console.log("borrando");
+        const store = getStore();
+        deleteIncidents(incident_id)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setStore({ ...store, incidents: [] });
+            getIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    incidents: [...store.incidents, incident],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          })
+          .catch((err) => console.error(err));
+      },
+      addBill: () => {
+        console.log("añadiendo factura");
       },
     },
   };
