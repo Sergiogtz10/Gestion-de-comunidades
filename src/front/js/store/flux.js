@@ -4,8 +4,9 @@ import {
   getIncidents,
   modifyIncidents,
 } from "../Service/incident.js";
-import { getUser } from "../Service/incident.js";
+import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
+import { getProviders_by_community_id } from "../Service/provider.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -15,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       role: {},
       user_id: "",
       community: "",
+      providers: [],
     },
     actions: {
       getToken: () => {
@@ -105,6 +107,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => console.log(data))
           .catch((err) => console.log(err));
+      },
+      getProviders: () => {
+        const store = getStore();
+        console.log(store.community);
+        getProviders_by_community_id(store.community)
+          .then((res) => res.json())
+          .then((data) => setStore({ ...store, providers: data }))
+          .catch((err) => console.error(err));
       },
       addBill: () => {
         console.log("añadiendo factura");
