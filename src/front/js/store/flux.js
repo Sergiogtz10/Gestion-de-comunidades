@@ -108,10 +108,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => console.log(data))
           .catch((err) => console.log(err));
       },
-      getProviders: () => {
+      getProviders: (community_id) => {
         const store = getStore();
         console.log(store.community);
-        getProviders_by_community_id(store.community)
+        getProviders_by_community_id(community_id)
           .then((res) => res.json())
           .then((data) => setStore({ ...store, providers: data }))
           .catch((err) => console.error(err));

@@ -55,7 +55,7 @@ const Layout = () => {
             <Route exact path="/formNuevaIncidencia">
               <FormNewIncident />
             </Route>
-            <Route exact path="/nuevaFactura/:id">
+            <Route exact path="/nuevaFactura/:incident_id/:community_id">
               <FormFactura />
             </Route>
             <Route>

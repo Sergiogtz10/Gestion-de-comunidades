@@ -195,7 +195,7 @@ const Incidencias = () => {
 
                 {store.role.role_id == 1 ? (
                   <td>
-                    <Link to={`/nuevaFactura/${inc.id}`}>
+                    <Link to={`/nuevaFactura/${inc.id}/${inc.community_id}`}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"

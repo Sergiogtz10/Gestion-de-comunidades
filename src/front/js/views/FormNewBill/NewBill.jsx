@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../../store/appContext.js";
 import "./newbill.css";
 
@@ -9,12 +9,13 @@ const FormFactura = () => {
   const [details, setDetails] = useState("");
   const [amount, setAmount] = useState("");
   const [provider_id, setProvider_id] = useState("");
+  const { incident_id, community_id } = useParams();
 
   useEffect(() => {
-    actions.getUser();
-    actions.getCommunity();
+    actions.getProviders(community_id);
   }, []);
 
+  console.log(store.providers);
   return (
     <div className="container m-auto mt-5">
       <h1>Nueva Factura</h1>
@@ -48,11 +49,15 @@ const FormFactura = () => {
 
         <div className="py-3 w-25">
           <label className="form-label">Proveedor</label>
-          <select className="form-select" defaultValue={""}>
+          <select className="form-select">
             <option value="">Selecciona proveedor</option>
-            <option value="Leve">1</option>
-            <option value="Media">2</option>
-            <option value="Grave">3</option>
+            {store.providers.map((provider, index) => {
+              return (
+                <option key={index} value={provider.id}>
+                  {provider.name}
+                </option>
+              );
+            })}
           </select>
         </div>
 
