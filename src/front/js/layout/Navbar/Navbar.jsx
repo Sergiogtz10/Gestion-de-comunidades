@@ -9,6 +9,7 @@ import logo from "../../../img/MasterKeyLogo.png";
 import NavbarLinkDesktop from "../../component/NavbarLinkDesktop/NavbarLinkDesktop.jsx";
 import SettingsIcon from "../../component/SettingsIcon/SettingsIcon.jsx";
 import SettingsMenu from "../../component/SettingsMenu/SettingsMenu.jsx";
+import NavbarLinkMobile from "../../component/NavbarLinkMobile/NavbarLinkMobile.jsx";
 
 const Navbar = () => {
   const [incidentsDropdown, setIncidentsDropdown] = useState(false);
@@ -53,19 +54,25 @@ const Navbar = () => {
       <nav className="d-flex align-items-center navbar-mobile fixed-top">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="#264653"
-          className="bi bi-list"
+          fill="#e9c46a"
+          className="bi bi-list me-1 ms-1"
           viewBox="0 0 16 16"
           id="hamburger"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvas-navbar"
           aria-controls="offcanvas-navbar"
         >
-          <path
-            fill-rule="evenodd"
-            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-          />
+          <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
         </svg>
+        <span
+          id="menu-nav"
+          className="m-0"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvas-navbar"
+          aria-controls="offcanvas-navbar"
+        >
+          Menú
+        </span>
       </nav>
 
       <div
@@ -73,26 +80,43 @@ const Navbar = () => {
         id="offcanvas-navbar"
         aria-labelledby="offcanvasExampleLabel"
       >
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-            LOGO
-          </h5>
-          <button
-            type="button"
-            className="btn-close text-reset"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+        <div className="offcanvas-header align-items-start p-1">
+          <img src={logo} alt="" className="offcanvas-title" id="logo-mobile" />
+          <div className="d-flex justify-content-center">
+            <span className="p-1" id="masterkey-offcanvas">
+              MasterKey
+            </span>
+            <button
+              type="button"
+              className="btn-close text-reset m-0"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
         </div>
         <div className="offcanvas-body p-0">
           <ul className="m-0 p-0">
-            <li className="nav-element-mobile nav-link" id="home-link">
-              HOME
-            </li>
-            <li className="nav-element-mobile nav-link">INCIDENCIAS</li>
-            <li className="nav-element-mobile nav-link">ACTIVIDADES</li>
-            <li className="nav-element-mobile nav-link">FACTURAS</li>
-            <li className="nav-element-mobile nav-link">PROVEEDORES</li>
+            <NavbarLinkMobile id="home-link" linkName="Home" />
+            <div className="d-flex justify-content-start">
+              <div className="separation-mobile"></div>
+            </div>
+            <NavbarLinkMobile linkName="Incidencias Comunidad" />
+            <div className="d-flex justify-content-start">
+              <div className="separation-mobile"></div>
+            </div>
+            <NavbarLinkMobile linkName="Incidencias Particulares" />
+            <div className="d-flex justify-content-start">
+              <div className="separation-mobile"></div>
+            </div>
+            <NavbarLinkMobile linkName="Actividades" />
+            <div className="d-flex justify-content-start">
+              <div className="separation-mobile"></div>
+            </div>
+            <NavbarLinkMobile linkName="Facturas" />
+            <div className="d-flex justify-content-start">
+              <div className="separation-mobile"></div>
+            </div>
+            <NavbarLinkMobile linkName="Proveedores" />
           </ul>
         </div>
       </div>
@@ -112,7 +136,7 @@ const Navbar = () => {
           <ul className="m-0 p-0">
             <NavbarLinkDesktop
               individualClassLi="mt-5"
-              link="/"
+              link="/home"
               clickFunction={handleClick}
               icon={
                 <svg

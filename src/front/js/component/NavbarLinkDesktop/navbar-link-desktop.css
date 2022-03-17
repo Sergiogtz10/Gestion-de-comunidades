@@ -11,9 +11,6 @@
 .nav-element:active {
   background-color: #264653;
 }
-.nav-element:focus {
-  background-color: #47e2d03f;
-}
 
 .link-tag {
   text-decoration: none;

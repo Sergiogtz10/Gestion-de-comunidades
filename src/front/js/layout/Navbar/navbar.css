@@ -82,26 +82,17 @@
   }
 
   nav {
-    background-color: red;
+    background-color: #264653;
   }
 
   .sidebar {
     display: none;
   }
 
-  .nav-element-mobile {
-    list-style-type: none;
-    padding: 1rem;
+  .separation-mobile {
+    background-color: #e9c56a69;
+    height: 1px;
     width: 100%;
-    color: black;
-  }
-  .nav-element-mobile:hover {
-    background-color: #47e2d03f;
-    color: red;
-  }
-  .nav-element-mobile:active {
-    background-color: #47e2d03f;
-    color: red;
   }
 
   #offcanvas-navbar {
@@ -109,12 +100,27 @@
   }
 
   #home-link {
-    margin-top: 4rem;
+    margin-top: 1.5rem;
   }
 
   #button-mobile-nav {
     background-color: transparent;
     color: #2a9d8f;
     border: none;
+  }
+
+  #logo-mobile {
+    height: 5rem;
+  }
+
+  #menu-nav {
+    color: #e9c46a;
+    font-weight: 300;
+    font-size: 1.4rem;
+  }
+
+  #masterkey-offcanvas {
+    color: #264653a4;
+    font-weight: 600;
   }
 }
