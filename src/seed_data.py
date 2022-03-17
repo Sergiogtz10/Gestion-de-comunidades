@@ -52,9 +52,10 @@ data = {
             "concept": "ASCENSORES TRESA",
             "amount": "300",
             "date": "30/03/2022",
-            "community_id": 9992
+            "community_id": 9991
         }
     ],
+
 
     "User":[
         {

@@ -1,3 +1,7 @@
-#Profilecommunity{
-    border-radius: 15px;
+.list-group-item{
+    background-color: #264653;
+    color: white;
+}
+#titlecardprofile{
+    color: #2A9D8F;
 }
