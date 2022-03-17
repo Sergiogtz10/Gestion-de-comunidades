@@ -9,12 +9,19 @@ body {
 
 #title {
   color: #2a9d8f;
-  font-weight: 400;
-  font-size: xx-large;
 }
-#boton {
+.create {
   background-color: #2a9d8f;
-  color: white;
-  font-weight: 300;
-  border-radius: 10px;
+  border: none;
+}
+.create:hover {
+  background-color: #41e6d2;
+}
+
+.atras {
+  background-color: #e76f51;
+  border: none;
+}
+.atras:hover {
+  background-color: #ff7958;
 }

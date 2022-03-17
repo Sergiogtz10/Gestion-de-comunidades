@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       incidents: [],
       registerAdminUser: {},
       role: {},
+      user_id: "",
       community: "",
     },
     actions: {
@@ -33,6 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => {
             setStore({ ...store, role: data.role });
+            setStore({ ...store, user_id: data.id });
           })
           .catch((err) => console.error(err));
       },
@@ -46,6 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getIncidents: () => {
         const store = getStore();
+        setStore({ ...store, incidents: [] });
         getIncidents()
           .then((res) => res.json())
           .then((data) => {
@@ -61,15 +64,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         modifyIncidents(id, newIncident)
           .then((res) => res.json())
           .then((data) => {
-            const resetIncidents = store.incidents.filter(
-              (incident) => incident.id != id
-            );
-            setStore({ ...store, incidents: resetIncidents });
-            setStore({ ...store, incidents: [...store.incidents, data] });
+            setStore({ ...store, incidents: [] });
+            getIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    incidents: [...store.incidents, incident],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
           });
       },
       deleteIncident: (incident_id) => {
-        console.log("borrando");
         const store = getStore();
         deleteIncidents(incident_id)
           .then((res) => res.json())
@@ -89,6 +98,9 @@ const getState = ({ getStore, getActions, setStore }) => {
               .catch((err) => console.error(err));
           })
           .catch((err) => console.error(err));
+      },
+      createNewIncident: (body, community, user, common) => {
+        console.log(body, community, user, common);
       },
       addBill: () => {
         console.log("añadiendo factura");

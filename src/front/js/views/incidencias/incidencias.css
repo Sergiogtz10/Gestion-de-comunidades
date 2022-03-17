@@ -3,3 +3,9 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+h1 {
+  color: #2a9d8f;
+}
+.add {
+  background-color: #264653;
+}
