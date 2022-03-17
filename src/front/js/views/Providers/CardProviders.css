@@ -1,0 +1,12 @@
+#CardProvider{
+    border-radius: 10px;
+    background-color: white;
+    font-weight: 300;
+    color: #264653;
+    border-color: #2A9D8F;
+    width: 18rem;
+}
+.card-header{
+    background-color: #2A9D8F;
+    color: white;
+}

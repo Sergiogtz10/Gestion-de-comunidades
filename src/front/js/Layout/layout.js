@@ -10,11 +10,14 @@ import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
 import Profile from "../views/Profile/Profile.jsx";
+import Providers from "../views/Providers/Providers.jsx";
+import FormProviders from "../views/Providers/FormProviders.jsx";
 
 
 
 import injectContext from "../store/appContext";
 import { Footer } from "./Footer/footer.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -47,6 +50,12 @@ const Layout = () => {
             </Route>
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/providers">
+              <Providers />
+            </Route>
+            <Route exact path="/form/provider">
+              <FormProviders />
             </Route>
             <Route>
               <h1>Not found!</h1>
