@@ -5,3 +5,17 @@
 #titlecardprofile{
     color: #2A9D8F;
 }
+#title{
+    color: #2A9D8F;
+}
+
+#inputprofile{
+    background-color: #264653;
+    color: white;
+    font-weight: 500;
+    border-style: groove;
+    border-color: white;
+    border-radius: 10px;
+    padding: 7px;
+    
+}
