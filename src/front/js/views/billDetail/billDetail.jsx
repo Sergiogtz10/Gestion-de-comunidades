@@ -9,7 +9,18 @@ const Bill = () => {
 
   return (
     <div>
-      <h1>Factura</h1>
+      <div className="container m-auto mt-5">
+        <h1>Factura</h1>
+        <hr className="my-3"></hr>
+        <div className="card p-5">
+          <ul>
+            <li>Concepto</li>
+            <li>Cantidad</li>
+            <li>Proveedor</li>
+            <li>Documento</li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
