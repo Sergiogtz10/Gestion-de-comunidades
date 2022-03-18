@@ -9,6 +9,7 @@ const FormFactura = () => {
   const [details, setDetails] = useState("");
   const [amount, setAmount] = useState("");
   const [provider_id, setProvider_id] = useState("");
+  const [document, setDocument] = useState("");
   const { incident_id, community_id } = useParams();
 
   useEffect(() => {
@@ -16,6 +17,12 @@ const FormFactura = () => {
   }, []);
 
   console.log(store.providers);
+
+  const createBill = (e) => {
+    e.preventDefault();
+    let body_parameters = { details, amount, provider_id, document };
+    actions.addBill(body_parameters, community_id, incident_id);
+  };
   return (
     <div className="container m-auto mt-5">
       <h1>Nueva Factura</h1>
@@ -49,7 +56,10 @@ const FormFactura = () => {
 
         <div className="py-3 w-25">
           <label className="form-label">Proveedor</label>
-          <select className="form-select">
+          <select
+            className="form-select"
+            onChange={(e) => setProvider_id(e.target.value)}
+          >
             <option value="">Selecciona proveedor</option>
             {store.providers.map((provider, index) => {
               return (
@@ -68,6 +78,9 @@ const FormFactura = () => {
             className="form-control shadow-sm"
             placeholder="Documento en pdf"
             name="documento"
+            onChange={(e) => {
+              setDocument(e.target.value);
+            }}
           ></input>
         </div>
 

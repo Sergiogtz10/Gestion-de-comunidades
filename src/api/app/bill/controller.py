@@ -17,11 +17,16 @@ def get_all_bills(community_id):
             bill_list.append(bill.serialize())
         return jsonify(bill_list),200
 
+#GET BILL
+def get_bill_by_id(bill_id):
+    return Bill.query.get(bill_id)
+
+
 #CREATE BILLS
 def create_bill(body,community_id,role_id):
     try: 
         if verify_admin(role_id):
-            new_bill=Bill(amount=body["amount"],details=body["details"],provider_id=body["provider_id"],date=body["date"], document=body["document"],community_id=community_id)
+            new_bill=Bill(amount=body["amount"],details=body["details"],provider_id=body["provider_id"], document=body["document"],community_id=community_id)
             db.session.add(new_bill)
             db.session.commit()
             return new_bill.serialize()

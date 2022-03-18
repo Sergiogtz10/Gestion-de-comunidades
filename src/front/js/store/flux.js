@@ -7,6 +7,7 @@ import {
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 import { getProviders_by_community_id } from "../Service/provider.js";
+import { createBill } from "../Service/bill.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -116,8 +117,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ ...store, providers: data }))
           .catch((err) => console.error(err));
       },
-      addBill: () => {
-        console.log("añadiendo factura");
+      addBill: (body, community_id, incident_id) => {
+        console.log(body, community_id, incident_id);
+        createBill(body, community_id, incident_id)
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
       },
     },
   };
