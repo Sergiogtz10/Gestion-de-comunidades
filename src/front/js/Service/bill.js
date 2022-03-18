@@ -17,8 +17,8 @@ export const createBill = async (
   });
 };
 
-export const getBill = async (bill_id) => {
-  const API = URL + `/api/bill/${bill_id}`;
+export const get_bill_by_id = async (bill_id) => {
+  const API = URL + `/api/bill/factura/${bill_id}`;
   const token = getToken();
   return await fetch(API, {
     method: "GET",

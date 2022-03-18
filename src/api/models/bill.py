@@ -23,5 +23,6 @@ class Bill(db.Model):
             "id": self.id,
             "amount":self.amount,
             "details":self.details,
+            "document":self.document
             
         }

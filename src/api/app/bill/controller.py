@@ -19,6 +19,7 @@ def get_all_bills(community_id):
 
 #GET BILL
 def get_bill_by_id(bill_id):
+   
     return Bill.query.get(bill_id)
 
 

@@ -36,10 +36,12 @@ def get_bills(community_id):
     return get_all_bills(community_id)
 
 #route to get bill by id
-@bills.route('/<bill_id>',methods=["GET"])
+@bills.route('/factura/<bill_id>',methods=["GET"])
 @jwt_required()
 def get_bill(bill_id):
-    return get_bill_by_id(bill_id)
+    if bill_id is None:
+        return jsonify('bill not found'), 404
+    return jsonify(get_bill_by_id(bill_id).serialize()),200
 
 #route to modify bills
 @bills.route('/<bill_id>',methods=['PUT'])
