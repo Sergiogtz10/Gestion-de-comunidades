@@ -1,6 +1,7 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { Context } from "../../store/appContext.js";
 import "./incidencias.css";
 
@@ -92,16 +93,19 @@ const Incidencias = () => {
         ) : (
           ""
         )}
-
-        <form className="form-inline col-5 offset-md-7">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            onChange={(e) => search(e)}
-          />
-        </form>
+        {store.role.role_id == 2 ? (
+          <form className="form-inline col-5 offset-md-7">
+            <input
+              className="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              onChange={(e) => search(e)}
+            />
+          </form>
+        ) : (
+          ""
+        )}
       </div>
       <table className="table">
         <thead className="thead-dark">
@@ -123,7 +127,7 @@ const Incidencias = () => {
                 <td>
                   {store.role.role_id == 1 ? (
                     <input
-                      value={inc.description}
+                      defaultValue={inc.description}
                       className="form-control"
                       onKeyDown={(e) => {
                         if (e.keyCode == 13 || e.keyCode == 9) {
@@ -138,7 +142,7 @@ const Incidencias = () => {
                 <td>
                   {store.role.role_id == 1 ? (
                     <input
-                      value={inc.zone}
+                      defaultValue={inc.zone}
                       className="form-control"
                       onKeyDown={(e) => {
                         if (e.keyCode == 13 || e.keyCode == 9) {
