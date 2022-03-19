@@ -43,7 +43,6 @@ const FormNewIncident = () => {
     }
 
     setErr(newerr);
-    console.log(err.description);
 
     if (
       newerr.description == "" &&
@@ -52,7 +51,6 @@ const FormNewIncident = () => {
     ) {
       let body_parameters = { description, zone, severity };
       actions.createNewIncident(body_parameters, store.community);
-      actions.getIncidents();
       setRedirect(true);
     }
   };

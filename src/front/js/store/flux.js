@@ -111,9 +111,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((err) => console.error(err));
       },
       createNewIncident: (body, community) => {
+        const store = getStore();
         createIncident(body, community)
           .then((res) => res.json())
-          .then((data) => console.log(data))
+          .then((data) => {
+            setStore({
+              ...store,
+              incidents: [...store.incidents, data],
+            });
+          })
           .catch((err) => console.log(err));
       },
       getProviders: (community_id) => {
