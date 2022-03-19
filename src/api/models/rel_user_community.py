@@ -1,6 +1,5 @@
 from api.models.db import db
-from api.models.user import User
-from api.models.community import Community
+from api.models.index import User, Community
 
 class Rel_user_community(db.Model):
     id = db.Column(db.Integer, primary_key=True)

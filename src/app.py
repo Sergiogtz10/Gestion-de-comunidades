@@ -1,6 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+
 import os
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
@@ -10,9 +11,19 @@ from api.utils import APIException, generate_sitemap
 from api.models.db import db
 from api.app.user.router import users
 from api.app.community.router import communities
+from api.app.activities.router import activity
+from api.app.incident.router import incidents
+from api.app.bill.router import bills
+from api.app.provider.router import providers
+from api.app.expenses.router import expenses
 from api.admin import setup_admin
 from flask_jwt_extended import JWTManager
 #from models import Person
+
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
@@ -42,7 +53,13 @@ setup_admin(app)
 
 
 app.register_blueprint(users, url_prefix="/api/user")
-app.register_blueprint(communities,url_prefix="/api/community")
+app.register_blueprint(communities, url_prefix="/api/community")
+app.register_blueprint(activity, url_prefix="/api/activities")
+app.register_blueprint(incidents,url_prefix="/api/incident")
+app.register_blueprint(bills,url_prefix="/api/bill")
+app.register_blueprint(providers,url_prefix="/api/provider")
+app.register_blueprint(expenses, name="<some_unique_name>",url_prefix="/api/expenses")
+
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

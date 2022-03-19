@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import "./navbar.css";
 
 //images
 import logo from "../../../img/MasterKeyLogo.png";
 
 //components
-import NavbarLinkDesktop from "../../component/NavbarLinkDesktop/NavbarLinkDesktop.jsx";
-import SettingsIcon from "../../component/SettingsIcon/SettingsIcon.jsx";
-import SettingsMenu from "../../component/SettingsMenu/SettingsMenu.jsx";
-import NavbarLinkMobile from "../../component/NavbarLinkMobile/NavbarLinkMobile.jsx";
+import NavbarLinkDesktop from "../NavbarLinkDesktop/NavbarLinkDesktop.jsx";
+import SettingsIcon from "../SettingsIcon/SettingsIcon.jsx";
+import SettingsMenu from "../SettingsMenu/SettingsMenu.jsx";
+import NavbarLinkMobile from "../NavbarLinkMobile/NavbarLinkMobile.jsx";
 
 const Navbar = () => {
   const [incidentsDropdown, setIncidentsDropdown] = useState(false);

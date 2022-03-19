@@ -3,11 +3,19 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext from "./store/appContext";
 
-//Views
-import Home from "./views/Home/Home.jsx";
+//Navbar and Footer
+import Navbar from "./component/Navbar/Navbar.jsx";
+import Footer from "./component/Footer/Footer.jsx";
 
-//Layout
-import Layout from "./layout/Layout.jsx";
+//Views
+import HomePage from "./views/HomePage/HomePage.jsx";
+import Home from "./views/home/Home.jsx";
+import Login from "./views/LogIn/LogIn.jsx";
+import FormAdmin from "./views/FormAdmin/FormAdmin.jsx";
+import FormCommunity from "./views/FormCommunity/FormCommunity.jsx";
+import FormOwner from "./views/FormOwner/FormOwner.jsx";
+import Landing from "./views/Landing/Landing.jsx";
+import Profile from "./views/Profile/Profile.jsx";
 
 //create your first component
 const AppRouter = () => {
@@ -19,16 +27,37 @@ const AppRouter = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Layout>
-            <Switch>
-              <Route exact path="/home">
-                <Home />
-              </Route>
-              <Route>
-                <h1>Not found!</h1>
-              </Route>
-            </Switch>
-          </Layout>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/form/admin">
+              <FormAdmin />
+            </Route>
+            <Route exact path="/form/community">
+              <FormCommunity />
+            </Route>
+            <Route exact path="/form/owner/:id">
+              <FormOwner />
+            </Route>
+            <Route exact path="/landing">
+              <Landing />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/home">
+              <Navbar />
+              <HomePage />
+              <Footer />
+            </Route>
+            <Route>
+              <h1>Not found!</h1>
+            </Route>
+          </Switch>
         </ScrollToTop>
       </BrowserRouter>
     </div>
