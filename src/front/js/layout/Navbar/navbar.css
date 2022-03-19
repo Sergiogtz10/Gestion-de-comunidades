@@ -83,6 +83,7 @@
 
   nav {
     background-color: #264653;
+    height: 3rem;
   }
 
   .sidebar {
@@ -100,7 +101,7 @@
   }
 
   #home-link {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
   }
 
   #button-mobile-nav {

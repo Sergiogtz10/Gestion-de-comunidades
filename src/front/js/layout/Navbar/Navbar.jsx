@@ -96,27 +96,33 @@ const Navbar = () => {
         </div>
         <div className="offcanvas-body p-0">
           <ul className="m-0 p-0">
-            <NavbarLinkMobile id="home-link" linkName="Home" />
+            <NavbarLinkMobile id="home-link" linkName="Home" redirect="/home" />
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
             </div>
-            <NavbarLinkMobile linkName="Incidencias Comunidad" />
+            <NavbarLinkMobile
+              linkName="Incidencias Comunidad"
+              redirect="/incidencias/comunidad"
+            />
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
             </div>
-            <NavbarLinkMobile linkName="Incidencias Particulares" />
+            <NavbarLinkMobile
+              linkName="Incidencias Particulares"
+              redirect="/incidencias/particulares"
+            />
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
             </div>
-            <NavbarLinkMobile linkName="Actividades" />
+            <NavbarLinkMobile linkName="Actividades" redirect="/actividades" />
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
             </div>
-            <NavbarLinkMobile linkName="Facturas" />
+            <NavbarLinkMobile linkName="Facturas" redirect="/facturas" />
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
             </div>
-            <NavbarLinkMobile linkName="Proveedores" />
+            <NavbarLinkMobile linkName="Proveedores" redirect="/proveedores" />
           </ul>
         </div>
       </div>
