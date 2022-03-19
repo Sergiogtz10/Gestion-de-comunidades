@@ -2,12 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import "./newIncident.css";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const FormNewIncident = () => {
   const { store, actions } = useContext(Context);
   const [description, setDescription] = useState("");
   const [zone, setZone] = useState("");
   const [severity, setSeverity] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     actions.getUser();
@@ -18,6 +20,7 @@ const FormNewIncident = () => {
     e.preventDefault();
     let body_parameters = { description, zone, severity };
     actions.createNewIncident(body_parameters, store.community);
+    setRedirect(true);
   };
 
   return (
@@ -76,6 +79,7 @@ const FormNewIncident = () => {
           Atrás
         </Link>
       </div>
+      {redirect ? <Redirect to="/incidencias/comunidad"></Redirect> : null}
     </div>
   );
 };

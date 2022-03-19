@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../../store/appContext.js";
 import "./newbill.css";
+import { Redirect } from "react-router-dom";
 
 const FormFactura = () => {
   const { store, actions } = useContext(Context);
@@ -11,6 +12,7 @@ const FormFactura = () => {
   const [provider_id, setProvider_id] = useState("");
   const [document, setDocument] = useState("");
   const { incident_id, community_id } = useParams();
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     actions.getProviders(community_id);
@@ -22,6 +24,7 @@ const FormFactura = () => {
     e.preventDefault();
     let body_parameters = { details, amount, provider_id, document };
     actions.addBill(body_parameters, community_id, incident_id);
+    setRedirect(true);
   };
   return (
     <div className="container m-auto mt-5">
@@ -44,7 +47,7 @@ const FormFactura = () => {
         <div className="py-3 w-25">
           <label className="form-label">Cantidad</label>
           <input
-            type="text"
+            type="number"
             className="form-control shadow-sm"
             placeholder="Cantidad"
             name="cantidad"
@@ -95,6 +98,7 @@ const FormFactura = () => {
           Atrás
         </Link>
       </div>
+      {redirect ? <Redirect to="/incidencias/comunidad"></Redirect> : null}
     </div>
   );
 };
