@@ -25,3 +25,7 @@ body {
 .atras:hover {
   background-color: #ff7958;
 }
+
+.error {
+  color: #ff7958;
+}
