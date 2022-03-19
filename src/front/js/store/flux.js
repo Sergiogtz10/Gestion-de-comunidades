@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       incidents: [],
+      incident_copy: [],
       registerAdminUser: {},
       role: {},
       user_id: "",
@@ -54,11 +55,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       getIncidents: () => {
         const store = getStore();
         setStore({ ...store, incidents: [] });
+        setStore({ ...store, incident_copy: [] });
         getIncidents()
           .then((res) => res.json())
           .then((data) => {
             data.map((incident) => {
               setStore({ ...store, incidents: [...store.incidents, incident] });
+              setStore({
+                ...store,
+                incident_copy: [...store.incident_copy, incident],
+              });
             });
           })
           .catch((err) => console.error(err));
@@ -133,6 +139,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ ...store, bill: data });
           })
           .catch((err) => console.error(err));
+      },
+
+      setIncidents: (filteredList) => {
+        const store = getStore();
+        setStore({ ...store, incidents: filteredList });
       },
     },
   };

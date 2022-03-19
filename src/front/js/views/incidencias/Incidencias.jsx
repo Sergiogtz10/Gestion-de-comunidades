@@ -61,8 +61,21 @@ const Incidencias = () => {
     actions.deleteIncident(incident_id);
   };
 
-  const downloadBill = (bill_id) => {
-    console.log(bill_id);
+  const search = (e) => {
+    const inc_search = e.target.value;
+    if (inc_search === "") {
+      actions.getIncidents();
+    } else {
+      const filteredList = store.incident_copy.filter((incident) => {
+        const description = incident.description.toLowerCase();
+        if (description.indexOf(inc_search.toLowerCase()) >= 0) {
+          return incident;
+        }
+      });
+      console.log(filteredList);
+      actions.setIncidents(filteredList);
+      console.log(store.incidents);
+    }
   };
 
   return (
@@ -80,12 +93,13 @@ const Incidencias = () => {
           ""
         )}
 
-        <form className="form-inline col-5">
+        <form className="form-inline col-5 offset-md-7">
           <input
             className="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
+            onChange={(e) => search(e)}
           />
         </form>
       </div>
@@ -109,7 +123,7 @@ const Incidencias = () => {
                 <td>
                   {store.role.role_id == 1 ? (
                     <input
-                      defaultValue={inc.description}
+                      value={inc.description}
                       className="form-control"
                       onKeyDown={(e) => {
                         if (e.keyCode == 13 || e.keyCode == 9) {
@@ -124,7 +138,7 @@ const Incidencias = () => {
                 <td>
                   {store.role.role_id == 1 ? (
                     <input
-                      defaultValue={inc.zone}
+                      value={inc.zone}
                       className="form-control"
                       onKeyDown={(e) => {
                         if (e.keyCode == 13 || e.keyCode == 9) {
@@ -140,7 +154,7 @@ const Incidencias = () => {
                   {store.role.role_id == 1 ? (
                     <select
                       className="form-select"
-                      defaultValue={
+                      value={
                         inc.severity == "Leve"
                           ? "Leve"
                           : inc.severity == "Media"
@@ -161,7 +175,7 @@ const Incidencias = () => {
                   {store.role.role_id == 1 ? (
                     <select
                       className="form-select"
-                      defaultValue={
+                      value={
                         inc.status == "Recibido"
                           ? "Recibido"
                           : inc.status == "En proceso"
@@ -198,19 +212,35 @@ const Incidencias = () => {
 
                 {store.role.role_id == 1 ? (
                   <td>
-                    <Link to={`/nuevaFactura/${inc.id}/${inc.community_id}`}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-file-earmark-plus"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z" />
-                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
-                      </svg>
-                    </Link>
+                    {inc.bill_id ? (
+                      <Link to={`/factura/${inc.bill_id}`}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-receipt"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                          <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                      </Link>
+                    ) : (
+                      <Link to={`/nuevaFactura/${inc.id}/${inc.community_id}`}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-file-earmark-plus"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z" />
+                          <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                        </svg>
+                      </Link>
+                    )}
                   </td>
                 ) : (
                   <td>
