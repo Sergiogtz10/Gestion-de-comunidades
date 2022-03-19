@@ -13,8 +13,8 @@ const Bill = () => {
     actions.getBill(bill_id);
   }, []);
   return (
-    <div>
-      <div className="container m-auto mt-5">
+    <div className="container m-auto mt-5">
+      <div>
         <h1>Factura</h1>
         <hr className="my-3"></hr>
         <div>
@@ -24,6 +24,11 @@ const Bill = () => {
             <li className="list-group-item">Documento:{store.bill.document}</li>
           </ul>
         </div>
+      </div>
+      <div className="py-3 text-start ">
+        <Link className="btn btn-primary atras" to={"/incidencias/comunidad"}>
+          Atrás
+        </Link>
       </div>
     </div>
   );
