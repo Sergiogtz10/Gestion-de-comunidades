@@ -15,8 +15,8 @@ export const getDataUsers = () =>{
 
 }
 
-export const putDataUsers = () =>{
-  const API = URL + "/api/user/modify";
+export const putDataUsers = (user_id, body) =>{
+  const API = URL + "/api/user/modify" + user_id;
   const token = getToken();
   return fetch(API, {
     method: "PUT",
@@ -25,7 +25,25 @@ export const putDataUsers = () =>{
     
     Authorization: `Bearer ${token} `
     },
+    body: JSON.stringify({
+      first_name: body.first_name,
+      last_name: body.last_name,
+      email: body.email,
+      phone_number: body.phone_number,
+    }),
     
   });
   
 }
+
+export const deleteUserData = (user_id) => {
+  const API = URL + "/api/user/delete/" + user_id;
+  const token = getToken();
+  return fetch(API, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

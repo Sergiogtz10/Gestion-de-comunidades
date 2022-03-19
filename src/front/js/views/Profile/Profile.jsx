@@ -1,95 +1,170 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getDataUsers } from "../../Service/dataprofile.js";
+import { getDataUsers, putDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
 
+const initialStateErr = {
+  first_name: "",
+  last_name: "",
+  flat_number: "",
+  email: "",
+  phone_number: "",
+};
+
 const Profile = () => {
-  
-  const[ dataUser, setDataUser] = useState({
+  const [dataUser, setDataUser] = useState({
     first_name: "",
     last_name: "",
     email: "",
     phone_number: "",
-    password: "",
-  
   });
-  
-    const getdata = async () => {
-    try{
+  const [dataUserCopy, setdataUserCopy] = useState({});
+  const [edit, setedit] = useState(false);
+  const[ err, setErr]= useState({initialStateErr})
+
+  const getData = async () => {
+    try {
       const response = await getDataUsers();
-      const data =  await response.json();
+      const data = await response.json();
       console.log(data);
       let newUser = {
         first_name: data.first_name,
         last_name: data.last_name,
         email: data.email,
-        phone_number: data.phone_number, 
-        password: data.password,
-         
-      }
-      setDataUser(newUser);
-      console.log(newUser)
-    }catch(error){
-      console.log(error)
-    }
+        phone_number: data.phone_number,
+      };
 
+      setDataUser(newUser);
+      setdataUserCopy(newUser);
+      console.log(newUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setdataUserCopy({ ...dataUserCopy, [name]: value });
   }
-  useEffect(()=>{
-    getdata()
-  }, [])
+  console.log(dataUserCopy)
+
+  const handleClick = (e) =>{
+  e.preventDefault()  
+  let newerr = { ...initialStateErr };
+  if (dataUserCopy.first_name.length == 0) {
+    newerr = { ...newerr, first_name: "Introduzca su nombre" };
+  }
+  if (dataUserCopy.last_name.length == 0) {
+    newerr = { ...newerr, last_name: "Introduzca sus apellidos" };
+  }
+  if (dataUserCopy.email.length == 0) {
+    newerr = { ...newerr, email: "Introduzca su email" };
+  }
+  if (dataUserCopy.phone_number.length !== 9) {
+    newerr = { ...newerr, phone_number: "Introduzca su móvil" };
+  }
+  setErr(newerr);
+  }
+  const putData = async () => {
+    try {
+      const response = await putDataUsers();
+      const updatedData = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+ 
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div>
-      <h3 id="title" className="container mt-5" style={{width: "500px"}}>{dataUser.first_name + " "+ dataUser.last_name}</h3>
-      <div id="card" className="container card p-4" style={{width: "500px"}} >
-      <h4 id="titlecardprofile" className="mb-4 text-center">Datos personales</h4>
+      <h3 id="title" className="container mt-5" style={{ width: "500px" }}>
+        {dataUser.first_name + " " + dataUser.last_name}
+      </h3>
+      <div id="card" className="container card p-4" style={{ width: "500px" }}>
+        <h4 id="titlecardprofile" className="text-center">
+          Datos personales
+        </h4>
+        <hr className="my-3"></hr>
         <div>
-          <form className="text-center">
-              <div className="mb-3">
-                <input type="text" defaultValue={dataUser.first_name}  id="inputprofile"></input>
-              </div>
-              <div className="mb-3">
-                <input type="text" defaultValue={dataUser.last_name}  id="inputprofile"></input>
-              </div>
-              <div className="mb-3">
-                <input type="text" defaultValue={dataUser.email}  id="inputprofile"></input>
-              </div>
-              <div className="mb-3">
-                <input type="text" defaultValue={dataUser.phone_number}  id="inputprofile"></input>
-              </div>
-              <div className="mb-3">
-                <input type="text" placeholder="Contraseña" defaultValue={dataUser.password}  id="inputprofile"></input>
-              </div>
-              <div className="mb-3">
-                <input type="text" placeholder="Repetir contraseña" id="inputprofile"></input>
-              </div>
-              <div className="p-1">
-                <button type="submit" className="btn btn-primary" id="boton">
-                  Actualizar
-                </button>
-              </div>
-            </form>
+          <form className="text-center" onSubmit={handleClick} onChange={handleChange}>
+            <div className="mb-3">
+              <input
+                type="text"
+                defaultValue={dataUser.first_name}
+                id="inputprofile"
+                disabled={!edit}
+                name="first_name"
+              ></input>
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                defaultValue={dataUser.last_name}
+                id="inputprofile"
+                disabled={!edit}
+                name="last_name"
+              ></input>
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                defaultValue={dataUser.email}
+                id="inputprofile"
+                disabled={!edit}
+                name= "email"
+              ></input>
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                defaultValue={dataUser.phone_number}
+                id="inputprofile"
+                disabled={!edit}
+                name="phone_number"
+              ></input>
+            </div>
+          </form>
+          <div className="p-1">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              id="boton"
+              onClick={() => setedit(true)}
+            >
+              Actualizar
+            </button>
           </div>
         </div>
-        <div className="p-4">
-          <div id="card" className="container text-center card p-4" style={{width: "500px"}}>
-              <h4 id="titlecardprofile" className=" text-center mb-4">Comunidades</h4>
-             
-              <div className="d-flex flex-column col-md-5 gap-3 p-3">
-                <Link to="/form/community">
-                  <button type="submit" className="btn btn-primary" id="boton">
-                  Añadir comunidad
-                  </button>
-                </Link>
-                <button type="submit" className="btn btn-primary" id="boton">
-                Añadir propietario
-                </button>
-                <button type="submit" className="btn btn-primary" id="boton">
-                Actualizar
-                </button>
-              </div>
+      </div>
+      <div className="p-4">
+        <div
+          id="card"
+          className="container text-center card p-4"
+          style={{ width: "500px" }}
+        >
+          <h4 id="titlecardprofile" className=" text-center mb-4">
+            Comunidades
+          </h4>
+
+          <div className="d-flex flex-column col-md-5 gap-3 p-3">
+            <Link to="/form/community">
+              <button type="submit" className="btn btn-primary" id="boton">
+                Añadir comunidad
+              </button>
+            </Link>
+            <button type="submit" className="btn btn-primary" id="boton">
+              Añadir propietario
+            </button>
+            <button type="submit" className="btn btn-primary" id="boton">
+              Actualizar
+            </button>
           </div>
         </div>
+      </div>
     </div>
   );
 };
