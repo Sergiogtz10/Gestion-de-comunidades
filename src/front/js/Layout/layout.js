@@ -13,6 +13,7 @@ import Profile from "../views/Profile/Profile.jsx";
 import Incidencias from "../views/incidencias/Incidencias.jsx";
 import IncidenciasOwner from "../views/incidenciasOwner/incidenciasOwner.jsx";
 import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
+import FormNewParticularIncident from "../views/FormNewParticularIncident/newParticularIncident.jsx";
 import FormFactura from "../views/FormNewBill/NewBill.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
 
@@ -54,11 +55,14 @@ const Layout = () => {
             <Route exact path="/incidencias/comunidad">
               <Incidencias />
             </Route>
-            <Route exact path="/incidencias/:id">
+            <Route exact path="/incidencias/particulares">
               <IncidenciasOwner />
             </Route>
             <Route exact path="/formNuevaIncidencia">
               <FormNewIncident />
+            </Route>
+            <Route exact path="/formNuevaIncidencia">
+              <FormNewParticularIncident />
             </Route>
             <Route exact path="/nuevaFactura/:incident_id/:community_id">
               <FormFactura />
