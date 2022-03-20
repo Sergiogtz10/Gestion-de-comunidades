@@ -2,6 +2,7 @@ import {
   createIncident,
   deleteIncidents,
   getIncidents,
+  getOwnerIncidents,
   modifyIncidents,
 } from "../Service/incident.js";
 import { getUser } from "../Service/users.js";
@@ -14,6 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       incidents: [],
       incident_copy: [],
+      owner_incidents: [],
       registerAdminUser: {},
       role: {},
       user_id: "",
@@ -64,6 +66,21 @@ const getState = ({ getStore, getActions, setStore }) => {
               setStore({
                 ...store,
                 incident_copy: [...store.incident_copy, incident],
+              });
+            });
+          })
+          .catch((err) => console.error(err));
+      },
+      getOwnerIncident: () => {
+        const store = getStore();
+        setStore({ ...store, owner_incidents: [] });
+        getOwnerIncidents()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((incident) => {
+              setStore({
+                ...store,
+                owner_incidents: [...store.owner_incidents, incident],
               });
             });
           })

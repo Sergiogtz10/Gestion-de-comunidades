@@ -7,6 +7,13 @@ export const getIncidents = async () => {
   });
 };
 
+export const getOwnerIncidents = async () => {
+  const API = URL + `/api/incident/particular`;
+  return await fetch(API, {
+    method: "GET",
+  });
+};
+
 export const modifyIncidents = async (incident_id, body) => {
   const API = URL + `/api/incident/` + incident_id;
   const token = getToken();
