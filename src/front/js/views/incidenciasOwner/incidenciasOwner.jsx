@@ -64,17 +64,17 @@ const IncidenciasOwner = () => {
   const search = (e) => {
     const inc_search = e.target.value;
     if (inc_search === "") {
-      actions.getIncidents();
+      actions.getOwnerIncidents();
     } else {
-      const filteredList = store.incident_copy.filter((incident) => {
+      const filteredList = store.owner_incident_copy.filter((incident) => {
         const description = incident.description.toLowerCase();
         if (description.indexOf(inc_search.toLowerCase()) >= 0) {
           return incident;
         }
       });
-      console.log(filteredList);
-      actions.setIncidents(filteredList);
-      console.log(store.incidents);
+
+      actions.setOwnerIncidents(filteredList);
+      console.log(store.owner_incidents);
     }
   };
 

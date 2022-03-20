@@ -17,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       incidents: [],
       incident_copy: [],
       owner_incidents: [],
+      owner_incident_copy: [],
       registerAdminUser: {},
       role: {},
       user_id: "",
@@ -75,6 +76,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       getOwnerIncidents: () => {
         const store = getStore();
         setStore({ ...store, owner_incidents: [] });
+        setStore({ ...store, owner_incident_copy: [] });
+
         getOwnerIncidents()
           .then((res) => res.json())
           .then((data) => {
@@ -82,6 +85,10 @@ const getState = ({ getStore, getActions, setStore }) => {
               setStore({
                 ...store,
                 owner_incidents: [...store.owner_incidents, incident],
+              });
+              setStore({
+                ...store,
+                owner_incident_copy: [...store.owner_incident_copy, incident],
               });
             });
           })
@@ -217,6 +224,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       setIncidents: (filteredList) => {
         const store = getStore();
         setStore({ ...store, incidents: filteredList });
+      },
+      setOwnerIncidents: (filteredList) => {
+        const store = getStore();
+        setStore({ ...store, owner_incidents: filteredList });
       },
     },
   };
