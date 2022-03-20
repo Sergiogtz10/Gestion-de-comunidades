@@ -14,17 +14,42 @@ const FormFactura = () => {
   const { incident_id, community_id } = useParams();
   const [redirect, setRedirect] = useState(false);
 
+  const initialStateErr = {
+    details: "",
+    amount: "",
+    provider_id: "",
+  };
+  const [err, setErr] = useState(initialStateErr);
+
   useEffect(() => {
     actions.getProviders(community_id);
   }, []);
 
-  console.log(store.providers);
-
   const createBill = (e) => {
     e.preventDefault();
-    let body_parameters = { details, amount, provider_id, document };
-    actions.addBill(body_parameters, community_id, incident_id);
-    setRedirect(true);
+    let newerr = { ...initialStateErr };
+    if (details.length == 0) {
+      newerr = {
+        ...newerr,
+        details: "Introduce el concepto de la factura",
+      };
+    }
+    if (amount.length == 0) {
+      newerr = { ...newerr, amount: "Introduce la cantidad" };
+    }
+    if (provider_id == "") {
+      newerr = { ...newerr, provider_id: "Selecciona un proveedor" };
+    }
+    setErr(newerr);
+    if (
+      newerr.details == "" &&
+      newerr.amount == "" &&
+      newerr.provider_id == ""
+    ) {
+      let body_parameters = { details, amount, provider_id, document };
+      actions.addBill(body_parameters, community_id, incident_id);
+      setRedirect(true);
+    }
   };
   return (
     <div className="container m-auto mt-5">
@@ -42,6 +67,9 @@ const FormFactura = () => {
               setDetails(e.target.value);
             }}
           ></textarea>
+          {err.details != "" ? (
+            <div className="error">{err.details}</div>
+          ) : null}
         </div>
 
         <div className="py-3 w-25">
@@ -55,6 +83,7 @@ const FormFactura = () => {
               setAmount(e.target.value);
             }}
           ></input>
+          {err.amount != "" ? <div className="error">{err.amount}</div> : null}
         </div>
 
         <div className="py-3 w-25">
@@ -72,6 +101,9 @@ const FormFactura = () => {
               );
             })}
           </select>
+          {err.provider_id != "" ? (
+            <div className="error">{err.provider_id}</div>
+          ) : null}
         </div>
 
         <div className="py-3 w-25">
