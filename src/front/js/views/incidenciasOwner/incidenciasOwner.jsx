@@ -85,7 +85,7 @@ const IncidenciasOwner = () => {
         {store.role.role_id == 2 ? (
           <Link
             className="btn btn-secondary col-2 mx-4 add"
-            to="/formNuevaIncidencia"
+            to="/formNuevaIncidenciaParticular"
           >
             Añadir incidencia
           </Link>

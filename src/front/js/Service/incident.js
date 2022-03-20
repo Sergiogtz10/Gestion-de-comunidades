@@ -64,3 +64,17 @@ export const createIncident = async (body_parameters, community_id) => {
     body: JSON.stringify(body_parameters),
   });
 };
+
+export const createOwnerIncident = async (body_parameters, community_id) => {
+  const API = URL + `/api/incident/owner/` + community_id;
+  const token = getToken();
+  return await fetch(API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body_parameters),
+  });
+};

@@ -1,5 +1,6 @@
 import {
   createIncident,
+  createOwnerIncident,
   deleteIncidents,
   getIncidents,
   getOwnerIncidents,
@@ -176,6 +177,15 @@ const getState = ({ getStore, getActions, setStore }) => {
               ...store,
               incidents: [...store.incidents, data],
             });
+          })
+          .catch((err) => console.log(err));
+      },
+      createNewParticularIncident: (body, community) => {
+        const store = getStore();
+        createOwnerIncident(body, community)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
           })
           .catch((err) => console.log(err));
       },

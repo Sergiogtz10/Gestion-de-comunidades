@@ -50,7 +50,7 @@ const FormNewParticularIncident = () => {
       newerr.severity == ""
     ) {
       let body_parameters = { description, zone, severity };
-      actions.createNewIncident(body_parameters, store.community);
+      actions.createNewParticularIncident(body_parameters, store.community);
       setRedirect(true);
     }
   };
@@ -114,7 +114,10 @@ const FormNewParticularIncident = () => {
         </div>
       </form>
       <div className="py-3 text-start ">
-        <Link className="btn btn-primary atras" to={"/incidencias/comunidad"}>
+        <Link
+          className="btn btn-primary atras"
+          to={"/incidencias/particulares"}
+        >
           Atrás
         </Link>
       </div>
