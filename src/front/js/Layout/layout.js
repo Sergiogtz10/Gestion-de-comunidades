@@ -10,7 +10,10 @@ import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
 import Profile from "../views/Profile/Profile.jsx";
-
+import Incidencias from "../views/incidencias/Incidencias.jsx";
+import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
+import FormFactura from "../views/FormNewBill/NewBill.jsx";
+import Bill from "../views/billDetail/billDetail.jsx";
 
 import injectContext from "../store/appContext";
 import { Footer } from "./Footer/footer.jsx";
@@ -47,6 +50,18 @@ const Layout = () => {
             <Route exact path="/profile">
               <Profile />
             </Route>
+            <Route exact path="/incidencias/comunidad">
+              <Incidencias />
+            </Route>
+            <Route exact path="/formNuevaIncidencia">
+              <FormNewIncident />
+            </Route>
+            <Route exact path="/nuevaFactura/:incident_id/:community_id">
+              <FormFactura />
+            </Route>
+            <Route exact path="/factura/:bill_id">
+              <Bill />
+            </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
@@ -59,4 +74,3 @@ const Layout = () => {
 };
 
 export default injectContext(Layout);
-

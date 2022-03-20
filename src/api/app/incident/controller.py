@@ -5,7 +5,7 @@ from flask import jsonify
 #GET ALL COMMON INCIDENTS
 def get_common():
     incident_list=[]
-    incidents=db.session.query(Incident).filter(Incident.common==True)
+    incidents=db.session.query(Incident).filter(Incident.common==True).order_by(Incident.id.asc())
     
     if not incidents: 
         return jsonify("There are no incidents"),404
@@ -19,7 +19,7 @@ def get_common():
 #GET INCIDENTS BY USER ID
 def get_owner_incidents(user_id):
     incident_list=[]
-    incidents=db.session.query(Incident).filter(Incident.user_id==user_id)
+    incidents=db.session.query(Incident).filter(Incident.user_id==user_id).order_by(Incident.id.asc())
     
     if not incidents: 
         return jsonify("There are no incidents"),404
