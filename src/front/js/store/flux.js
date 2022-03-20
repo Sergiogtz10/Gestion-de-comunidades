@@ -106,6 +106,25 @@ const getState = ({ getStore, getActions, setStore }) => {
               .catch((err) => console.error(err));
           });
       },
+      modifyParticularIncidents: (id, newIncident) => {
+        const store = getStore();
+        modifyIncidents(id, newIncident)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, owner_incidents: [] });
+            getOwnerIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    owner_incidents: [...store.owner_incidents, incident],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          });
+      },
       deleteIncident: (incident_id) => {
         const store = getStore();
         deleteIncidents(incident_id)
@@ -113,7 +132,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             console.log(data);
             setStore({ ...store, incidents: [] });
-            getIncidents()
+            getOwnerIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    owner_incidents: [...store.owner_incidents, incident],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          })
+          .catch((err) => console.error(err));
+      },
+      deleteOwnerIncident: (incident_id) => {
+        const store = getStore();
+        deleteIncidents(incident_id)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setStore({ ...store, owner_incidents: [] });
+            getOwnerIncidents()
               .then((res) => res.json())
               .then((data) => {
                 data.map((incident) => {

@@ -13,7 +13,6 @@ const IncidenciasOwner = () => {
     actions.getOwnerIncidents();
   }, []);
 
-  console.log(store.owner_incidents);
   const severityChange = (inc, e) => {
     const newIncident = {
       description: inc.description,
@@ -22,7 +21,7 @@ const IncidenciasOwner = () => {
       status: inc.status,
     };
 
-    actions.modifyIncidents(inc.id, newIncident);
+    actions.modifyParticularIncidents(inc.id, newIncident);
   };
 
   const statusChange = (inc, e) => {
@@ -33,7 +32,7 @@ const IncidenciasOwner = () => {
       status: e.target.value,
     };
 
-    actions.modifyIncidents(inc.id, newIncident);
+    actions.modifyParticularIncidents(inc.id, newIncident);
   };
 
   const descriptionChange = (inc, e) => {
@@ -44,7 +43,7 @@ const IncidenciasOwner = () => {
       status: inc.status,
     };
 
-    actions.modifyIncidents(inc.id, newIncident);
+    actions.modifyParticularIncidents(inc.id, newIncident);
   };
 
   const zoneChange = (inc, e) => {
@@ -55,11 +54,11 @@ const IncidenciasOwner = () => {
       status: inc.status,
     };
 
-    actions.modifyIncidents(inc.id, newIncident);
+    actions.modifyParticularIncidents(inc.id, newIncident);
   };
 
   const deleteInc = (incident_id) => {
-    actions.deleteIncident(incident_id);
+    actions.deleteOwnerIncident(incident_id);
   };
 
   const search = (e) => {
@@ -81,9 +80,9 @@ const IncidenciasOwner = () => {
 
   return (
     <div className="container m-auto mt-5">
-      <h1>Incidencias de la comunidad</h1>
+      <h1>Incidencias particulares</h1>
       <div className="navbar row">
-        {store.role.role_id == 1 ? (
+        {store.role.role_id == 2 ? (
           <Link
             className="btn btn-secondary col-2 mx-4 add"
             to="/formNuevaIncidencia"
