@@ -9,8 +9,14 @@ export const getIncidents = async () => {
 
 export const getOwnerIncidents = async () => {
   const API = URL + `/api/incident/particular`;
+  const token = getToken();
   return await fetch(API, {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+
+      Authorization: `Bearer ${token}`,
+    },
   });
 };
 

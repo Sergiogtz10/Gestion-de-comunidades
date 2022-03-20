@@ -10,9 +10,10 @@ const IncidenciasOwner = () => {
   useEffect(() => {
     actions.getUser();
     actions.getCommunity();
-    actions.getIncidents();
+    actions.getOwnerIncidents();
   }, []);
 
+  console.log(store.owner_incidents);
   const severityChange = (inc, e) => {
     const newIncident = {
       description: inc.description,
@@ -119,8 +120,8 @@ const IncidenciasOwner = () => {
           </tr>
         </thead>
         <tbody>
-          {store.incidents
-            .filter((incident) => incident.community_id == store.community)
+          {store.owner_incidents
+            .filter((incident) => incident.common == false)
             .map((inc, index) => {
               return (
                 <tr key={index}>

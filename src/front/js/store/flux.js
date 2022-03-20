@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
-      getOwnerIncident: () => {
+      getOwnerIncidents: () => {
         const store = getStore();
         setStore({ ...store, owner_incidents: [] });
         getOwnerIncidents()
