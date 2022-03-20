@@ -11,7 +11,7 @@ const IncidenciasOwner = () => {
     actions.getUser();
     actions.getCommunity();
     actions.getOwnerIncidents();
-    actions.getIncidents();
+    actions.getAllIncidents();
   }, []);
   console.log(store.incidents);
 
