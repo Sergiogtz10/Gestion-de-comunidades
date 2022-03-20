@@ -3,6 +3,9 @@
     font-size: 40px;
     font-family: 'Righteous', cursive;
 }
+#navbarcolor{
+    background-color: white;
+}
 #titlemodal{
     color:white;
     font-weight: 700;

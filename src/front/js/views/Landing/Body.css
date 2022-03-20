@@ -1,6 +1,6 @@
 #backgroundbody {
     background-image: url(https://cdn.pixabay.com/photo/2019/04/13/10/46/abstract-4124262_960_720.jpg);
-    height: 550px;
+    height:600px;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,4 +32,5 @@
 
 #textregister{
   font-size: 11px;
+  color:#264653;
 }

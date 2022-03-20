@@ -4,7 +4,7 @@ import "./NavbarLanding.css"
 const NavbarLanding = () =>{
     return (
         <div>
-            <nav className="navbar navbar-light">
+            <nav id="navbarcolor" className="navbar navbar-light fixed-top">
                 <div className="container-fluid">
                     <a id="navbartitle" className="navbar-brand">MasterKey</a>
                     <form className="d-flex">
