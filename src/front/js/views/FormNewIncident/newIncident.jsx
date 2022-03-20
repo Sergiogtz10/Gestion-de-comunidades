@@ -50,7 +50,7 @@ const FormNewIncident = () => {
       newerr.severity == ""
     ) {
       let body_parameters = { description, zone, severity };
-      actions.createNewParticularIncident(body_parameters, store.community);
+      actions.createNewIncident(body_parameters, store.community);
       setRedirect(true);
     }
   };
