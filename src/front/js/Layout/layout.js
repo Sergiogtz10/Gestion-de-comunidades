@@ -74,19 +74,3 @@ const Layout = () => {
 };
 
 export default injectContext(Layout);
-
-/*
-<Route exact path="/FormAdmin" />
-<Route exact path="/FormCommunity" />
-<Route exact path="/FormOwner" />
-<Route exact path="/Landing" />
-<Route exact path="/LogIn" /> 
-
-
-import FormAdmin from "../views/Forms/FormAdmin";
-import FormCommunity from "../views/Forms/FormCommunity";
-import FormOwner from "../views/Forms/FormOwner";
-import Landing from "../views/Landing/Landing";
-import Login from "../views/LogIn/LogIn";
-
-*/

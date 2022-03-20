@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.activities.controller import create_new_expense, delete_expense, modify_expense, get_expense_by_community_id
-from api.app.user.controler import get_user_by_id
+from api.app.expenses.controller import create_new_expense, delete_expense, modify_expense, get_expense_by_community_id
+from api.app.user.controller import get_user_by_id
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
-expenses = Blueprint('expenses', __name__)
+expenses=Blueprint('expenses', __name__)
 
 #Create expense
 @expenses.route('/create/<community_id>', methods=['POST'])

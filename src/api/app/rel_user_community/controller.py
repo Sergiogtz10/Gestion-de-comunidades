@@ -23,3 +23,15 @@ def create_rel(community_id, user_id):
         print('[ERROR REGISTER USER]: ', err)
         return None
 
+def delete_rel(id_user_delete):
+    try:
+        if id_user_delete is None:
+            return False
+        Rel_user_community.query.filter(Rel_user_community.user_id == id_user_delete).delete()
+        db.session.commit()
+        return jsonify('Relación borrada'), 200
+    
+    except Exception as err:
+        db.session.rollback()
+        print('[ERROR DELETE REL: ]', err)
+        return None

@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
 
 const Profile = () => {
+  const [dataUser, setDataUser] = useState({});
+  const getdata = async () => {
+    try {
+      const response = await getDataUsers();
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getdata();
+  }, []);
+
   return (
     <div>
       <h3 className="container fluid">Nombre de usuario</h3>
-      <h5 className="container fluid">Datos personales</h5>
-      <div id="Profilecommunity" className="container fluid card p-4">
+      <div
+        id="card"
+        className="container fluid card p-4"
+        style={{ width: "700px" }}
+      >
+        <h4 id="titlecardprofile">Datos personales</h4>
         <div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">Nombre</li>
@@ -14,29 +34,34 @@ const Profile = () => {
             <li className="list-group-item">Email</li>
             <li className="list-group-item">Teléfono</li>
           </ul>
-          <button type="submit" className="btn btn-primary" id="boton">
-            Actualizar
-          </button>
+          <div className="p-1">
+            <button type="submit" className="btn btn-primary" id="boton">
+              Actualizar
+            </button>
+          </div>
         </div>
       </div>
-      <h5 className="container fluid">Comunidades</h5>
-      <div id="Profilecommunity" className="container fluid card p-4">
-        <div>
-          <select className="form-select">
-            <option selected>Seleccionar comunidad</option>
-            <option value="1">Calle Mayor, 22</option>
-          </select>
-          <div className="d-flex flex-column col-md-4 gap-3 p-3">
-          <button type="submit" className="btn btn-primary" id="boton">
-            Añadir comunidad
-          </button>
-          <button type="submit" className="btn btn-primary" id="boton">
-            Añadir propietario
-          </button>
-          <button type="submit" className="btn btn-primary" id="boton">
-            Actualizar
-          </button>
-        </div>
+      <div className="p-4">
+        <div
+          id="card"
+          className="container fluid card p-4"
+          style={{ width: "700px" }}
+        >
+          <h4 id="titlecardprofile">Comunidades</h4>
+
+          <div className="d-flex flex-column col-md-5 gap-3 p-3">
+            <Link to="/form/community">
+              <button type="submit" className="btn btn-primary" id="boton">
+                Añadir comunidad
+              </button>
+            </Link>
+            <button type="submit" className="btn btn-primary" id="boton">
+              Añadir propietario
+            </button>
+            <button type="submit" className="btn btn-primary" id="boton">
+              Actualizar
+            </button>
+          </div>
         </div>
       </div>
     </div>

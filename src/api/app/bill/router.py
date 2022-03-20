@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
 from api.app.bill.controller import create_bill,get_all_bills,modify_bill,get_bill_by_id
 from api.app.incident.controller import add_bill
-from api.app.user.controler import get_user_by_id
+from api.app.user.controller import get_user_by_id
 from api.models.index import Bill
 
 

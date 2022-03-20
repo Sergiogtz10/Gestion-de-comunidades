@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
-from api.app.user.controler import get_user_by_id
-from api.app.provider.controller import get_all_providers,create_provider,modify_provider,delete_provider
+from api.app.user.controller import get_user_by_id
+from api.app.provider.controller import get_all_providers,create_provider,modify_provider, delete_provider
 from api.models.index import Provider
 
 providers=Blueprint('providers',__name__)
