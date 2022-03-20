@@ -14,6 +14,18 @@ def get_common():
             incident_list.append(incident.serialize())
         return jsonify(incident_list),200
 
+#GET ALL PARTICULAR INCIDENTS
+def get_all_particular():
+    incident_list=[]
+    incidents=db.session.query(Incident).filter(Incident.common==False).order_by(Incident.id.asc())
+    
+    if not incidents: 
+        return jsonify("There are no incidents"),404
+    else:
+        for incident in incidents:
+            incident_list.append(incident.serialize())
+        return jsonify(incident_list),200
+
 
 
 #GET INCIDENTS BY USER ID

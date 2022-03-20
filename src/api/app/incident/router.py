@@ -49,6 +49,11 @@ def get_particular_incidents():
 @incidents.route('/common',methods=['GET'])
 def get_common_incidents():
     return get_common()
+
+#route to get all particular incidents
+@incidents.route('/allParticular',methods=['GET'])
+def get_allParticular_incidents():
+    return get_all_particular()
     
 #route to delete incidents
 @incidents.route('/<incident_id>',methods=['DELETE'])
