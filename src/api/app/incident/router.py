@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.incident.controller import create_incident,get_common,get_owner_incidents,delete_incident,modify_incident
+from api.app.incident.controller import create_incident,get_common,get_owner_incidents,delete_incident,modify_incident, get_all_particular
 from api.app.user.controller import get_user_by_id
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
