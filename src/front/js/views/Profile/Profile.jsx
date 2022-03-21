@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getDataUsers, putDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
 
+
 const initialStateErr = {
   first_name: "",
   last_name: "",
@@ -20,7 +21,7 @@ const Profile = () => {
   });
   const [dataUserCopy, setdataUserCopy] = useState({});
   const [edit, setedit] = useState(false);
-  const[ err, setErr]= useState({initialStateErr})
+  const [err, setErr] = useState({ initialStateErr });
 
   const getData = async () => {
     try {
@@ -45,36 +46,39 @@ const Profile = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setdataUserCopy({ ...dataUserCopy, [name]: value });
-  }
-  console.log(dataUserCopy)
+    setDataUser({ ...dataUser, [name]: value });
+  };
+  console.log(dataUser);
 
-  const handleClick = (e) =>{
-  e.preventDefault()  
-  let newerr = { ...initialStateErr };
-  if (dataUserCopy.first_name.length == 0) {
-    newerr = { ...newerr, first_name: "Introduzca su nombre" };
-  }
-  if (dataUserCopy.last_name.length == 0) {
-    newerr = { ...newerr, last_name: "Introduzca sus apellidos" };
-  }
-  if (dataUserCopy.email.length == 0) {
-    newerr = { ...newerr, email: "Introduzca su email" };
-  }
-  if (dataUserCopy.phone_number.length !== 9) {
-    newerr = { ...newerr, phone_number: "Introduzca su móvil" };
-  }
-  setErr(newerr);
-  }
+  const handleClick = (e) => {
+    e.preventDefault();
+    let newerr = { ...initialStateErr };
+    if (dataUser.first_name.length == 0) {
+      newerr = { ...newerr, first_name: "Introduzca su nombre" };
+    }
+    if (dataUser.last_name.length == 0) {
+      newerr = { ...newerr, last_name: "Introduzca sus apellidos" };
+    }
+    if (dataUser.email.length == 0) {
+      newerr = { ...newerr, email: "Introduzca su email" };
+    }
+    if (dataUser.phone_number.length !== 9) {
+      newerr = { ...newerr, phone_number: "Introduzca su móvil" };
+    }
+    setErr(newerr);
+    putData();
+  };
   const putData = async () => {
     try {
-      const response = await putDataUsers();
+      const response = await putDataUsers(dataUser);
       const updatedData = await response.json();
+      setedit(false)
+      console.log(updatedData)
     } catch (error) {
       console.log(error);
     }
   };
- 
+
   useEffect(() => {
     getData();
   }, []);
@@ -90,7 +94,11 @@ const Profile = () => {
         </h4>
         <hr className="my-3"></hr>
         <div>
-          <form className="text-center" onSubmit={handleClick} onChange={handleChange}>
+          <form
+            className="text-center"
+            onSubmit={handleClick}
+            onChange={handleChange}
+          >
             <div className="mb-3">
               <input
                 type="text"
@@ -115,7 +123,7 @@ const Profile = () => {
                 defaultValue={dataUser.email}
                 id="inputprofile"
                 disabled={!edit}
-                name= "email"
+                name="email"
               ></input>
             </div>
             <div className="mb-3">
@@ -127,6 +135,9 @@ const Profile = () => {
                 name="phone_number"
               ></input>
             </div>
+            <button type="submit" className="btn btn-primary" id="boton">
+              Save
+            </button>
           </form>
           <div className="p-1">
             <button
