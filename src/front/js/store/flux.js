@@ -177,13 +177,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             console.log(data);
             setStore({ ...store, incidents: [] });
-            getOwnerIncidents()
+            getIncidents()
               .then((res) => res.json())
               .then((data) => {
                 data.map((incident) => {
                   setStore({
                     ...store,
-                    owner_incidents: [...store.owner_incidents, incident],
+                    incidents: [...store.incidents, incident],
                   });
                 });
               })
@@ -198,13 +198,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             console.log(data);
             setStore({ ...store, owner_incidents: [] });
+            setStore({ ...store, all_particular_incidents: [] });
             getOwnerIncidents()
               .then((res) => res.json())
               .then((data) => {
                 data.map((incident) => {
                   setStore({
                     ...store,
-                    incidents: [...store.incidents, incident],
+                    owner_incidents: [...store.owner_incidents, incident],
+                  });
+                  setStore({
+                    ...store,
+                    all_particular_incidents: [
+                      ...store.all_particular_incidents,
+                      incident,
+                    ],
                   });
                 });
               })
