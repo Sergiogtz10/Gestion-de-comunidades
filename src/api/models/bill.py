@@ -7,7 +7,6 @@ class Bill(db.Model):
     amount= db.Column(db.Float, nullable=False)
     details=db.Column(db.String,nullable=False)
     document=db.Column(db.String, nullable=True)
-    date=db.Column(db.DateTime,nullable=True)
     community_id=db.Column(db.Integer,db.ForeignKey('community.id'), nullable=False)
     community=db.relationship(Community,backref="bill")
     provider_id= db.Column(db.Integer,db.ForeignKey('provider.id'), nullable=False)
@@ -24,5 +23,6 @@ class Bill(db.Model):
             "id": self.id,
             "amount":self.amount,
             "details":self.details,
+            "document":self.document
             
         }
