@@ -33,7 +33,7 @@ const Advantages = () => {
                         <div>
                             <div className="card-body">
                                 <h5 className="card-title">Organizar</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p className="card-text">El administrador podrá convocar reuniones de vecinos, establecer horarios de limpieza de cocheras, revisiones del ascensor, o cualquier otra actividad relevante para los mismos</p>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ const Advantages = () => {
                         <div>
                             <div className="card-body">
                                 <h5 className="card-title">Controlar</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p className="card-text">Los vecinos a través de la aplicación tendrán acceso a cualquier incidencia que pueda estar perturbando el normal desarrollo de la convivencia</p>
                              </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@ const Advantages = () => {
                         <div>
                             <div className="card-body">
                                 <h5 className="card-title">Conocer</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                <p className="card-text">Cuales son los proveedores de servicios que estan contratados por la comunidad para satisfacer las necesidades de la misma</p>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ const Advantages = () => {
                         <div>
                             <div class="card-body">
                                 <h5 class="card-title">Administrar</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text">En cualquier organización es necesario administar los gastos que tienen lugar para buscar la máxima eficiencia. Esta aplicación te lo permite </p>
                             </div>
                         </div>
                     </div>        

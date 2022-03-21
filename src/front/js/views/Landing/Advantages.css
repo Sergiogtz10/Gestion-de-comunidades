@@ -75,4 +75,9 @@
     height: 500px;
     margin-right: 50px;
 }
+.card-title{
+    font-weight: 700;
+    color: #264653;
+    
+}
 
