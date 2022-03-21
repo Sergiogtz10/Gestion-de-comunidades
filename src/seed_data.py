@@ -88,7 +88,11 @@ data = {
 
         {
             "user_id":9991,
-            "community_id":9991
+            "community_id":9992
+        },
+        {
+            "user_id":9992,
+            "community_id":9992
         }
     ],
 
