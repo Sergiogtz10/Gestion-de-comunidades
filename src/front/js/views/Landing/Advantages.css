@@ -1,0 +1,83 @@
+#main-title{
+    text-align: center;
+    margin-top: 60px;
+}
+#text-intro{
+    margin-bottom: 40px;
+}
+#div-text-intro{
+    width: 900px;
+    text-align: center;
+}
+#card-advantages{
+    background-image: url(https://cdn.pixabay.com/photo/2017/03/16/05/23/singapore-2148190_960_720.jpg);
+    width: 140px;
+    height: 180px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+#card-advantages1{
+    background-image: url(https://cdn.pixabay.com/photo/2014/06/06/09/36/sydney-opera-house-363244_960_720.jpg);
+    width: 140px;
+    height: 180px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    margin-right: 30px;
+}
+#card-advantages2{
+    background-image: url(https://cdn.pixabay.com/photo/2018/01/31/12/16/architecture-3121009_960_720.jpg);
+    width: 140px;
+    height: 180px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    margin-right: 30px;
+}
+#card-advantages3{
+    background-image: url(https://cdn.pixabay.com/photo/2016/11/29/05/29/buildings-1867550_960_720.jpg);
+    width: 140px;
+    height: 180px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    margin-right: 30px;
+}
+#title-Advantages{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.452);
+    margin-top: 5px;
+    color: white;
+    font-weight: bolder;
+}
+#title-agile{
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+#card-explanation{
+    box-shadow: 0px 0px 20px 0px #264653;
+    border-radius: 50px;
+    margin-left: 50px;
+}
+#rounded{
+    border-radius: 100%;
+    background-image: url(https://cdn.pixabay.com/photo/2019/04/29/20/41/amsterdam-4167026_960_720.png);
+    width: 500px;
+    height: 500px;
+    margin-right: 50px;
+}
+.card-title{
+    font-weight: 700;
+    color: #264653;
+    
+}
+

@@ -16,6 +16,7 @@ import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
 import FormFactura from "../views/FormNewBill/NewBill.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
 
+
 import injectContext from "../store/appContext";
 import { Footer } from "./Footer/footer.jsx";
 
@@ -70,7 +71,6 @@ const Layout = () => {
               <h1>Not found!</h1>
             </Route>
           </Switch>
-          <Footer />
         </ScrollToTop>
       </BrowserRouter>
     </div>
