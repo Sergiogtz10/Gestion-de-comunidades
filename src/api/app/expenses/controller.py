@@ -62,16 +62,16 @@ def modify_expense(role_id, id_expense, body):
         print('[ERROR MODIFY EXPENSE: ]', err)
         return None
 
-def get_expense_by_community_id(community_id):
+def get_expenses():
     try:
-        all_expenses_community = []
-        expenses_by_community = db.session.query(Expenses).filter(Expenses.community_id == community_id)
-        if not expenses_by_community:
+        all_expenses = []
+        expenses= db.session.query(Expenses).all()
+        if not expenses:
             return jsonify('Todavia no se ha añadido ningun gasto')
         else:
-            for expense in expenses_by_community:
-                all_expenses_community.append(expense.serialize())
-            return jsonify(all_expenses_community), 200
+            for expense in expenses:
+                all_expenses.append(expense.serialize())
+            return jsonify(all_expenses), 200
 
     except Exception as err:
         return jsonify('[ERROR GET EXPENSES]: ', err)
