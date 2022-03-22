@@ -127,7 +127,13 @@ const FormFactura = () => {
       </form>
       <div className="py-3 text-start ">
         <Link className="btn btn-primary atras" to={"/incidencias/comunidad"}>
-          Atrás
+          Volver a incidencias comunes
+        </Link>
+        <Link
+          className="btn btn-primary atras mx-4"
+          to={"/incidencias/particulares"}
+        >
+          Volver a incidencias particulares
         </Link>
       </div>
       {redirect ? <Redirect to="/incidencias/comunidad"></Redirect> : null}
