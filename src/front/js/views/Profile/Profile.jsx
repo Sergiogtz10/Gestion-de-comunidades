@@ -126,7 +126,7 @@ const Profile = () => {
                 name="email"
               ></input>
             </div>
-            <div className="mb-3">
+            <div id="updateboton" className="mb-3">
               <input
                 type="text"
                 defaultValue={dataUser.phone_number}
@@ -135,19 +135,10 @@ const Profile = () => {
                 name="phone_number"
               ></input>
             </div>
-            <button type="submit" className="btn btn-primary" id="boton">
-              Save
-            </button>
+            {edit == true ? <button type="submit" className="btn btn-primary" id="boton">Guardar</button>: null}
           </form>
-          <div className="p-1">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              id="boton"
-              onClick={() => setedit(true)}
-            >
-              Actualizar
-            </button>
+          <div className="p-1 text-center">
+          {edit == false ? <button type="submit" className="btn btn-primary" id="boton" onClick={() => setedit(true)}>Actualizar</button> : null}
           </div>
         </div>
       </div>
@@ -160,18 +151,20 @@ const Profile = () => {
           <h4 id="titlecardprofile" className=" text-center mb-4">
             Comunidades
           </h4>
-
-          <div className="d-flex flex-column col-md-5 gap-3 p-3">
+          <hr className="my-3"></hr>
+          <div className="d-flex flex-column col-md-5 gap-3 p-3 container">
             <Link to="/form/community">
-              <button type="submit" className="btn btn-primary" id="boton">
+              <button type="submit" className="btn btn-primary " id="boton">
                 Añadir comunidad
               </button>
             </Link>
+            <Link to="/form/owner/:id">
             <button type="submit" className="btn btn-primary" id="boton">
               Añadir propietario
             </button>
+            </Link>
             <button type="submit" className="btn btn-primary" id="boton">
-              Actualizar
+              Seleccionar comunidad
             </button>
           </div>
         </div>
