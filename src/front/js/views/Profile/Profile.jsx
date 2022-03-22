@@ -171,7 +171,7 @@ const Profile = () => {
               <option selected>Seleccionar communidad</option>
               {store.admin_communities.map((community, index) =>{
                 return(
-                  <option key={index} defaultValue={community}>
+                  <option key={index} value={community}>
                     {community.name}
                   </option>
                 )

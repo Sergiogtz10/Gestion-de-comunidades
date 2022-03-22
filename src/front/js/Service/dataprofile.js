@@ -27,17 +27,6 @@ export const putDataUsers = (body) => {
   });
 };
 
-export const deleteUserData = (user_id) => {
-  const API = URL + "/api/user/delete/" + user_id;
-  const token = getToken();
-  return fetch(API, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
 
 export const getCommunities_admin = async () => {
   const API = URL + "/api/rels/getAllCommunities";
@@ -49,6 +38,4 @@ export const getCommunities_admin = async () => {
       Authorization: `Bearer ${token}`,
     },
   });
-
-
 }

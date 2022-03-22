@@ -11,7 +11,7 @@ import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 import { getProviders_by_community_id } from "../Service/provider.js";
 import { createBill, get_bill_by_id } from "../Service/bill.js";
-import { getCommunities_admin} from "../Service/dataprofile.js"
+import { getCommunities_admin } from "../Service/dataprofile.js"
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
