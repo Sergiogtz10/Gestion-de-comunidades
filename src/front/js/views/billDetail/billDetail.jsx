@@ -13,7 +13,7 @@ const Bill = () => {
     actions.getBill(bill_id);
   }, []);
   return (
-    <div className="container m-auto mt-5">
+    <div className="container-fluid m-auto mt-5 content">
       <div>
         <h1>Factura</h1>
         <hr className="my-3"></hr>

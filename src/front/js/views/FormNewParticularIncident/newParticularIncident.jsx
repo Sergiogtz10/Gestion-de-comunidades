@@ -56,7 +56,7 @@ const FormNewParticularIncident = () => {
   };
 
   return (
-    <div className="container m-auto mt-5">
+    <div className="container-fluid m-auto mt-5 content">
       <h1>Nueva Incidencia</h1>
       <hr className="my-3"></hr>
       <form className="card p-5" onSubmit={(e) => createIncident(e)}>
