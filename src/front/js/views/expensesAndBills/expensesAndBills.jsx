@@ -13,6 +13,7 @@ const ExpensesAndBills = () => {
     actions.getExpenses();
   }, []);
 
+  console.log(store.expenses);
   const severityChange = (inc, e) => {
     const newIncident = {
       description: inc.description,
@@ -80,15 +81,23 @@ const ExpensesAndBills = () => {
 
   return (
     <div className="container m-auto mt-5">
-      <h1>Incidencias de la comunidad</h1>
+      <h1>Gastos de la comunidad</h1>
       <div className="navbar row">
         {store.role.role_id == 1 ? (
-          <Link
-            className="btn btn-secondary col-2 mx-4 add"
-            to="/formNuevaIncidencia"
-          >
-            Añadir incidencia
-          </Link>
+          <div>
+            <Link
+              className="btn btn-secondary col-2 mx-4 add"
+              to="/formNuevoGasto"
+            >
+              Añadir gasto
+            </Link>
+            <Link
+              className="btn btn-secondary col-2 mx-4 add"
+              to="/formNuevaFactura"
+            >
+              Añadir factura
+            </Link>
+          </div>
         ) : (
           ""
         )}
@@ -110,17 +119,15 @@ const ExpensesAndBills = () => {
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Zona</th>
-            <th scope="col">Gravedad</th>
-            <th scope="col">Estado</th>
-            <th scope="col"></th>
+            <th scope="col">Concepto</th>
+            <th scope="col">Cantidad</th>
             <th scope="col">Factura</th>
+            <th scope="col">Fecha</th>
           </tr>
         </thead>
         <tbody>
-          {store.incidents
-            .filter((incident) => incident.community_id == store.community)
+          {store.expenses
+            .filter((expense) => expense.community_id == store.community)
             .map((inc, index) => {
               return (
                 <tr key={index}>
