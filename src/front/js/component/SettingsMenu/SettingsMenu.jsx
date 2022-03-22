@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { URL } from "../../Service/URL";
+
 import PropTypes from "prop-types";
 import "./settings-menu.css";
+import { Redirect } from "react-router-dom";
 
 const SettingsMenu = (props) => {
+  const logout = () => {
+    window.location.href = "/";
+    localStorage.removeItem("token");
+  };
+
   return (
     <div id="avatar-menu" className="d-flex flex-column justify-content-center">
       <div id="cross">
@@ -33,6 +41,7 @@ const SettingsMenu = (props) => {
       <div
         className="d-flex p-2 align-items-center settings-options"
         id="logout-div"
+        onClick={logout}
       >
         <p id="logout-button" className="m-0 ps-2">
           Logout
