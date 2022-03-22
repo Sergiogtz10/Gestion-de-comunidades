@@ -1,8 +1,10 @@
 import {
   createIncident,
+  createOwnerIncident,
   deleteIncidents,
   getIncidents,
   getOwnerIncidents,
+  getAllParticularIncidents,
   modifyIncidents,
 } from "../Service/incident.js";
 import { getUser } from "../Service/users.js";
@@ -16,6 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       incidents: [],
       incident_copy: [],
       owner_incidents: [],
+      owner_incident_copy: [],
+      all_particular_incidents: [],
       registerAdminUser: {},
       role: {},
       user_id: "",
@@ -71,9 +75,29 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
+      getAllIncidents: () => {
+        const store = getStore();
+        setStore({ ...store, all_particular_incidents: [] });
+        getAllParticularIncidents()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((incident) => {
+              setStore({
+                ...store,
+                all_particular_incidents: [
+                  ...store.all_particular_incidents,
+                  incident,
+                ],
+              });
+            });
+          })
+          .catch((err) => console.error(err));
+      },
       getOwnerIncidents: () => {
         const store = getStore();
         setStore({ ...store, owner_incidents: [] });
+        setStore({ ...store, owner_incident_copy: [] });
+
         getOwnerIncidents()
           .then((res) => res.json())
           .then((data) => {
@@ -81,6 +105,10 @@ const getState = ({ getStore, getActions, setStore }) => {
               setStore({
                 ...store,
                 owner_incidents: [...store.owner_incidents, incident],
+              });
+              setStore({
+                ...store,
+                owner_incident_copy: [...store.owner_incident_copy, incident],
               });
             });
           })
@@ -100,6 +128,42 @@ const getState = ({ getStore, getActions, setStore }) => {
                   setStore({
                     ...store,
                     incidents: [...store.incidents, incident],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          });
+      },
+      modifyParticularIncidents: (id, newIncident) => {
+        const store = getStore();
+        modifyIncidents(id, newIncident)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, owner_incidents: [] });
+            setStore({ ...store, all_particular_incidents: [] });
+
+            getOwnerIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    owner_incidents: [...store.owner_incidents, incident],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+
+            getAllParticularIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    all_particular_incidents: [
+                      ...store.all_particular_incidents,
+                      incident,
+                    ],
                   });
                 });
               })
@@ -127,6 +191,35 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
+      deleteOwnerIncident: (incident_id) => {
+        const store = getStore();
+        deleteIncidents(incident_id)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setStore({ ...store, owner_incidents: [] });
+            setStore({ ...store, all_particular_incidents: [] });
+            getOwnerIncidents()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    owner_incidents: [...store.owner_incidents, incident],
+                  });
+                  setStore({
+                    ...store,
+                    all_particular_incidents: [
+                      ...store.all_particular_incidents,
+                      incident,
+                    ],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          })
+          .catch((err) => console.error(err));
+      },
       createNewIncident: (body, community) => {
         const store = getStore();
         createIncident(body, community)
@@ -136,6 +229,15 @@ const getState = ({ getStore, getActions, setStore }) => {
               ...store,
               incidents: [...store.incidents, data],
             });
+          })
+          .catch((err) => console.log(err));
+      },
+      createNewParticularIncident: (body, community) => {
+        const store = getStore();
+        createOwnerIncident(body, community)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
           })
           .catch((err) => console.log(err));
       },
@@ -167,6 +269,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       setIncidents: (filteredList) => {
         const store = getStore();
         setStore({ ...store, incidents: filteredList });
+      },
+      setOwnerIncidents: (filteredList) => {
+        const store = getStore();
+        setStore({ ...store, owner_incidents: filteredList });
       },
     },
   };
