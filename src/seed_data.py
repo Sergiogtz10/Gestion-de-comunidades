@@ -56,7 +56,6 @@ data = {
         }
     ],
 
-
     "User":[
         {
             "id":9991,
@@ -87,10 +86,16 @@ data = {
         },
 
         {
+            "user_id":9991,
+            "community_id":9992
+        },
+        {
             "user_id":9992,
-            "community_id":9991
+            "community_id":9992
         }
     ],
+
+
     "Provider":[
          {
             "id":9991,
@@ -125,6 +130,27 @@ data = {
         },
         {
             "id":9993,
+            "amount":100,
+            "details": "Cambio de grifo",
+            "community_id":9992,
+            "provider_id":9992
+        },
+         {
+            "id":9994,
+            "amount":100,
+            "details": "Cambio de grifo",
+            "community_id":9992,
+            "provider_id":9992
+        },
+         {
+            "id":9995,
+            "amount":100,
+            "details": "Cambio de grifo",
+            "community_id":9992,
+            "provider_id":9992
+        },
+         {
+            "id":9996,
             "amount":100,
             "details": "Cambio de grifo",
             "community_id":9992,
@@ -165,6 +191,39 @@ data = {
             "zone": "Baño",
             "common": False,
             "status":"Recibido"
-        }
+        },
+        {
+            "bill_id": 9994,
+            "community_id": 9991,
+            "description": "Baldosa rota",
+            "id": 9994,
+            "severity": "Leve",
+            "user_id": 9992,
+            "zone": "Piscina",
+            "common": True,
+            "status":"En proceso"
+        },
+        {
+            "bill_id": 9995,
+            "community_id": 9991,
+            "description": "Puerta del rellano no cierra bien",
+            "id": 9995,
+            "severity": "Leve",
+            "user_id": 9992,
+            "zone": "Rellano 4a planta",
+            "common": True,
+            "status":"En proceso"
+        },
+        {
+            "bill_id": 9996,
+            "community_id": 9991,
+            "description": "Ventana escaleras estropeada",
+            "id": 9996,
+            "severity": "Leve",
+            "user_id": 9992,
+            "zone": "Escaleras entre 2º y 3er piso",
+            "common": True,
+            "status":"En proceso"
+        },
     ]
 }

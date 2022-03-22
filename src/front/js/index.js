@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import AppRouter from "./AppRouter.jsx";
+import Layout from "./Layout/layout";
 
 //render your react application
-ReactDOM.render(<AppRouter />, document.querySelector("#app"));
+ReactDOM.render(<Layout />, document.querySelector("#app"));

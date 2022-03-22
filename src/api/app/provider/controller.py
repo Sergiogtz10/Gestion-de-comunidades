@@ -54,6 +54,21 @@ def modify_provider(role_id,provider_id,body):
         return None
 
 
+#DELETE
+def delete_provider(role_id,provider_id):
+    try:
+        if verify_admin(role_id):
+            Provider.query.filter(Provider.id == provider_id).delete()
+            db.session.commit()
+            return jsonify("Borrado realizado"),200
+
+        else:
+            return jsonify("User not authorized"),401
+
+    except Exception as err:
+        db.session.rollback()
+        print('[ERROR]: ',err)
+        return None
 
 
 def verify_admin(role_id):
