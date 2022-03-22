@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { getDataUsers, putDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
+import { Context } from "../../store/appContext";
 
 
 const initialStateErr = {
@@ -13,6 +14,7 @@ const initialStateErr = {
 };
 
 const Profile = () => {
+  const {store, actions} = useContext(Context);
   const [dataUser, setDataUser] = useState({
     first_name: "",
     last_name: "",
@@ -81,6 +83,7 @@ const Profile = () => {
 
   useEffect(() => {
     getData();
+    actions.getCommunitiesAdmin();
   }, []);
 
   return (
@@ -163,9 +166,20 @@ const Profile = () => {
               Añadir propietario
             </button>
             </Link>
-            <button type="submit" className="btn btn-primary" id="boton">
-              Seleccionar comunidad
-            </button>
+            <div className="py-3 w-25">
+            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+              <option selected>Seleccionar communidad</option>
+              {store.admin_communities.map((community, index) =>{
+                return(
+                  <option key={index} defaultValue={community}>
+                    {community.name}
+                  </option>
+                )
+              })}
+            </select>
+            </div>
+
+
           </div>
         </div>
       </div>

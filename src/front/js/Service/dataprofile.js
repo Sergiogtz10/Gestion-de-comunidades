@@ -38,3 +38,17 @@ export const deleteUserData = (user_id) => {
     },
   });
 };
+
+export const getCommunities_admin = async () => {
+  const API = URL + "/api/rels/getAllCommunities";
+  const token = getToken();
+  return await fetch(API, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+
+}
