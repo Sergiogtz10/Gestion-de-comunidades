@@ -288,14 +288,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           })
           .catch((err) => console.error(err));
-        getBills()
-          .then((res) => res.json())
-          .then((data) => {
-            data.map((bill) => {
-              setStore({ ...store, expenses: [...store.expenses, bill] });
-            });
-          })
-          .catch((err) => console.error(err));
       },
     },
   };

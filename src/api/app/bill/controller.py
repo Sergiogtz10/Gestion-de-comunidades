@@ -6,9 +6,9 @@ admin=1
 owner=2
 
 #GET ALL BILLS
-def get_all_bills(community_id):
+def get_all_bills():
     bill_list=[]
-    bills=db.session.query(Bill).filter(Bill.community_id==community_id)
+    bills=db.session.query(Bill)
     
     if not bills: 
         return jsonify("There are no incidents"),404
