@@ -7,6 +7,13 @@ export const getIncidents = async () => {
   });
 };
 
+export const getAllParticularIncidents = async () => {
+  const API = URL + `/api/incident/allParticular`;
+  return await fetch(API, {
+    method: "GET",
+  });
+};
+
 export const getOwnerIncidents = async () => {
   const API = URL + `/api/incident/particular`;
   const token = getToken();
@@ -53,6 +60,20 @@ export const deleteIncidents = async (incident_id) => {
 
 export const createIncident = async (body_parameters, community_id) => {
   const API = URL + `/api/incident/common/` + community_id;
+  const token = getToken();
+  return await fetch(API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body_parameters),
+  });
+};
+
+export const createOwnerIncident = async (body_parameters, community_id) => {
+  const API = URL + `/api/incident/owner/` + community_id;
   const token = getToken();
   return await fetch(API, {
     method: "POST",
