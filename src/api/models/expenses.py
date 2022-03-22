@@ -18,6 +18,6 @@ class Expenses(db.Model):
             "concept": self.concept,
             "amount": self.amount,
             "date": self.date,
-            "community_id": self.community.serialize()
+            "community_id": self.community_id
         }
 
