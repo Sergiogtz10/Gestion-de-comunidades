@@ -16,7 +16,7 @@ import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
 import FormNewParticularIncident from "../views/FormNewParticularIncident/newParticularIncident.jsx";
 import FormFactura from "../views/FormNewBill/NewBill.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
-
+import ExpensesAndBills from "../views/expensesAndBills/expensesAndBills.jsx";
 
 import injectContext from "../store/appContext";
 import { Footer } from "./Footer/footer.jsx";
@@ -70,6 +70,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/factura/:bill_id">
               <Bill />
+            </Route>
+            <Route exact path="/gastos">
+              <ExpensesAndBills />
             </Route>
             <Route>
               <h1>Not found!</h1>

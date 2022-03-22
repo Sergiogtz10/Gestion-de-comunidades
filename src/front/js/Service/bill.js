@@ -28,3 +28,10 @@ export const get_bill_by_id = async (bill_id) => {
     },
   });
 };
+
+export const getBills = async () => {
+  const API = URL + `/api/bill/`;
+  return await fetch(API, {
+    method: "GET",
+  });
+};

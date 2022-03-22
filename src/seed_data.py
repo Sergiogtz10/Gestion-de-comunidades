@@ -91,7 +91,7 @@ data = {
         },
         {
             "user_id":9992,
-            "community_id":9992
+            "community_id":9991
         }
     ],
 

@@ -10,7 +10,8 @@ import {
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 import { getProviders_by_community_id } from "../Service/provider.js";
-import { createBill, get_bill_by_id } from "../Service/bill.js";
+import { createBill, get_bill_by_id, getBills } from "../Service/bill.js";
+import { getExpenses } from "../Service/expense.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -26,6 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       community: "",
       providers: [],
       bill: {},
+      expenses: [],
     },
     actions: {
       getToken: () => {
@@ -273,6 +275,27 @@ const getState = ({ getStore, getActions, setStore }) => {
       setOwnerIncidents: (filteredList) => {
         const store = getStore();
         setStore({ ...store, owner_incidents: filteredList });
+      },
+
+      getExpenses: () => {
+        const store = getStore();
+        setStore({ ...store, expenses: [] });
+        getExpenses()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((expense) => {
+              setStore({ ...store, expenses: [...store.expenses, expense] });
+            });
+          })
+          .catch((err) => console.error(err));
+        getBills()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((bill) => {
+              setStore({ ...store, expenses: [...store.expenses, bill] });
+            });
+          })
+          .catch((err) => console.error(err));
       },
     },
   };
