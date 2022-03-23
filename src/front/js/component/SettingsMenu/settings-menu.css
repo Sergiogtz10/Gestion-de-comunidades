@@ -1,0 +1,64 @@
+#avatar-menu {
+  position: absolute;
+  bottom: 3.2rem;
+  left: 1.2rem;
+  background-color: #264653;
+  color: white;
+  font-size: 1.1rem;
+  width: 60%;
+  border-radius: 2.5%;
+}
+
+#cross {
+  color: white;
+  padding: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem;
+}
+#cross-svg {
+  cursor: pointer;
+  height: 1rem;
+}
+#cross-svg:hover {
+  height: 1.1rem;
+}
+#cross-svg:active {
+  color: #f1f1f173;
+}
+
+#opciones {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: #d1d1d19a;
+}
+#link {
+  text-decoration: none;
+  color: white;
+}
+#logout-div {
+  color: #e2e2e2;
+  font-size: 1rem;
+}
+#logout-div:active {
+  color: #969696;
+}
+
+.separation {
+  background-color: #e9c56a69;
+  height: 1px;
+  width: 88%;
+}
+
+.settings-options {
+  cursor: pointer;
+}
+.settings-options:hover {
+  background-color: #476875;
+}
+.settings-options:active {
+  color: #e9c46a;
+  background-color: #47687560;
+}
