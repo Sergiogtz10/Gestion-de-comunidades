@@ -1,0 +1,31 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.card {
+  background-color: #264653;
+  font-weight: 300;
+  color: white;
+}
+
+#title {
+  color: #2a9d8f;
+}
+.create {
+  background-color: #2a9d8f;
+  border: none;
+}
+.create:hover {
+  background-color: #41e6d2;
+}
+
+.atras {
+  background-color: #e76f51;
+  border: none;
+}
+.atras:hover {
+  background-color: #ff7958;
+}
+
+.error {
+  color: #ff7958;
+}

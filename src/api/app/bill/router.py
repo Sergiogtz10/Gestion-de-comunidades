@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
-from api.app.bill.controller import create_bill,get_all_bills,modify_bill
+from api.app.bill.controller import create_bill,get_all_bills,modify_bill,get_bill_by_id
 from api.app.incident.controller import add_bill
 from api.app.user.controller import get_user_by_id
 from api.models.index import Bill
@@ -34,6 +34,14 @@ def create(community_id,incident_id):
 @jwt_required()
 def get_bills(community_id):
     return get_all_bills(community_id)
+
+#route to get bill by id
+@bills.route('/factura/<bill_id>',methods=["GET"])
+@jwt_required()
+def get_bill(bill_id):
+    if bill_id is None:
+        return jsonify('bill not found'), 404
+    return jsonify(get_bill_by_id(bill_id).serialize()),200
 
 #route to modify bills
 @bills.route('/<bill_id>',methods=['PUT'])

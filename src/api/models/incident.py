@@ -32,6 +32,7 @@ class Incident(db.Model):
             "zone":self.zone,
             "user_id":self.user_id,
             "bill_id":self.bill_id,
-            "community_id":self.community_id
+            "community_id":self.community_id,
+            "common":self.common
 
         }

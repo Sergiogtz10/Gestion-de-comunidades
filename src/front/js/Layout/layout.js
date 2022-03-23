@@ -2,6 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "../component/scrollToTop";
 
+//Navbar and Footer
+import Navbar from "./Navbar/Navbar.jsx";
+import { Footer } from "./Footer/footer.jsx";
+
 // Import views
 import Home from "../views/home/Home.jsx";
 import Login from "../views/LogIn/LogIn.jsx";
@@ -10,13 +14,22 @@ import FormCommunity from "../views/FormCommunity/FormCommunity.jsx";
 import FormOwner from "../views/FormOwner/FormOwner.jsx";
 import Landing from "../views/Landing/Landing.jsx";
 import Profile from "../views/Profile/Profile.jsx";
+<<<<<<< HEAD
 import Providers from "../views/Providers/Providers.jsx";
 import FormProviders from "../views/Providers/FormProviders.jsx";
 
 
+=======
+import Incidencias from "../views/incidencias/Incidencias.jsx";
+import IncidenciasOwner from "../views/incidenciasOwner/incidenciasOwner.jsx";
+import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
+import FormNewParticularIncident from "../views/FormNewParticularIncident/newParticularIncident.jsx";
+import FormFactura from "../views/FormNewBill/NewBill.jsx";
+import Bill from "../views/billDetail/billDetail.jsx";
+import HomePage from "../views/HomePage/HomePage.jsx";
+>>>>>>> develop
 
 import injectContext from "../store/appContext";
-import { Footer } from "./Footer/footer.jsx";
 
 
 //create your first component
@@ -51,17 +64,46 @@ const Layout = () => {
             <Route exact path="/profile">
               <Profile />
             </Route>
+<<<<<<< HEAD
             <Route exact path="/providers">
               <Providers />
             </Route>
             <Route exact path="/form/provider">
               <FormProviders />
+=======
+            <Route exact path="/incidencias/comunidad">
+              <Navbar />
+              <Incidencias />
+            </Route>
+            <Route exact path="/incidencias/particulares">
+              <Navbar />
+              <IncidenciasOwner />
+            </Route>
+            <Route exact path="/formNuevaIncidencia">
+              <Navbar />
+              <FormNewIncident />
+            </Route>
+            <Route exact path="/formNuevaIncidenciaParticular">
+              <Navbar />
+              <FormNewParticularIncident />
+            </Route>
+            <Route exact path="/nuevaFactura/:incident_id/:community_id">
+              <Navbar />
+              <FormFactura />
+            </Route>
+            <Route exact path="/factura/:bill_id">
+              <Navbar />
+              <Bill />
+            </Route>
+            <Route exact path="/home">
+              <Navbar />
+              <HomePage />
+>>>>>>> develop
             </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
           </Switch>
-          <Footer />
         </ScrollToTop>
       </BrowserRouter>
     </div>
@@ -69,4 +111,3 @@ const Layout = () => {
 };
 
 export default injectContext(Layout);
-
