@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;1,300&display=swap");
+
+@media only screen and (min-width: 1322px) {
+  aside {
+    position: relative;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 15vw;
+    height: 100vh;
+    background: #2a9d8f;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .navbar {
+    position: relative;
+    text-align: left;
+    padding: 0;
+    display: block;
+  }
+
+  .navbar-mobile {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .text-navbar-router {
+    padding-left: 0 !important;
+    padding: 2rem;
+  }
+
+  .text-navbar-router-dropdown {
+    padding-left: 0 !important;
+    padding: 0.8rem;
+  }
+
+  .navbar-icon {
+    margin: 0;
+    padding: 0;
+    height: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .dropdown-incidents-li {
+    background-color: #82fff013;
+    font-size: 0.9rem;
+  }
+  .dropdown-incidents-li:hover {
+    background-color: #47e2d03f;
+  }
+
+  .separation {
+    background-color: #e9c56a69;
+    height: 1px;
+    width: 95%;
+  }
+
+  #navbar-desktop-logo {
+    height: 4rem;
+  }
+
+  #logo-name-desktop {
+    color: #264653a4;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  #dropdown-incidencias {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1321px) {
+  svg {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  nav {
+    background-color: #264653;
+    height: 3rem;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .separation-mobile {
+    background-color: #e9c56a69;
+    height: 1px;
+    width: 100%;
+  }
+
+  #offcanvas-navbar {
+    background-color: #2a9d8f;
+  }
+
+  #home-link {
+    margin-top: 2rem;
+  }
+
+  #button-mobile-nav {
+    background-color: transparent;
+    color: #2a9d8f;
+    border: none;
+  }
+
+  #logo-mobile {
+    height: 5rem;
+  }
+
+  #menu-nav {
+    color: #e9c46a;
+    font-weight: 300;
+    font-size: 1.4rem;
+  }
+
+  #masterkey-offcanvas {
+    color: #264653a4;
+    font-weight: 600;
+  }
+}

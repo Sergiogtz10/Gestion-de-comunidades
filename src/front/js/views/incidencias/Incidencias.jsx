@@ -79,7 +79,7 @@ const Incidencias = () => {
   };
 
   return (
-    <div className="container m-auto mt-5">
+    <div className="container-fluid m-auto mt-5 content">
       <h1>Incidencias de la comunidad</h1>
       <div className="navbar row">
         {store.role.role_id == 1 ? (

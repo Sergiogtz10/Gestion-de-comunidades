@@ -81,7 +81,7 @@ const IncidenciasOwner = () => {
   };
 
   return (
-    <div className="container m-auto mt-5">
+    <div className="container-fluid mt-5 content">
       <h1>Incidencias particulares</h1>
       <div className="navbar row">
         {store.role.role_id == 2 ? (
