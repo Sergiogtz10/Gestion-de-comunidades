@@ -1,0 +1,10 @@
+.table-name {
+  margin: 0;
+  color: #264653;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.div-table {
+  border: 2px solid #e9c46a;
+}
