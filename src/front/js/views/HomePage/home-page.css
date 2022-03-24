@@ -1,12 +1,27 @@
 .table-name {
-  color: #264653;
+  color: #e9c46a;
   font-weight: 600;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
   font-size: 1.7rem;
 }
+.table-name-not-first {
+  margin-top: 5rem;
+}
+
+.title-and-table {
+  border: 1px solid #264653;
+  background-color: #e0e0e028;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 4.5rem;
+}
+
 .div-table {
-  border: 2px solid #e9c46a;
+  border: 2px solid #264653;
+  border-radius: 0.2rem;
   width: 100%;
 }
 
