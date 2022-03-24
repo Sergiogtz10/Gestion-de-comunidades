@@ -21,6 +21,8 @@ import FormNewParticularIncident from "../views/FormNewParticularIncident/newPar
 import FormFactura from "../views/FormNewBill/NewBill.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
 import HomePage from "../views/HomePage/HomePage.jsx";
+import Providers from "../views/Providers/Providers.jsx";
+import FormProviders from "../views/Providers/FormProviders.jsx";
 
 import injectContext from "../store/appContext";
 
@@ -83,6 +85,13 @@ const Layout = () => {
             <Route exact path="/home">
               <Navbar />
               <HomePage />
+            </Route>
+            <Route exact path="/form/provider">
+              <FormProviders />
+            </Route>
+            <Route exact path="/providers">
+              <Navbar />
+              <Providers />
             </Route>
             <Route>
               <h1>Not found!</h1>

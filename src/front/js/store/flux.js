@@ -9,7 +9,7 @@ import {
 } from "../Service/incident.js";
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
-import { getProviders_by_community_id } from "../Service/provider.js";
+import { getProviders_by_community_id, functionCreateProviders } from "../Service/provider.js";
 import { createBill, get_bill_by_id } from "../Service/bill.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
@@ -232,6 +232,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.log(err));
       },
+      
       createNewParticularIncident: (body, community) => {
         const store = getStore();
         createOwnerIncident(body, community)
@@ -273,6 +274,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       setOwnerIncidents: (filteredList) => {
         const store = getStore();
         setStore({ ...store, owner_incidents: filteredList });
+      },
+      createProviders: (body, community) => {
+        const store = getStore();
+        functionCreateProviders(body, community)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({
+              ...store,
+              providers: [...store.providers, data],
+            });
+          })
+          .catch((err) => console.log(err));
       },
     },
   };
