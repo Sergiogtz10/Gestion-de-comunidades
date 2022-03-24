@@ -2,6 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "../component/scrollToTop";
 
+//Navbar and Footer
+import Navbar from "./Navbar/Navbar.jsx";
+import { Footer } from "./Footer/footer.jsx";
+
 // Import views
 import Home from "../views/home/Home.jsx";
 import Login from "../views/LogIn/LogIn.jsx";
@@ -17,9 +21,9 @@ import FormNewParticularIncident from "../views/FormNewParticularIncident/newPar
 import FormFactura from "../views/FormNewBill/NewBill.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
 import ExpensesAndBills from "../views/expensesAndBills/expensesAndBills.jsx";
+import HomePage from "../views/HomePage/HomePage.jsx";
 
 import injectContext from "../store/appContext";
-import { Footer } from "./Footer/footer.jsx";
 
 //create your first component
 const Layout = () => {
@@ -54,25 +58,36 @@ const Layout = () => {
               <Profile />
             </Route>
             <Route exact path="/incidencias/comunidad">
+              <Navbar />
               <Incidencias />
             </Route>
             <Route exact path="/incidencias/particulares">
+              <Navbar />
               <IncidenciasOwner />
             </Route>
             <Route exact path="/formNuevaIncidencia">
+              <Navbar />
               <FormNewIncident />
             </Route>
             <Route exact path="/formNuevaIncidenciaParticular">
+              <Navbar />
               <FormNewParticularIncident />
             </Route>
             <Route exact path="/nuevaFactura/:incident_id/:community_id">
+              <Navbar />
               <FormFactura />
             </Route>
             <Route exact path="/factura/:bill_id">
+              <Navbar />
               <Bill />
             </Route>
-            <Route exact path="/gastos">
+            <Route exact path="/facturas">
+              <Navbar />
               <ExpensesAndBills />
+            </Route>
+            <Route exact path="/home">
+              <Navbar />
+              <HomePage />
             </Route>
             <Route>
               <h1>Not found!</h1>

@@ -2,22 +2,34 @@ from api.models.index import db, Rel_user_community,User
 from api.app.community.controller import get_community_by_id
 from flask import jsonify
 
+#GET ALL THE COMMUNITIES
 def getCommunities_by_user_id(user_id):
-    community_list=[]
-    rel= db.session.query(Rel_user_community).filter(Rel_user_community.user_id==user_id).all()
+    try:
+        community_list=[]
+        rel= db.session.query(Rel_user_community).filter(Rel_user_community.user_id==user_id).all()
     
-    if not rel: 
-        return jsonify("There are no relations"),404
-    else:
-        for rel in rel:
-            
-            community_list.append(get_community_by_id(rel.community_id).serialize())
-        return community_list
-        
+        if not rel: 
+            return jsonify("There are no relations"),404
+        else:
+            for rel in rel:
+                
+                community_list.append(get_community_by_id(rel.community_id).serialize())
+            return community_list
+
+    except Exception as err:
+        print('[ERROR GETTING COMMUNITY]: ', err)
+        return None
+
+#GET ACTIVE COMMUNITY  
 def getCommunity_by_user_id(user_id):
-    rel= db.session.query(Rel_user_community).filter(Rel_user_community.user_id==user_id).first()
-    
-    return rel.community_id
+    try:
+        rel= db.session.query(Rel_user_community).filter(Rel_user_community.user_id==user_id).first()
+        
+        return rel.community_id
+
+    except Exception as err:
+        print('[ERROR GETTING COMMUNITY]: ', err)
+        return None
 
 def create_rel(community_id, user_id):
     try:

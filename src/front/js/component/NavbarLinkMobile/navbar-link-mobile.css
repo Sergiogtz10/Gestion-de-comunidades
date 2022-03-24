@@ -1,0 +1,16 @@
+.nav-element-mobile {
+  list-style-type: none;
+  padding: 1.5rem;
+  width: 100%;
+  color: white;
+  display: block;
+}
+.nav-element-mobile:active {
+  background-color: #47e2d03f;
+  color: #e9c46a;
+  font-weight: 600;
+}
+.nav-element-mobile:hover {
+  background-color: #47e2d03f;
+  color: #e9c46a;
+}
