@@ -1,10 +1,25 @@
 .table-name {
-  margin: 0;
   color: #264653;
   font-weight: 600;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  font-size: 1.7rem;
 }
 .div-table {
   border: 2px solid #e9c46a;
+  width: 100%;
+}
+
+.boton-ver-mas-homePage {
+  margin-top: 0.5rem;
+  background-color: #264653;
+  color: white;
+}
+.boton-ver-mas-homePage:hover {
+  background-color: #264653c4;
+  color: white;
+}
+
+#no-incidents-body {
+  height: 4rem;
 }
