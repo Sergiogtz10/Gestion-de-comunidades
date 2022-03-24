@@ -43,13 +43,13 @@ data = {
     ],
      "Expenses":[
         {
-            "concept": "IBERDROLA",
+            "details": "IBERDROLA",
             "amount": "250",
             "date": "30/03/2022",
             "community_id": 9991
         },
         {
-            "concept": "ASCENSORES TRESA",
+            "details": "ASCENSORES TRESA",
             "amount": "300",
             "date": "30/03/2022",
             "community_id": 9991
@@ -119,42 +119,48 @@ data = {
             "amount":200,
             "details": "Reparar cristal",
             "community_id":9991,
-            "provider_id":9991
+            "provider_id":9991,
+            "date": "30/03/2022",
         },
         {
             "id":9992,
             "amount":100,
             "details": "Reparar cesped dañado",
             "community_id":9991,
-            "provider_id":9991
+            "provider_id":9991,
+            "date": "30/03/2022",
         },
         {
             "id":9993,
             "amount":100,
             "details": "Cambio de grifo",
             "community_id":9992,
-            "provider_id":9992
+            "provider_id":9992,
+            "date": "30/03/2022",
         },
          {
             "id":9994,
             "amount":100,
             "details": "Cambio de grifo",
             "community_id":9992,
-            "provider_id":9992
+            "provider_id":9992,
+            "date": "30/03/2022",
         },
          {
             "id":9995,
             "amount":100,
             "details": "Cambio de grifo",
             "community_id":9992,
-            "provider_id":9992
+            "provider_id":9992,
+            "date": "30/03/2022",
         },
          {
             "id":9996,
             "amount":100,
             "details": "Cambio de grifo",
             "community_id":9992,
-            "provider_id":9992
+            "provider_id":9992,
+            "date": "30/03/2022",
         }
     ],
 
