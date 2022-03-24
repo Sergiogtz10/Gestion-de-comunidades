@@ -298,6 +298,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
+
+      modifyExpenses: (id, newExpense) => {
+        const store = getStore();
+        modifyExpenses(id, newExpense)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, expenses: [] });
+            getExpenses()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((incident) => {
+                  setStore({
+                    ...store,
+                    expenses: [...store.expenses, expense],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          });
+      },
     },
   };
 };

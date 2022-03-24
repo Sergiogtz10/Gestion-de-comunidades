@@ -14,52 +14,38 @@ const ExpensesAndBills = () => {
   }, []);
 
   console.log(store.expenses);
-  const severityChange = (inc, e) => {
-    const newIncident = {
-      description: inc.description,
-      zone: inc.zone,
-      severity: e.target.value,
-      status: inc.status,
-    };
 
-    actions.modifyIncidents(inc.id, newIncident);
+  const dateChange = (exp, e) => {
+    const newExpense = {
+      details: exp.details,
+      amount: exp.amount,
+      date: e.target.value,
+    };
+    actions.modifyExpenses(exp.id, newExpense);
   };
 
-  const statusChange = (inc, e) => {
-    const newIncident = {
-      description: inc.description,
-      zone: inc.zone,
-      severity: inc.severity,
-      status: e.target.value,
+  const detailsChange = (exp, e) => {
+    const newExpense = {
+      details: e.target.value,
+      amount: exp.amount,
+      date: exp.date,
     };
 
-    actions.modifyIncidents(inc.id, newIncident);
+    actions.modifyExpenses(exp.id, newExpense);
   };
 
-  const descriptionChange = (inc, e) => {
-    const newIncident = {
-      description: e.target.value,
-      zone: inc.zone,
-      severity: inc.severity,
-      status: inc.status,
+  const amountChange = (exp, e) => {
+    const newExpense = {
+      details: exp.details,
+      amount: e.target.value,
+      date: exp.date,
     };
 
-    actions.modifyIncidents(inc.id, newIncident);
+    actions.modifyExpense(exp.id, newExpense);
   };
 
-  const zoneChange = (inc, e) => {
-    const newIncident = {
-      description: inc.description,
-      zone: e.target.value,
-      severity: inc.severity,
-      status: inc.status,
-    };
-
-    actions.modifyIncidents(inc.id, newIncident);
-  };
-
-  const deleteInc = (incident_id) => {
-    actions.deleteIncident(incident_id);
+  const deleteExp = (expense_id) => {
+    actions.deleteExpense(expense_id);
   };
 
   const search = (e) => {
@@ -80,7 +66,7 @@ const ExpensesAndBills = () => {
   };
 
   return (
-    <div className="container m-auto mt-5">
+    <div className="container-fluid m-auto mt-5 content">
       <h1>Gastos de la comunidad</h1>
       <div className="navbar row">
         {store.role.role_id == 1 ? (
@@ -121,87 +107,61 @@ const ExpensesAndBills = () => {
             <th scope="col">#</th>
             <th scope="col">Concepto</th>
             <th scope="col">Cantidad</th>
-            <th scope="col">Factura</th>
             <th scope="col">Fecha</th>
           </tr>
         </thead>
         <tbody>
           {store.expenses
             .filter((expense) => expense.community_id == store.community)
-            .map((inc, index) => {
+            .map((exp, index) => {
               return (
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>
                     {store.role.role_id == 1 ? (
                       <input
-                        defaultValue={inc.description}
+                        defaultValue={exp.details}
                         className="form-control"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
-                            descriptionChange(inc, e);
+                            detailsChange(exp, e);
                           }
                         }}
                       ></input>
                     ) : (
-                      inc.description
+                      exp.details
                     )}
                   </td>
                   <td>
                     {store.role.role_id == 1 ? (
                       <input
-                        defaultValue={inc.zone}
+                        defaultValue={exp.amount}
                         className="form-control"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
-                            zoneChange(inc, e);
+                            amountChange(exp, e);
                           }
                         }}
                       ></input>
                     ) : (
-                      inc.zone
+                      exp.amount
                     )}
                   </td>
+
                   <td>
                     {store.role.role_id == 1 ? (
-                      <select
-                        className="form-select"
-                        value={
-                          inc.severity == "Leve"
-                            ? "Leve"
-                            : inc.severity == "Media"
-                            ? "Media"
-                            : "Grave"
-                        }
-                        onChange={(e) => severityChange(inc, e)}
-                      >
-                        <option value="Leve">Leve</option>
-                        <option value="Media">Media</option>
-                        <option value="Grave">Grave</option>
-                      </select>
+                      <input
+                        type="date"
+                        defaultValue={exp.date}
+                        className="form-control"
+                        onKeyDown={(e) => {
+                          if (e.keyCode == 13 || e.keyCode == 9) {
+                            dateChange(exp, e);
+                          }
+                        }}
+                      ></input>
                     ) : (
-                      inc.severity
-                    )}
-                  </td>
-                  <td>
-                    {store.role.role_id == 1 ? (
-                      <select
-                        className="form-select"
-                        value={
-                          inc.status == "Recibido"
-                            ? "Recibido"
-                            : inc.status == "En proceso"
-                            ? "En proceso"
-                            : "Solucionado"
-                        }
-                        onChange={(e) => statusChange(inc, e)}
-                      >
-                        <option value="Recibido">Recibido</option>
-                        <option value="En proceso">En proceso</option>
-                        <option value="Solucionado">Solucionado</option>
-                      </select>
-                    ) : (
-                      inc.status
+                      exp.date
                     )}
                   </td>
                   {store.role.role_id == 1 ? (
@@ -213,79 +173,13 @@ const ExpensesAndBills = () => {
                         fill="currentColor"
                         className="bi bi-trash3"
                         viewBox="0 0 16 16"
-                        onClick={() => deleteInc(inc.id)}
+                        onClick={() => deleteExp(exp.id)}
                       >
                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                       </svg>
                     </td>
                   ) : (
                     <td></td>
-                  )}
-
-                  {store.role.role_id == 1 ? (
-                    <td>
-                      {inc.bill_id ? (
-                        <Link to={`/factura/${inc.bill_id}`}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-receipt"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                            <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                          </svg>
-                        </Link>
-                      ) : (
-                        <Link
-                          to={`/nuevaFactura/${inc.id}/${inc.community_id}`}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-file-earmark-plus"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z" />
-                            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
-                          </svg>
-                        </Link>
-                      )}
-                    </td>
-                  ) : (
-                    <td>
-                      {inc.bill_id ? (
-                        <Link to={`/factura/${inc.bill_id}`}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-receipt"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                            <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                          </svg>
-                        </Link>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-file-earmark-excel"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
-                          <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-                        </svg>
-                      )}
-                    </td>
                   )}
                 </tr>
               );
