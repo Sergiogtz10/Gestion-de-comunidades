@@ -49,7 +49,7 @@ def modify_bill(role_id,bill_id,body):
             bill=Bill.query.get(bill_id)
             bill.amount=body['amount']
             bill.details=body['details']
-            bill.provider_id=body['provider_id']
+            bill.date=body['date']
             db.session.commit()
             return bill.serialize(),200
         else:
