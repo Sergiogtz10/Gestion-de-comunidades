@@ -4,7 +4,6 @@ import { getDataUsers, putDataUsers } from "../../Service/dataprofile.js";
 import "./Profile.css";
 import { Context } from "../../store/appContext";
 
-
 const initialStateErr = {
   first_name: "",
   last_name: "",
@@ -14,7 +13,7 @@ const initialStateErr = {
 };
 
 const Profile = () => {
-  const {store, actions} = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [dataUser, setDataUser] = useState({
     first_name: "",
     last_name: "",
@@ -74,8 +73,8 @@ const Profile = () => {
     try {
       const response = await putDataUsers(dataUser);
       const updatedData = await response.json();
-      setedit(false)
-      console.log(updatedData)
+      setedit(false);
+      console.log(updatedData);
     } catch (error) {
       console.log(error);
     }
@@ -138,10 +137,23 @@ const Profile = () => {
                 name="phone_number"
               ></input>
             </div>
-            {edit == true ? <button type="submit" className="btn btn-primary" id="boton">Guardar</button>: null}
+            {edit == true ? (
+              <button type="submit" className="btn btn-primary" id="boton">
+                Guardar
+              </button>
+            ) : null}
           </form>
           <div className="p-1 text-center">
-          {edit == false ? <button type="submit" className="btn btn-primary" id="boton" onClick={() => setedit(true)}>Actualizar</button> : null}
+            {edit == false ? (
+              <button
+                type="submit"
+                className="btn btn-primary"
+                id="boton"
+                onClick={() => setedit(true)}
+              >
+                Actualizar
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
@@ -162,24 +174,25 @@ const Profile = () => {
               </button>
             </Link>
             <Link to="/form/owner/:id">
-            <button type="submit" className="btn btn-primary" id="boton">
-              Añadir propietario
-            </button>
+              <button type="submit" className="btn btn-primary" id="boton">
+                Añadir propietario
+              </button>
             </Link>
             <div className="py-3 w-25">
-            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
-              <option selected>Seleccionar communidad</option>
-              {store.admin_communities.map((community, index) =>{
-                return(
-                  <option key={index} value={community}>
-                    {community.name}
-                  </option>
-                )
-              })}
-            </select>
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+              >
+                <option selected>Seleccionar communidad</option>
+                {store.admin_communities.map((community, index) => {
+                  return (
+                    <option key={index} value="Comunidad">
+                      {community.address}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
-
-
           </div>
         </div>
       </div>

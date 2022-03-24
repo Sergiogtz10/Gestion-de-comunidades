@@ -1,6 +1,6 @@
 export const URL =
-  "https://3001-jesusbruque-finalproyect-qufm2qz40is.ws-eu38.gitpod.io";
+  "https://3001-sergiogtz10-gestiondecom-kmzwogu55j0.ws-eu38.gitpod.io";
 
 export const getToken = () => {
-    return localStorage.getItem("token");
+  return localStorage.getItem("token");
 };
