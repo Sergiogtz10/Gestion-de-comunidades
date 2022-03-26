@@ -262,7 +262,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((err) => console.error(err));
       },
       addBill: (body, community_id, incident_id) => {
-        console.log(body, community_id, incident_id);
         createBill(body, community_id, incident_id)
           .then((res) => res.json())
           .then((data) => console.log(data))
@@ -374,9 +373,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       addExpense: (body, community_id) => {
+        const store = getStore();
         createExpense(body, community_id)
           .then((res) => res.json())
-          .then((data) => setStore({ ...store, bills: [...store.bills, data] }))
+          .then((data) =>
+            setStore({ ...store, expenses: [...store.expenses, data] })
+          )
           .catch((err) => console.log(err));
       },
     },
