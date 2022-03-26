@@ -20,9 +20,9 @@ def getCommunity():
 @jwt_required()
 def getCommunities():
     user_id = get_jwt_identity()
-    community = getCommunities_by_user_id(user_id['id'])
-    print(community)
-    if community is None:
+    communities = getCommunities_by_user_id(user_id['id'])
+   
+    if communities is None:
         return jsonify('communities not found'), 404
          
-    return jsonify(community), 200
+    return jsonify(communities), 200

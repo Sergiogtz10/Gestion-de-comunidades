@@ -91,7 +91,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-      {redirect ? <Redirect to="/incidencias/comunidad"></Redirect> : null}
+      {redirect ? <Redirect to="/home"></Redirect> : null}
     </div>
   );
 };
