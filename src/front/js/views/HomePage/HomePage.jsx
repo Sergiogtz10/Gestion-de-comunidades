@@ -7,6 +7,14 @@ import "./home-page.css";
 const HomePage = () => {
   const { store, actions } = useContext(Context);
 
+  useEffect(() => {
+    actions.getUser();
+    actions.getCommunity();
+    actions.getIncidents();
+    actions.getOwnerIncidents();
+    actions.getAllIncidents();
+  }, []);
+  console.log(store.incidents);
   return (
     <div className="container-fluid content mt-5 me-2">
       <h1>Home</h1>
@@ -129,13 +137,45 @@ const HomePage = () => {
                     )}
                   </>
                 ) : (
-                  <tbody className="empty">
-                    <tr>
-                      <th scope="row" className="table-secondary">
-                        ETS PROPIETARI ENCARA NO ESTÀ FET
-                      </th>
-                    </tr>
-                  </tbody>
+                  <>
+                    {store.owner_incidents.filter(
+                      (incidents) => incidents.common === false
+                    ).length > 0 ? (
+                      <>
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Zona</th>
+                            <th scope="col">Gravedad</th>
+                            <th scope="col">Estado</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {store.owner_incidents
+                            .filter((incidents) => incidents.common === false)
+                            .slice(0, 3)
+                            .map((incident, index) => (
+                              <tr key={index}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{incident.description}</td>
+                                <td>{incident.zone}</td>
+                                <td>{incident.severity}</td>
+                                <td>{incident.status}</td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </>
+                    ) : (
+                      <tbody className="empty">
+                        <tr>
+                          <th scope="row" className="table-secondary">
+                            NO TIENES NINGUNA INCIDENCIA PARTICULAR
+                          </th>
+                        </tr>
+                      </tbody>
+                    )}
+                  </>
                 )}
               </table>
             </div>
