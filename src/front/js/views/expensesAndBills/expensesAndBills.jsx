@@ -9,11 +9,9 @@ const ExpensesAndBills = () => {
 
   useEffect(() => {
     actions.getUser();
-    actions.getCommunity();
     actions.getExpenses();
+    actions.getBills();
   }, []);
-
-  console.log(store.expenses);
 
   const dateChange = (exp, e) => {
     const newExpense = {
@@ -21,9 +19,19 @@ const ExpensesAndBills = () => {
       amount: exp.amount,
       date: e.target.value,
     };
+
     actions.modifyExpenses(exp.id, newExpense);
   };
 
+  const billDateChange = (exp, e) => {
+    const newExpense = {
+      details: exp.details,
+      amount: exp.amount,
+      date: e.target.value,
+    };
+
+    actions.modifyBills(exp.id, newExpense);
+  };
   const detailsChange = (exp, e) => {
     const newExpense = {
       details: e.target.value,
@@ -34,6 +42,16 @@ const ExpensesAndBills = () => {
     actions.modifyExpenses(exp.id, newExpense);
   };
 
+  const billDetailsChange = (exp, e) => {
+    const newExpense = {
+      details: e.target.value,
+      amount: exp.amount,
+      date: exp.date,
+    };
+
+    actions.modifyBills(exp.id, newExpense);
+  };
+
   const amountChange = (exp, e) => {
     const newExpense = {
       details: exp.details,
@@ -41,28 +59,17 @@ const ExpensesAndBills = () => {
       date: exp.date,
     };
 
-    actions.modifyExpense(exp.id, newExpense);
+    actions.modifyExpenses(exp.id, newExpense);
   };
 
-  const deleteExp = (expense_id) => {
-    actions.deleteExpense(expense_id);
-  };
+  const billAmountChange = (exp, e) => {
+    const newExpense = {
+      details: exp.details,
+      amount: e.target.value,
+      date: exp.date,
+    };
 
-  const search = (e) => {
-    const inc_search = e.target.value;
-    if (inc_search === "") {
-      actions.getIncidents();
-    } else {
-      const filteredList = store.incident_copy.filter((incident) => {
-        const description = incident.description.toLowerCase();
-        if (description.indexOf(inc_search.toLowerCase()) >= 0) {
-          return incident;
-        }
-      });
-      console.log(filteredList);
-      actions.setIncidents(filteredList);
-      console.log(store.incidents);
-    }
+    actions.modifyBills(exp.id, newExpense);
   };
 
   return (
@@ -77,26 +84,7 @@ const ExpensesAndBills = () => {
             >
               Añadir gasto
             </Link>
-            <Link
-              className="btn btn-secondary col-2 mx-4 add"
-              to="/formNuevaFactura"
-            >
-              Añadir factura
-            </Link>
           </div>
-        ) : (
-          ""
-        )}
-        {store.role.role_id == 2 ? (
-          <form className="form-inline col-5 offset-md-7">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              onChange={(e) => search(e)}
-            />
-          </form>
         ) : (
           ""
         )}
@@ -151,7 +139,7 @@ const ExpensesAndBills = () => {
                   <td>
                     {store.role.role_id == 1 ? (
                       <input
-                        type="date"
+                        type="text"
                         defaultValue={exp.date}
                         className="form-control"
                         onKeyDown={(e) => {
@@ -164,23 +152,105 @@ const ExpensesAndBills = () => {
                       exp.date
                     )}
                   </td>
-                  {store.role.role_id == 1 ? (
-                    <td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+
+      <h1>Facturas de incidencias</h1>
+      <div className="navbar row">
+        {store.role.role_id == 1 ? (
+          <div>
+            <Link
+              className="btn btn-secondary col-2 mx-4 add"
+              to="/formNuevaFactura"
+            >
+              Añadir factura
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+      <table className="table">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Concepto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {store.bills
+            .filter((expense) => expense.community_id == store.community)
+            .map((exp, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>
+                    {store.role.role_id == 1 ? (
+                      <input
+                        defaultValue={exp.details}
+                        className="form-control"
+                        onKeyDown={(e) => {
+                          if (e.keyCode == 13 || e.keyCode == 9) {
+                            billDetailsChange(exp, e);
+                          }
+                        }}
+                      ></input>
+                    ) : (
+                      exp.details
+                    )}
+                  </td>
+                  <td>
+                    {store.role.role_id == 1 ? (
+                      <input
+                        defaultValue={exp.amount}
+                        className="form-control"
+                        onKeyDown={(e) => {
+                          if (e.keyCode == 13 || e.keyCode == 9) {
+                            billAmountChange(exp, e);
+                          }
+                        }}
+                      ></input>
+                    ) : (
+                      exp.amount
+                    )}
+                  </td>
+
+                  <td>
+                    {store.role.role_id == 1 ? (
+                      <input
+                        type="text"
+                        defaultValue={exp.date}
+                        className="form-control"
+                        onKeyDown={(e) => {
+                          if (e.keyCode == 13 || e.keyCode == 9) {
+                            billDateChange(exp, e);
+                          }
+                        }}
+                      ></input>
+                    ) : (
+                      exp.date
+                    )}
+                  </td>
+                  <td>
+                    <Link to={`/factura/${exp.id}`}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
                         fill="currentColor"
-                        className="bi bi-trash3"
+                        className="bi bi-receipt"
                         viewBox="0 0 16 16"
-                        onClick={() => deleteExp(exp.id)}
                       >
-                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                        <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                        <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
                       </svg>
-                    </td>
-                  ) : (
-                    <td></td>
-                  )}
+                    </Link>
+                  </td>
                 </tr>
               );
             })}

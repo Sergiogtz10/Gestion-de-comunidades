@@ -10,8 +10,13 @@ import {
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 import { getProviders_by_community_id } from "../Service/provider.js";
-import { createBill, get_bill_by_id, getBills } from "../Service/bill.js";
-import { getExpenses } from "../Service/expense.js";
+import {
+  createBill,
+  get_bill_by_id,
+  getBills,
+  modifyBills,
+} from "../Service/bill.js";
+import { getExpenses, modifyExpenses } from "../Service/expense.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -27,6 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       community: "",
       providers: [],
       bill: {},
+      bills: [],
       expenses: [],
     },
     actions: {
@@ -288,12 +294,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           })
           .catch((err) => console.error(err));
+      },
+
+      getBills: () => {
+        const store = getStore();
+        setStore({ ...store, bills: [] });
         getBills()
           .then((res) => res.json())
           .then((data) => {
             data.map((bill) => {
-              setStore({ ...store, expenses: [...store.expenses, bill] });
-              console.log(store.expenses);
+              setStore({ ...store, bills: [...store.bills, bill] });
             });
           })
           .catch((err) => console.error(err));
@@ -305,14 +315,54 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => {
             setStore({ ...store, expenses: [] });
+            setStore({ ...store, bills: [] });
             getExpenses()
               .then((res) => res.json())
               .then((data) => {
-                data.map((incident) => {
+                data.map((expense) => {
                   setStore({
                     ...store,
                     expenses: [...store.expenses, expense],
                   });
+                });
+              })
+              .catch((err) => console.error(err));
+
+            getBills()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((bill) => {
+                  setStore({ ...store, bills: [...store.bills, bill] });
+                });
+              })
+              .catch((err) => console.error(err));
+          });
+      },
+
+      modifyBills: (id, newExpense) => {
+        const store = getStore();
+        modifyBills(id, newExpense)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, expenses: [] });
+            setStore({ ...store, bills: [] });
+            getExpenses()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((expense) => {
+                  setStore({
+                    ...store,
+                    expenses: [...store.expenses, expense],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+
+            getBills()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((bill) => {
+                  setStore({ ...store, bills: [...store.bills, bill] });
                 });
               })
               .catch((err) => console.error(err));

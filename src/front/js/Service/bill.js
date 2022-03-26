@@ -40,3 +40,21 @@ export const getBills = async () => {
     },
   });
 };
+
+export const modifyBills = async (exp_id, body) => {
+  const API = URL + `/api/bill/` + exp_id;
+  const token = getToken();
+  return await fetch(API, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      details: body.details,
+      amount: body.amount,
+      date: body.date,
+    }),
+  });
+};

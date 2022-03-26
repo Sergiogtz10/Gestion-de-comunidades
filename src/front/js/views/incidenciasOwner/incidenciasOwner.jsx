@@ -9,7 +9,6 @@ const IncidenciasOwner = () => {
 
   useEffect(() => {
     actions.getUser();
-    actions.getCommunity();
     actions.getOwnerIncidents();
     actions.getAllIncidents();
   }, []);
