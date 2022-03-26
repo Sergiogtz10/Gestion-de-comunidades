@@ -4,8 +4,15 @@
   padding-top: 0.5rem;
   padding-bottom: 2rem;
   font-size: 1.7rem;
+  margin-top: 0.4rem;
 }
 .table-name-not-first {
+  border: 1px solid #264653;
+  background-color: #e0e0e028;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.5rem;
   margin-top: 5rem;
 }
 
@@ -16,7 +23,7 @@
   padding-right: 1rem;
   padding-bottom: 1rem;
   border-radius: 0.5rem;
-  margin-top: 4.5rem;
+  margin-top: 2rem;
 }
 
 .div-table {

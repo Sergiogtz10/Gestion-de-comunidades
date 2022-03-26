@@ -79,7 +79,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="title-and-table table-name-not-first">
+      <div className="table-name-not-first">
         {store.role.role_id === 1 ? (
           <div className="table-name d-flex justify-content-center">
             ÚLTIMAS INCIDENCIAS PARTICULARES
