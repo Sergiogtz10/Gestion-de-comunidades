@@ -10,7 +10,17 @@ import {
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 import { getProviders_by_community_id } from "../Service/provider.js";
-import { createBill, get_bill_by_id } from "../Service/bill.js";
+import {
+  createBill,
+  get_bill_by_id,
+  getBills,
+  modifyBills,
+} from "../Service/bill.js";
+import {
+  getExpenses,
+  modifyExpenses,
+  createExpense,
+} from "../Service/expense.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -26,6 +36,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       community: "",
       providers: [],
       bill: {},
+      bills: [],
+      expenses: [],
     },
     actions: {
       getToken: () => {
@@ -273,6 +285,102 @@ const getState = ({ getStore, getActions, setStore }) => {
       setOwnerIncidents: (filteredList) => {
         const store = getStore();
         setStore({ ...store, owner_incidents: filteredList });
+      },
+
+      getExpenses: () => {
+        const store = getStore();
+        setStore({ ...store, expenses: [] });
+        getExpenses()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((expense) => {
+              setStore({ ...store, expenses: [...store.expenses, expense] });
+            });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      getBills: () => {
+        const store = getStore();
+        setStore({ ...store, bills: [] });
+        getBills()
+          .then((res) => res.json())
+          .then((data) => {
+            data.map((bill) => {
+              setStore({ ...store, bills: [...store.bills, bill] });
+            });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      modifyExpenses: (id, newExpense) => {
+        const store = getStore();
+        modifyExpenses(id, newExpense)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, expenses: [] });
+            setStore({ ...store, bills: [] });
+            getExpenses()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((expense) => {
+                  setStore({
+                    ...store,
+                    expenses: [...store.expenses, expense],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+
+            getBills()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((bill) => {
+                  setStore({ ...store, bills: [...store.bills, bill] });
+                });
+              })
+              .catch((err) => console.error(err));
+          });
+      },
+
+      modifyBills: (id, newExpense) => {
+        const store = getStore();
+        modifyBills(id, newExpense)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, expenses: [] });
+            setStore({ ...store, bills: [] });
+            getExpenses()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((expense) => {
+                  setStore({
+                    ...store,
+                    expenses: [...store.expenses, expense],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+
+            getBills()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((bill) => {
+                  setStore({ ...store, bills: [...store.bills, bill] });
+                });
+              })
+              .catch((err) => console.error(err));
+          });
+      },
+
+      addExpense: (body, community_id) => {
+        const store = getStore();
+        createExpense(body, community_id)
+          .then((res) => res.json())
+          .then((data) =>
+            setStore({ ...store, expenses: [...store.expenses, data] })
+          )
+          .catch((err) => console.log(err));
       },
     },
   };
