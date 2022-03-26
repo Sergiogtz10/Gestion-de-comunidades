@@ -35,6 +35,6 @@
   color: white;
 }
 
-#no-incidents-body {
+.empty {
   height: 4rem;
 }
