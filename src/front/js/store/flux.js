@@ -16,7 +16,11 @@ import {
   getBills,
   modifyBills,
 } from "../Service/bill.js";
-import { getExpenses, modifyExpenses } from "../Service/expense.js";
+import {
+  getExpenses,
+  modifyExpenses,
+  createExpense,
+} from "../Service/expense.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -367,6 +371,13 @@ const getState = ({ getStore, getActions, setStore }) => {
               })
               .catch((err) => console.error(err));
           });
+      },
+
+      addExpense: (body, community_id) => {
+        createExpense(body, community_id)
+          .then((res) => res.json())
+          .then((data) => setStore({ ...store, bills: [...store.bills, data] }))
+          .catch((err) => console.log(err));
       },
     },
   };

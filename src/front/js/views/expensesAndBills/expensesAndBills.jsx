@@ -80,7 +80,7 @@ const ExpensesAndBills = () => {
           <div>
             <Link
               className="btn btn-secondary col-2 mx-4 add"
-              to="/formNuevoGasto"
+              to={`/formNuevoGasto/${store.community}`}
             >
               Añadir gasto
             </Link>
@@ -164,7 +164,7 @@ const ExpensesAndBills = () => {
           <div>
             <Link
               className="btn btn-secondary col-2 mx-4 add"
-              to="/formNuevaFactura"
+              to={`/incidencias/comunidad`}
             >
               Añadir factura
             </Link>
