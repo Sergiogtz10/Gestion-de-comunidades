@@ -9,7 +9,7 @@ def get_expense_by_id(id):
 
 def create_new_expense(body, community_id):
     try:
-        if body['concept'] is None:
+        if body['details'] is None:
             return False
         if body['amount'] is None:
             return False
@@ -17,9 +17,7 @@ def create_new_expense(body, community_id):
             return False
         
 
-        expenses_community = get_community_by_id(community_id)
-
-        new_expense = Expenses(concept=body['concept'], amount=body['amount'], date=body['date'], community_id=expenses_community.id)
+        new_expense = Expenses(details=body['details'], amount=body['amount'], date=body['date'], community_id=community_id)
         db.session.add(new_expense)
         db.session.commit()
         return new_expense.serialize()
@@ -49,7 +47,7 @@ def modify_expense(role_id, id_expense, body):
     try:
         if verify_user_admin(role_id):
             expense_to_modify = get_expense_by_id(id_expense)
-            expense_to_modify.concept = body['concept']
+            expense_to_modify.details = body['details']
             expense_to_modify.amount = body['amount']
             expense_to_modify.date = body['date']
             db.session.commit()
@@ -62,16 +60,16 @@ def modify_expense(role_id, id_expense, body):
         print('[ERROR MODIFY EXPENSE: ]', err)
         return None
 
-def get_expense_by_community_id(community_id):
+def get_expenses():
     try:
-        all_expenses_community = []
-        expenses_by_community = db.session.query(Expenses).filter(Expenses.community_id == community_id)
-        if not expenses_by_community:
+        all_expenses = []
+        expenses= db.session.query(Expenses).all()
+        if not expenses:
             return jsonify('Todavia no se ha añadido ningun gasto')
         else:
-            for expense in expenses_by_community:
-                all_expenses_community.append(expense.serialize())
-            return jsonify(all_expenses_community), 200
+            for expense in expenses:
+                all_expenses.append(expense.serialize())
+            return jsonify(all_expenses), 200
 
     except Exception as err:
         return jsonify('[ERROR GET EXPENSES]: ', err)

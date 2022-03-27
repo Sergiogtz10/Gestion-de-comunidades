@@ -6,9 +6,9 @@ admin=1
 owner=2
 
 #GET ALL BILLS
-def get_all_bills(community_id):
+def get_all_bills():
     bill_list=[]
-    bills=db.session.query(Bill).filter(Bill.community_id==community_id)
+    bills=db.session.query(Bill)
     
     if not bills: 
         return jsonify("There are no incidents"),404
@@ -49,7 +49,7 @@ def modify_bill(role_id,bill_id,body):
             bill=Bill.query.get(bill_id)
             bill.amount=body['amount']
             bill.details=body['details']
-            bill.provider_id=body['provider_id']
+            bill.date=body['date']
             db.session.commit()
             return bill.serialize(),200
         else:

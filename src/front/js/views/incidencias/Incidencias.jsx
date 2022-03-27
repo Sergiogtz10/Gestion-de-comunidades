@@ -9,7 +9,6 @@ const Incidencias = () => {
   
   useEffect(() => {
     actions.getUser();
-    actions.getCommunity();
     actions.getIncidents();
   }, []);
 

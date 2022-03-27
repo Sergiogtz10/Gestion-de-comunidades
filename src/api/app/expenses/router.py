@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.app.expenses.controller import create_new_expense, delete_expense, modify_expense, get_expense_by_community_id
+from api.app.expenses.controller import create_new_expense, delete_expense, modify_expense, get_expenses
 from api.app.user.controller import get_user_by_id
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -36,6 +36,6 @@ def expense_modify(expense_id):
     return modify_expense(user['role']['role_id'], expense_id, body)
 
 #Method get expenses by community
-@expenses.route('/<community_id>', methods=['GET'])
-def expense_by_community_get(community_id):
-    return get_expense_by_community_id(community_id)
+@expenses.route('/', methods=['GET'])
+def getAllexpenses():
+    return get_expenses()
