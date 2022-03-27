@@ -6,7 +6,7 @@ import "./incidencias.css";
 
 const Incidencias = () => {
   const { store, actions } = useContext(Context);
-
+  
   useEffect(() => {
     actions.getUser();
     actions.getCommunity();

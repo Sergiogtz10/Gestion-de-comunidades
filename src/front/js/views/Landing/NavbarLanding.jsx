@@ -9,7 +9,7 @@ const NavbarLanding = () =>{
                     <a id="navbartitle" className="navbar-brand">MasterKey</a>
                     <form className="d-flex">
                         <button type="button" id="boton" className="btn btn-primary shadow p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Contáctanos</button>
-                        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
                                 <div id="bodyModal" className="modal-content">
                                     <div className="modal-header">

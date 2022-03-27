@@ -22,4 +22,17 @@
 #updateboton{
     text-align: center;
 }
+#divselect{
+    width: 400px;
+    margin-left: 22px;
+}
+
+#select{
+    color: white;
+    background-color: #264653;
+}
+#titleselect{
+    font-size: medium;
+    
+}
 
