@@ -13,10 +13,10 @@ const Advantages = () => {
 
             <div className="card-group">
                 <div id="card-advantages" className="card">
-                    <h2 id="title-Advantages" class="card-title">Reuniones</h2>
+                    <h2 id="title-Advantages" className="card-title">Reuniones</h2>
                 </div>
-                <div id="card-advantages1" class="card">
-                    <h2 id="title-Advantages" class="card-title">Incidencias</h2>
+                <div id="card-advantages1" className="card">
+                    <h2 id="title-Advantages" className="card-title">Incidencias</h2>
                 </div>
                 <div id="card-advantages2" className="card">
                      <h2 id="title-Advantages" className="card-title">Proveedores</h2>
@@ -55,9 +55,9 @@ const Advantages = () => {
                     </div>
                     <div id="card-explanation" className="col">
                         <div>
-                            <div class="card-body">
-                                <h5 class="card-title">Administrar</h5>
-                                <p class="card-text">En cualquier organización es necesario administar los gastos que tienen lugar para buscar la máxima eficiencia. Esta aplicación te lo permite </p>
+                            <div className="card-body">
+                                <h5 className="card-title">Administrar</h5>
+                                <p className="card-text">En cualquier organización es necesario administar los gastos que tienen lugar para buscar la máxima eficiencia. Esta aplicación te lo permite </p>
                             </div>
                         </div>
                     </div>        

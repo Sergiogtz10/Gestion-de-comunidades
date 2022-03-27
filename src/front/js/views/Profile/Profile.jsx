@@ -221,6 +221,11 @@ const Profile = () => {
               </select>
             </div>
         </div>
+        <div  id="margin_boton_profile">
+          <Link className="btn btn-primary atras mx-4"  to={"/home"}>
+            Atras
+          </Link>
+        </div>
       </div>
     </div>
   );
