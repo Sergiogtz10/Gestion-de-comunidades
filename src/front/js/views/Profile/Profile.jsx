@@ -23,7 +23,7 @@ const Profile = () => {
   
   
   const[ community_id, setCommunity_id]= useState("")
-  console.log(community_id)
+  
   let URL_formOwner = window.location.host + "/form/owner/" + community_id
   const [dataUserCopy, setdataUserCopy] = useState({});
   const [edit, setedit] = useState(false);
@@ -33,7 +33,7 @@ const Profile = () => {
     try {
       const response = await getDataUsers();
       const data = await response.json();
-      console.log(data);
+      
       let newUser = {
         first_name: data.first_name,
         last_name: data.last_name,
@@ -85,14 +85,12 @@ const Profile = () => {
     }
   };
   
-  const changeCommunity =(e)=>{
-    setStore({... store, community: e.target.value})
-  }
 
   useEffect(() => {
     getData();
     actions.getCommunitiesAdmin();
     actions.getCommunity();
+    actions.getUser();
    
   }, []);
 
@@ -168,7 +166,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      
+      {store.role.role_id == 1 ? (
       <div className="p-4">
         <div
           id="card"
@@ -220,12 +218,12 @@ const Profile = () => {
                 })}
               </select>
             </div>
-        </div>
-        <div  id="margin_boton_profile">
+        </div> 
+      </div>): null}
+      <div  id="margin_boton_profile">
           <Link className="btn btn-primary atras mx-4"  to={"/home"}>
             Atras
           </Link>
-        </div>
       </div>
     </div>
   );
