@@ -30,7 +30,7 @@ const SettingsMenu = (props) => {
           <path d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
         </svg>
       </div>
-      <Link to="/perfil" className="m-0" id="link">
+      <Link to="/profile" className="m-0" id="link">
         <div className="d-flex align-items-center p-2 settings-options">
           <p className="m-0 ps-2">Mi Perfil</p>
         </div>

@@ -13,8 +13,10 @@ const HomePage = () => {
     actions.getIncidents();
     actions.getOwnerIncidents();
     actions.getAllIncidents();
+    actions.getExpenses();
+    actions.getBills();
   }, []);
-  console.log(store.incidents);
+
   return (
     <div className="container-fluid content mt-5 me-2">
       <h1>Home</h1>
@@ -27,7 +29,7 @@ const HomePage = () => {
             <div className="table-responsive d-flex justify-content-center">
               <table className="table table-light table-striped m-0 table-homePage">
                 {store.incidents.filter(
-                  (incidents) => incidents.community_id == store.community
+                  (incidents) => incidents.community_id === store.community
                 ).length > 0 ? (
                   <>
                     <thead>
@@ -43,7 +45,7 @@ const HomePage = () => {
                       {store.incidents
                         .filter(
                           (incidents) =>
-                            incidents.community_id == store.community
+                            incidents.community_id === store.community
                         )
                         .slice(0, 3)
                         .map((incident, index) => {
@@ -96,7 +98,7 @@ const HomePage = () => {
                 {store.role.role_id === 1 ? (
                   <>
                     {store.all_particular_incidents.filter(
-                      (incidents) => incidents.community_id == store.community
+                      (incidents) => incidents.community_id === store.community
                     ).length > 0 ? (
                       <>
                         <thead>
@@ -183,6 +185,122 @@ const HomePage = () => {
         </div>
         <div className="d-flex justify-content-end">
           <Link to="/incidencias/particulares">
+            <button className="btn boton-ver-mas-homePage">Ver Más</button>
+          </Link>
+        </div>
+      </div>
+
+      <div className="table-name-not-first">
+        <div className="table-name d-flex justify-content-center">
+          ÚLTIMOS GASTOS DE LA COMUNIDAD
+        </div>
+        <div className="d-flex justify-content-center">
+          <div id="incidents-table" className="div-table m-0">
+            <div className="table-responsive d-flex justify-content-center">
+              <table className="table table-light table-striped m-0 table-homePage">
+                {store.expenses.filter(
+                  (expenses) => expenses.community_id == store.community
+                ).length > 0 ? (
+                  <>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Concepto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Fecha</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {store.expenses
+                        .filter(
+                          (expenses) => expenses.community_id == store.community
+                        )
+                        .slice(0, 3)
+                        .map((expense, index) => {
+                          return (
+                            <tr key={index}>
+                              <th scope="row">{index + 1}</th>
+                              <td>{expense.details}</td>
+                              <td>{expense.amount}</td>
+                              <td>{expense.date}</td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </>
+                ) : (
+                  <tbody className="empty">
+                    <tr>
+                      <th scope="row" className="table-secondary">
+                        NO HAY GASTOS EN LA COMUNIDAD!
+                      </th>
+                    </tr>
+                  </tbody>
+                )}
+              </table>
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-end">
+          <Link to="/facturas">
+            <button className="btn boton-ver-mas-homePage">Ver Más</button>
+          </Link>
+        </div>
+      </div>
+
+      <div className="table-name-not-first mb-5">
+        <div className="table-name d-flex justify-content-center">
+          ÚLTIMAS FACTURAS DE INCIDENCIAS
+        </div>
+        <div className="d-flex justify-content-center">
+          <div id="incidents-table" className="div-table m-0">
+            <div className="table-responsive d-flex justify-content-center">
+              <table className="table table-light table-striped m-0 table-homePage">
+                {store.bills.filter(
+                  (bills) => bills.community_id == store.community
+                ).length > 0 ? (
+                  <>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Concepto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Fecha</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {store.bills
+                        .filter(
+                          (bills) => bills.community_id == store.community
+                        )
+                        .slice(0, 3)
+                        .map((bill, index) => {
+                          return (
+                            <tr key={index}>
+                              <th scope="row">{index + 1}</th>
+                              <td>{bill.details}</td>
+                              <td>{bill.amount}</td>
+                              <td>{bill.date}</td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </>
+                ) : (
+                  <tbody className="empty">
+                    <tr>
+                      <th scope="row" className="table-secondary">
+                        NO HAY GASTOS EN LA COMUNIDAD!
+                      </th>
+                    </tr>
+                  </tbody>
+                )}
+              </table>
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-end">
+          <Link to="/facturas">
             <button className="btn boton-ver-mas-homePage">Ver Más</button>
           </Link>
         </div>

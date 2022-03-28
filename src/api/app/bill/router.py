@@ -30,10 +30,10 @@ def create(community_id,incident_id):
         return jsonify(new_bill),201
 
 #route to get bills
-@bills.route('/<community_id>',methods=['GET'])
+@bills.route('/',methods=['GET'])
 @jwt_required()
-def get_bills(community_id):
-    return get_all_bills(community_id)
+def get_bills():
+    return get_all_bills()
 
 #route to get bill by id
 @bills.route('/factura/<bill_id>',methods=["GET"])

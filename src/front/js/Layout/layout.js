@@ -19,7 +19,9 @@ import IncidenciasOwner from "../views/incidenciasOwner/incidenciasOwner.jsx";
 import FormNewIncident from "../views/FormNewIncident/newIncident.jsx";
 import FormNewParticularIncident from "../views/FormNewParticularIncident/newParticularIncident.jsx";
 import FormFactura from "../views/FormNewBill/NewBill.jsx";
+import FormNewExpense from "../views/FormNewExpense/FormNewExpense.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
+import ExpensesAndBills from "../views/expensesAndBills/expensesAndBills.jsx";
 import HomePage from "../views/HomePage/HomePage.jsx";
 
 import injectContext from "../store/appContext";
@@ -54,6 +56,7 @@ const Layout = () => {
               <Login />
             </Route>
             <Route exact path="/profile">
+              <Navbar />
               <Profile />
             </Route>
             <Route exact path="/incidencias/comunidad">
@@ -79,6 +82,14 @@ const Layout = () => {
             <Route exact path="/factura/:bill_id">
               <Navbar />
               <Bill />
+            </Route>
+            <Route exact path="/facturas">
+              <Navbar />
+              <ExpensesAndBills />
+            </Route>
+            <Route exact path="/formNuevoGasto/:community_id">
+              <Navbar />
+              <FormNewExpense />
             </Route>
             <Route exact path="/home">
               <Navbar />
