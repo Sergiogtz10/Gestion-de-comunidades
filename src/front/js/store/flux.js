@@ -11,6 +11,7 @@ import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
 import { getProviders_by_community_id, functionCreateProviders } from "../Service/provider.js";
 import { getProviders_by_community_id } from "../Service/provider.js";
+import { getCommunities_admin } from "../Service/dataprofile.js";
 import {
   createBill,
   get_bill_by_id,
@@ -37,6 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       community: "",
       providers: [],
       bill: {},
+      admin_communities: [],
       bills: [],
       expenses: [],
     },
@@ -298,6 +300,17 @@ const getState = ({ getStore, getActions, setStore }) => {
               providers: [...store.providers, data],
             });
           })
+      },
+      getCommunitiesAdmin: () => {
+        const store = getStore();
+        console.log(store.community);
+        getCommunities_admin()
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ ...store, admin_communities: data });
+            console.log(data);
+          })
+          .catch((err) => console.error(err));
       },
       getExpenses: () => {
         const store = getStore();

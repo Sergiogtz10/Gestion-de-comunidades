@@ -1,13 +1,13 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../store/appContext.js";
-
+import { community_id } from "../Profile.jsx"
 
 
 const CardProviders = () =>{
 
 const { store, actions } = useContext(Context); 
-
+console.log(community_id)
  return (
      <div>
          {store.providers.map((provider, index) => {
