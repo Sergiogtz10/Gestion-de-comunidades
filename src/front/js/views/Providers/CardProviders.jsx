@@ -1,9 +1,13 @@
 import React from "react";
-import "./CardProviders.css"
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../store/appContext.js";
+
 
 
 const CardProviders = () =>{
-    
+
+const { store, actions } = useContext(Context); 
+
  return (
      <div>
          <div className="card mb-3 mt-4" id="CardProvider">
