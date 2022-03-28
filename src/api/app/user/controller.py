@@ -86,17 +86,17 @@ def login_user(body):
 
 def update_user_info(user_id, body):
     try:
-        if body['password'] == body['repeat_password']:
+        if body is not None:
             user = get_user_by_id(user_id)
+            print(user)
             user.first_name = body['first_name']
             user.last_name = body['last_name']
             user.phone_number = body['phone_number']
             user.email = body['email']
-            user.password = encryp_pass(body['password'])
             db.session.commit()
             return user.serialize(), 200
         else:
-            return jsonify('Las contraseñas no coinciden'), 400
+            return jsonify('BAD REQUEST'), 400
     
     except Exception as err:
         db.session.rollback()
