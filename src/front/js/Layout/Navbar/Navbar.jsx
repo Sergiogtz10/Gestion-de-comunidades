@@ -123,6 +123,7 @@ const Navbar = () => {
               <div className="separation-mobile"></div>
             </div>
             <NavbarLinkMobile linkName="Proveedores" redirect="/proveedores" />
+            
           </ul>
         </div>
       </div>
@@ -259,7 +260,7 @@ const Navbar = () => {
               <div className="separation"></div>
             </div>
             <NavbarLinkDesktop
-              link="/proveedores"
+              link="/providers"
               clickFunction={handleClick}
               icon={
                 <svg

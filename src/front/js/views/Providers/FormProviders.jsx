@@ -22,7 +22,7 @@ const FormProviders = () => {
     actions.getUser();
     actions.getCommunity();
   }, []);
-  console.log(store.community)
+  
   const handleClick = (e) => {
     e.preventDefault();
     let newerr = { ...initialStateErr };
@@ -63,9 +63,9 @@ const FormProviders = () => {
           {err.name != "" ? <div className="error">{err.name}</div> : null}
         </div>
 
-        <div className="py-3 w-25">
+        <div className="py-3 w-50">
           <label className="form-label">Servicio</label>
-          <textarea
+          <input
             type="text"
             className="form-control shadow-sm"
             placeholder="Servicio que presta"
@@ -73,7 +73,7 @@ const FormProviders = () => {
             onChange={(e) => {
               setService(e.target.value);
             }}
-          ></textarea>
+          ></input>
           {err.service != "" ? (
             <div className="error">{err.service}</div>
           ) : null}
