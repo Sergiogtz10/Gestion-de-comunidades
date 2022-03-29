@@ -27,7 +27,7 @@ const FormOwner = () => {
   });
 
   const community_id = useParams();
-  console.log(community_id);
+  
 
   const [redirect, setRedirect] = useState(false);
 
@@ -76,7 +76,7 @@ const FormOwner = () => {
       newerr.password == "" &&
       newerr.repeat_password == ""
     ) {
-      console.log("todo bien en el fetch owner");
+      
       let newUserOwner = { ...owner };
       delete newUserOwner.repeat_password;
       postRegisterOwner(newUserOwner, community_id.id)

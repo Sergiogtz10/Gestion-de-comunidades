@@ -77,7 +77,6 @@ const FormAdmin = () => {
         .catch((error) => console.log(error));
     }
   };
-  console.log(err);
   return (
     <div className="p-5">
       <div

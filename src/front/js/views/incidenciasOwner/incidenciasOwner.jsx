@@ -74,7 +74,6 @@ const IncidenciasOwner = () => {
       });
 
       actions.setOwnerIncidents(filteredList);
-      console.log(store.owner_incidents);
     }
   };
 

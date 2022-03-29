@@ -71,9 +71,8 @@ const Incidencias = () => {
           return incident;
         }
       });
-      console.log(filteredList);
       actions.setIncidents(filteredList);
-      console.log(store.incidents);
+      
     }
   };
 

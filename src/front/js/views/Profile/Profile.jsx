@@ -42,7 +42,6 @@ const Profile = () => {
 
       setDataUser(newUser);
       setdataUserCopy(newUser);
-      console.log(newUser);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +52,6 @@ const Profile = () => {
     const value = e.target.value;
     setDataUser({ ...dataUser, [name]: value });
   };
-  console.log(dataUser);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -78,7 +76,7 @@ const Profile = () => {
       const response = await putDataUsers(dataUser);
       const updatedData = await response.json();
       setedit(false);
-      console.log(updatedData);
+      
     } catch (error) {
       console.log(error);
     }
