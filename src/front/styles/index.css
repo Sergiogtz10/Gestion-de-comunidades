@@ -1,3 +1,15 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;1,300&display=swap");
+
+@media only screen and (min-width: 1322px) {
+  .content {
+    position: relative;
+    width: 84vw;
+    float: right;
+  }
+}
+@media only screen and (max-width: 1321px) {
+  .content {
+    width: 100%;
+    margin-top: 3.5rem;
+  }
+}

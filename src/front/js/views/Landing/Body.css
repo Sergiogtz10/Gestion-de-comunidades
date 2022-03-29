@@ -1,0 +1,36 @@
+#backgroundbody {
+    background-image: url(https://cdn.pixabay.com/photo/2019/04/13/10/46/abstract-4124262_960_720.jpg);
+    height:600px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+}
+#divtitle{
+  margin-left: 460px;
+}
+#titlebody{
+  margin-top: 200px;
+  color: white;
+  font-family: 'Righteous', cursive;
+}
+#login{
+  background-color: white;
+  color:#264653;
+  margin-top: 60px;
+  width: 300px;
+  height: 350px;
+  border-radius: 5px;
+}
+#titlelogin{
+  color: #264653;
+  font-weight: 500;
+  font-size: x-large;
+  text-align: center;
+  padding-top: 15px;
+}
+
+#textregister{
+  font-size: 11px;
+  color:#264653;
+}

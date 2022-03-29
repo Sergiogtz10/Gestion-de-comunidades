@@ -1,0 +1,24 @@
+#navbartitle{
+    color:#264653;
+    font-size: 40px;
+    font-family: 'Righteous', cursive;
+}
+#navbarcolor{
+    background-color: white;
+    
+}
+#titlemodal{
+    color:white;
+    font-weight: 700;
+}
+#contact{
+    color:white;
+    font-weight: 500;
+}
+#iconModal{
+    color:rgb(161, 89, 7);
+}
+#bodyModal{
+ background-color: #E9C46A;
+}
+
