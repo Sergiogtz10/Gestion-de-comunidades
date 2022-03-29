@@ -66,13 +66,11 @@ const FormAdmin = () => {
       newerr.password == "" &&
       newerr.repeat_password == ""
     ) {
-      console.log("todo bien en el fetch admin");
       let newUserAdmin = { ...admin };
       delete newUserAdmin.repeat_password;
       postRegisterAdmin(newUserAdmin)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           actions.setRegisteradmin(data);
           setRedirect(true);
         })

@@ -12,7 +12,6 @@ const IncidenciasOwner = () => {
     actions.getOwnerIncidents();
     actions.getAllIncidents();
   }, []);
-  console.log(store.all_particular_incidents);
 
   const severityChange = (inc, e) => {
     const newIncident = {

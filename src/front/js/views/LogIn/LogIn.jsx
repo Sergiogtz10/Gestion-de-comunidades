@@ -38,7 +38,6 @@ const Login = () => {
     setErr(newerr);
 
     if (newerr.password == "" && newerr.password == "") {
-      console.log("todo bien en el fetch login");
       postLogin(login)
         .then((response) => response.json())
         .then((data) => {

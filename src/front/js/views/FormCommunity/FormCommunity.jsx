@@ -18,7 +18,7 @@ const FormCommunity = () =>{
     const[redirect, setRedirect]=useState(false)
 
     const[err, setErr]=useState(initialStateErr);
-    console.log(store)
+
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -38,7 +38,6 @@ const FormCommunity = () =>{
         setErr(newerr);
 
         if(newerr.address == "" && newerr.flats == ""){
-            console.log("todo bien en el fetch community");
             let newCommunity = { ...community };
             postRegisterCommunity(newCommunity, store.registerAdminUser.id)
             .then((response) => response.json())
