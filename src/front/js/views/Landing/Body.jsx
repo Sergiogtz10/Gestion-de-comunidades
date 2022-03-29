@@ -12,7 +12,7 @@ const Body = () => {
         >
           <div
             id="divtitle"
-            className="container m-0 text-center"
+            className="container text-center"
             style={{ width: "400px" }}
           >
             <div className="background-white">
@@ -26,7 +26,7 @@ const Body = () => {
               </h2>
             </div>
           </div>
-          <div id="login">
+          <div id="login" className="ms-auto">
             <div className="d-flex flex-column text-center row">
               <h5 id="titlelogin">INICIA SESIÓN O REGÍSTRATE</h5>
               <hr className="my-1"></hr>

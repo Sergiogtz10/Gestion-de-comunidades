@@ -1,37 +1,37 @@
 #backgroundbody {
-    background-image: url(https://cdn.pixabay.com/photo/2019/04/13/10/46/abstract-4124262_960_720.jpg);
-    height:600px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 60px;
+  background-image: url(https://cdn.pixabay.com/photo/2019/04/13/10/46/abstract-4124262_960_720.jpg);
+  height: 600px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 60px;
 }
-
-#titlebody{
+#divtitle{
+  margin-left: 27rem;
+}
+#titlebody {
   margin-top: 200px;
   color: white;
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
 }
-#login{
+#login {
   background-color: white;
-  color:#264653;
+  color: #264653;
   margin-top: 60px;
   width: 300px;
   height: 350px;
   border-radius: 5px;
   margin-right: 2rem;
-  margin-left: 10rem;
 }
-#titlelogin{
+#titlelogin {
   color: #264653;
   font-weight: 500;
   font-size: x-large;
   text-align: center;
   padding-top: 15px;
-  
 }
 
-#textregister{
+#textregister {
   font-size: 11px;
-  color:#264653;
+  color: #264653;
 }
