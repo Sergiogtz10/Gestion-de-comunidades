@@ -115,16 +115,18 @@ const getState = ({ getStore, getActions, setStore }) => {
         getOwnerIncidents()
           .then((res) => res.json())
           .then((data) => {
-            data.map((incident) => {
-              setStore({
-                ...store,
-                owner_incidents: [...store.owner_incidents, incident],
+            if (!data.msg) {
+              data.map((incident) => {
+                setStore({
+                  ...store,
+                  owner_incidents: [...store.owner_incidents, incident],
+                });
+                setStore({
+                  ...store,
+                  owner_incident_copy: [...store.owner_incident_copy, incident],
+                });
               });
-              setStore({
-                ...store,
-                owner_incident_copy: [...store.owner_incident_copy, incident],
-              });
-            });
+            }
           })
           .catch((err) => console.error(err));
       },
@@ -306,9 +308,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         getExpenses()
           .then((res) => res.json())
           .then((data) => {
-            data.map((expense) => {
-              setStore({ ...store, expenses: [...store.expenses, expense] });
-            });
+            if (data !== "Todavia no se ha añadido ningun gasto") {
+              data.map((expense) => {
+                setStore({ ...store, expenses: [...store.expenses, expense] });
+              });
+            }
           })
           .catch((err) => console.error(err));
       },
@@ -319,9 +323,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         getBills()
           .then((res) => res.json())
           .then((data) => {
-            data.map((bill) => {
-              setStore({ ...store, bills: [...store.bills, bill] });
-            });
+            if (!data.msg) {
+              data.map((bill) => {
+                setStore({ ...store, bills: [...store.bills, bill] });
+              });
+            }
           })
           .catch((err) => console.error(err));
       },
