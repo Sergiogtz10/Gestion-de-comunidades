@@ -47,7 +47,6 @@ const Navbar = () => {
     setSettingsMenu(false);
   };
 
-  console.log({ incidentsDropdown });
   return (
     <>
       {/* NAVBAR MOBILE ONLY */}

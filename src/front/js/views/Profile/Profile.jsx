@@ -20,11 +20,10 @@ const Profile = () => {
     email: "",
     phone_number: "",
   });
-  
-  
-  const[ community_id, setCommunity_id]= useState("")
-  
-  let URL_formOwner = window.location.host + "/form/owner/" + community_id
+
+  const [community_id, setCommunity_id] = useState("");
+
+  let URL_formOwner = window.location.host + "/form/owner/" + community_id;
   const [dataUserCopy, setdataUserCopy] = useState({});
   const [edit, setedit] = useState(false);
   const [err, setErr] = useState({ initialStateErr });
@@ -33,7 +32,7 @@ const Profile = () => {
     try {
       const response = await getDataUsers();
       const data = await response.json();
-      
+
       let newUser = {
         first_name: data.first_name,
         last_name: data.last_name,
@@ -84,22 +83,24 @@ const Profile = () => {
       console.log(error);
     }
   };
-  
 
   useEffect(() => {
     getData();
     actions.getCommunitiesAdmin();
     actions.getCommunity();
     actions.getUser();
-   
   }, []);
 
   return (
-    <div>
+    <div className="content">
       <h3 id="title" className="container mt-5" style={{ width: "500px" }}>
         Hola, {dataUser.first_name + " " + dataUser.last_name}
       </h3>
-      <div id="card" className="container card p-4 mt-3" style={{ width: "500px" }}>
+      <div
+        id="card"
+        className="container card p-4 mt-3"
+        style={{ width: "500px" }}
+      >
         <h4 id="titlecardprofile" className="text-center">
           Datos personales
         </h4>
@@ -167,48 +168,76 @@ const Profile = () => {
         </div>
       </div>
       {store.role.role_id == 1 ? (
-      <div className="p-4">
-        <div
-          id="card"
-          className="container text-center card p-4"
-          style={{ width: "500px" }}
-        >
-          <h4 id="titlecardprofile" className=" text-center">
-            Comunidades
-          </h4>
-          <hr className="my-3"></hr>
-          <div className="d-flex flex-column col-md-5 gap-3 p-3 container">
-            <Link to="/form/community">
-              <button type="submit" className="btn btn-primary " id="boton">
-                Añadir comunidad
+        <div className="p-4">
+          <div
+            id="card"
+            className="container text-center card p-4"
+            style={{ width: "500px" }}
+          >
+            <h4 id="titlecardprofile" className=" text-center">
+              Comunidades
+            </h4>
+            <hr className="my-3"></hr>
+            <div className="d-flex flex-column col-md-5 gap-3 p-3 container">
+              <Link to="/form/community">
+                <button type="submit" className="btn btn-primary " id="boton">
+                  Añadir comunidad
+                </button>
+              </Link>
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-toggle="modal"
+                id="boton"
+                data-bs-target="#exampleModal"
+              >
+                Añadir propietario
               </button>
-            </Link>
-          <button type="button" className="btn btn-primary" data-bs-toggle="modal" id="boton" data-bs-target="#exampleModal">
-            Añadir propietario
-          </button>
 
-          <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content" id="bodyModal">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="titlemodal">URL, lista para enviar</h5>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                <div>{URL_formOwner}</div>
-                </div>
-                <div className="modal-footer">
-                  <button type="submit" className="btn btn-primary " id="boton">
-                  Enviar
-                  </button>
+              <div
+                className="modal fade"
+                id="exampleModal"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog">
+                  <div className="modal-content" id="bodyModal">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="titlemodal">
+                        URL, lista para enviar
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <div>{URL_formOwner}</div>
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="submit"
+                        className="btn btn-primary "
+                        id="boton"
+                      >
+                        Enviar
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
-          <div className="py-3 " id="divselect">
-            <p>Selección de comunidades</p>
-            <select className="form-select container" id="select"multiple aria-label="multiple select example"  onChange={(e) => setCommunity_id(e.target.value)}>
+            <div className="py-3 " id="divselect">
+              <p>Selección de comunidades</p>
+              <select
+                className="form-select container"
+                id="select"
+                multiple
+                aria-label="multiple select example"
+                onChange={(e) => setCommunity_id(e.target.value)}
+              >
                 {store.admin_communities.map((community, index) => {
                   return (
                     <option key={index} value={community.id}>
@@ -218,12 +247,13 @@ const Profile = () => {
                 })}
               </select>
             </div>
-        </div> 
-      </div>): null}
-      <div  id="margin_boton_profile">
-          <Link className="btn btn-primary atras mx-4"  to={"/home"}>
-            Atras
-          </Link>
+          </div>
+        </div>
+      ) : null}
+      <div id="margin_boton_profile">
+        <Link className="btn btn-primary atras mx-4" to={"/home"}>
+          Atras
+        </Link>
       </div>
     </div>
   );
