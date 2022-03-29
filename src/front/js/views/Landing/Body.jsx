@@ -6,7 +6,7 @@ const Body = () =>{
     return(
         <div>
             <div>
-            <div id="backgroundbody" className="container-fluid row">
+            <div id="backgroundbody" className="container-fluid d-flex">
                 <div id="divtitle" className="container align-items-center text-center" style={{width: "400px"}}>
                         <div className="background-white">
                             <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Indie+Flower&family=Montserrat:wght@300&family=Pacifico&family=Righteous&display=swap" rel="stylesheet"></link>
