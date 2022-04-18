@@ -56,12 +56,12 @@ const FormCommunity = () => {
         id="card"
         style={{ width: "700px" }}
       >
-        <h4 id="title" className="text-center p-1">
+        <h4 id="title" className="text-center p-1" style={{ color: "white" }}>
           Registrar comunidad
         </h4>
         <hr className="my-3"></hr>
         <form onChange={handleChange} onSubmit={handleClick}>
-          <div className="mb-3 d-flex">
+          <div className="mb-3 d-flex justify-content-center">
             <div className="px-3">
               <label className="form-label ">Dirección</label>
               <input
