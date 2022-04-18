@@ -53,7 +53,6 @@ const Profile = () => {
     const value = e.target.value;
     setDataUser({ ...dataUser, [name]: value });
   };
-  console.log(dataUser);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -91,6 +90,10 @@ const Profile = () => {
     actions.getUser();
   }, []);
 
+  const changeCommunity = (e) => {
+    setCommunity_id(e.target.value);
+    actions.setCommunity(e.target.value);
+  };
   return (
     <div className="content">
       <h3 id="title" className="container mt-5" style={{ width: "500px" }}>
@@ -233,10 +236,12 @@ const Profile = () => {
               <p>Selección de comunidades</p>
               <select
                 className="form-select container"
-                id="select"
                 multiple
-                aria-label="multiple select example"
-                onChange={(e) => setCommunity_id(e.target.value)}
+                id="select"
+                aria-label="Default select example"
+                onChange={(e) => {
+                  changeCommunity(e);
+                }}
               >
                 {store.admin_communities.map((community, index) => {
                   return (
