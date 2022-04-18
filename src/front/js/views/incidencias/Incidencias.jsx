@@ -6,7 +6,7 @@ import "./incidencias.css";
 
 const Incidencias = () => {
   const { store, actions } = useContext(Context);
-  
+
   useEffect(() => {
     actions.getUser();
     actions.getIncidents();
@@ -105,7 +105,7 @@ const Incidencias = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
