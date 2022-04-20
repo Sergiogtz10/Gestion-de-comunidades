@@ -171,92 +171,90 @@ const Profile = () => {
           </div>
         </div>
         {store.role.role_id == 1 ? (
-          <div className="p-4 col-5">
-            <div id="card" className="container text-center card p-4">
-              <h4
-                id="titlecardprofile"
-                className=" text-center"
-                style={{ color: "white" }}
-              >
-                Comunidades
-              </h4>
-              <hr className="my-3"></hr>
-              <div className="d-flex flex-column col-md-5 gap-3 p-3 container">
-                <Link to="/form/community">
-                  <button type="submit" className="btn btn-primary " id="boton">
-                    Añadir comunidad
-                  </button>
-                </Link>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-bs-toggle="modal"
-                  id="boton"
-                  data-bs-target="#exampleModal"
-                >
-                  Añadir propietario
+          <div id="card" className="container card p-4 mt-3 col-5">
+            <h4
+              id="titlecardprofile"
+              className=" text-center"
+              style={{ color: "white" }}
+            >
+              Comunidades
+            </h4>
+            <hr className="my-3"></hr>
+            <div className="d-flex flex-column col-md-5 gap-3 p-3 container">
+              <Link to="/form/community">
+                <button type="submit" className="btn btn-primary " id="boton">
+                  Añadir comunidad
                 </button>
+              </Link>
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-toggle="modal"
+                id="boton"
+                data-bs-target="#exampleModal"
+              >
+                Añadir propietario
+              </button>
 
-                <div
-                  className="modal fade"
-                  id="exampleModal"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog">
-                    <div className="modal-content" id="bodyModal">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="titlemodal">
-                          URL, lista para enviar
-                        </h5>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div className="modal-body">
-                        <div>{URL_formOwner}</div>
-                      </div>
-                      <div className="modal-footer">
-                        <button
-                          type="submit"
-                          className="btn btn-primary "
-                          id="boton"
-                        >
-                          Enviar
-                        </button>
-                      </div>
+              <div
+                className="modal fade"
+                id="exampleModal"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog">
+                  <div className="modal-content" id="bodyModal">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="titlemodal">
+                        URL, lista para enviar
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <div>{URL_formOwner}</div>
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="submit"
+                        className="btn btn-primary "
+                        id="boton"
+                      >
+                        Enviar
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="py-3 " id="divselect">
-                <p>Selección de comunidades</p>
-                <select
-                  className="form-select container"
-                  multiple
-                  id="select"
-                  aria-label="Default select example"
-                  onChange={(e) => {
-                    changeCommunity(e);
-                  }}
-                >
-                  {store.admin_communities.map((community, index) => {
-                    return (
-                      <option key={index} value={community.id}>
-                        {community.address}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+            </div>
+            <div className="py-3 " id="divselect">
+              <p>Selección de comunidades</p>
+              <select
+                className="form-select container"
+                multiple
+                id="select"
+                aria-label="Default select example"
+                onChange={(e) => {
+                  changeCommunity(e);
+                }}
+              >
+                {store.admin_communities.map((community, index) => {
+                  return (
+                    <option key={index} value={community.id}>
+                      {community.address}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
           </div>
         ) : null}
       </div>
-      <div id="">
+      <div className="container mt-3 mx-5">
         <Link
           className="btn btn-primary atras mx-4"
           to={"/incidencias/comunidad"}
