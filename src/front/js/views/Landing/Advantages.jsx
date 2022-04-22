@@ -29,34 +29,34 @@ const Advantages = () => {
             <h3 id="title-agile">AGILIDAD EN</h3>
             <div className="d-flex mb-5">
                 <div className="row row-cols-1 row-cols-md-3 g-4 container-fluid p-4">
-                    <div id="card-explanation" className="col">
+                    <div id="card-explanation" className="col d-flex justify-content-center align-items-center">
                         <div>
                             <div className="card-body">
-                                <h5 className="card-title">Organizar</h5>
+                                <h3 className="card-title">Organizar</h3>
                                 <p className="card-text">El administrador podrá convocar reuniones de vecinos, establecer horarios de limpieza de cocheras, revisiones del ascensor, o cualquier otra actividad relevante para los mismos</p>
                             </div>
                         </div>
                     </div>
-                    <div id="card-explanation" className="col">
+                    <div id="card-explanation" className="col d-flex justify-content-center align-items-center">
                         <div>
                             <div className="card-body">
-                                <h5 className="card-title">Controlar</h5>
+                                <h3 className="card-title">Controlar</h3>
                                 <p className="card-text">Los vecinos a través de la aplicación tendrán acceso a cualquier incidencia que pueda estar perturbando el normal desarrollo de la convivencia</p>
                              </div>
                         </div>
                     </div>
-                    <div id="card-explanation" className="col">
+                    <div id="card-explanation" className="col d-flex justify-content-center align-items-center">
                         <div>
                             <div className="card-body">
-                                <h5 className="card-title">Conocer</h5>
+                                <h3 className="card-title">Conocer</h3>
                                 <p className="card-text">Cuales son los proveedores de servicios que estan contratados por la comunidad para satisfacer las necesidades de la misma</p>
                             </div>
                         </div>
                     </div>
-                    <div id="card-explanation" className="col">
+                    <div id="card-explanation" className="col d-flex justify-content-center align-items-center">
                         <div>
                             <div className="card-body">
-                                <h5 className="card-title">Administrar</h5>
+                                <h3 className="card-title">Administrar</h3>
                                 <p className="card-text">En cualquier organización es necesario administar los gastos que tienen lugar para buscar la máxima eficiencia. Esta aplicación te lo permite </p>
                             </div>
                         </div>
