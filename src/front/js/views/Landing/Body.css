@@ -6,14 +6,17 @@
     background-size: cover;
     padding-top: 60px;
 }
+
 #divtitle{
   margin-left: 460px;
 }
+
 #titlebody{
   margin-top: 200px;
   color: white;
   font-family: 'Righteous', cursive;
 }
+
 #login{
   background-color: white;
   color:#264653;
@@ -22,6 +25,7 @@
   height: 350px;
   border-radius: 5px;
 }
+
 #titlelogin{
   color: #264653;
   font-weight: 500;
