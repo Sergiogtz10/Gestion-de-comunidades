@@ -109,7 +109,7 @@ data = {
             "name": "Jardinería López",
             "service": "Servicio de mantenimiento de jardines",
             "logo": "xxxxxxxxx",
-            "community_id":9991
+            "community_id":9992
         }
     ],
 

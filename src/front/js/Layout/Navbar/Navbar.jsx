@@ -260,7 +260,7 @@ const Navbar = () => {
               <div className="separation"></div>
             </div>
             <NavbarLinkDesktop
-              link="/providers"
+              link="/providers/:community_id"
               clickFunction={handleClick}
               icon={
                 <svg

@@ -8,11 +8,13 @@ import { useParams } from "react-router-dom";
 const CardProviders = () =>{
     const { store, actions } = useContext(Context);
     const { community_id } = useParams();
-
+    console.log("aqui", store.providers)
+    
     useEffect(() => {
         actions.getUser();
         actions.getProviders(community_id);
       }, []);
+      console.log("hola", store.community)
  return (
     <div className="container-fluid m-auto mt-5 content">
     <h1>Proveedores</h1>
@@ -38,18 +40,18 @@ const CardProviders = () =>{
           <th scope="col">Servicio</th>
         </tr>
       </thead>
-      <tbody>
-        {store.providers
+    <tbody>
+      {store.providers
           .filter((provider) => provider.community_id == store.community)
-          .map((prov, index) => {
+          .map((provi, index) => {
             return (
             <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td>
-                    <input defaultValue={prov.name} className="form-control"></input>
+                    <input defaultValue={provi.name} className="form-control"></input>
                 </td>
                 <td>
-                    <input defaultValue={prov.service} className="form-control"></input>
+                    <input defaultValue={provi.service} className="form-control"></input>
                 </td> 
             </tr>
             );})}

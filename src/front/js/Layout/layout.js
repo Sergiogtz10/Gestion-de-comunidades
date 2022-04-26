@@ -99,7 +99,7 @@ const Layout = () => {
             <Route exact path="/form/provider">
               <FormProviders />
             </Route>
-            <Route exact path="/providers">
+            <Route exact path="/providers/:community_id">
               <Navbar />
               <Providers />
             </Route>

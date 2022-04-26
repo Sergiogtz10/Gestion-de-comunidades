@@ -46,7 +46,7 @@ const FormProviders = () => {
 
   return (
     <div id="form-new-provider" className="container m-auto mt-5">
-      <h1>Nuevo prooveedor</h1>
+      <h1>Nuevo proveedor</h1>
       <hr className="my-3"></hr>
       <form className="card p-5" onSubmit={(e) => handleClick(e)}>
         <div className="py-3 w-50">
