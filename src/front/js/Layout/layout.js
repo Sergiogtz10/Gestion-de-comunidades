@@ -97,6 +97,7 @@ const Layout = () => {
               <HomePage />
             </Route>
             <Route exact path="/form/provider">
+              <Navbar />
               <FormProviders />
             </Route>
             <Route exact path="/providers/:community_id">

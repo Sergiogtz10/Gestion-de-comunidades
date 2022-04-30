@@ -45,12 +45,17 @@ const FormProviders = () => {
   console.log(err);
 
   return (
-    <div id="form-new-provider" className="container m-auto mt-5">
+    <div className="container-fluid m-auto mt-5 content">
       <h1>Nuevo proveedor</h1>
       <hr className="my-3"></hr>
-      <form className="card p-5" onSubmit={(e) => handleClick(e)}>
-        <div className="py-3 w-50">
-          <label className="form-label">Nombre del proveedor</label>
+      <div className="py-3 text-start">
+        <Link className="btn btn-primary atras" to={"/providers/:community_id"}>
+          Atrás
+        </Link>
+      </div>
+      <form className="container fluid card text-center justify-content-center p-3"id="card" style={{ width: "500px" }} onSubmit={(e) => handleClick(e)}>
+        <div className="py-3 w-100 container">
+          <label className="form-label fs-5">Nombre del proveedor</label>
           <input
             type="text"
             className="form-control shadow-sm"
@@ -63,8 +68,8 @@ const FormProviders = () => {
           {err.name != "" ? <div className="error">{err.name}</div> : null}
         </div>
 
-        <div className="py-3 w-50">
-          <label className="form-label">Servicio</label>
+        <div className="py-3  w-100 container">
+          <label className="form-label fs-5">Servicio</label>
           <input
             type="text"
             className="form-control shadow-sm"
@@ -81,18 +86,13 @@ const FormProviders = () => {
               setLogo(e.target.value);
             }}></div>
         </div>
-        <div className="py-3 text-end">
+        <div className="py-3 text-center">
           <button className="btn btn-primary create" type="submit">
             Crear
           </button>
         </div>
       </form>
-      <div className="py-3 text-start ">
-        <Link className="btn btn-primary atras" to={"/providers"}>
-          Atrás
-        </Link>
-      </div>
-      {redirect ? <Redirect to="/providers"></Redirect> : null}
+      {redirect ? <Redirect to="/providers/:community_id"></Redirect> : null}
     </div>
   );
 };

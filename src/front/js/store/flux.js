@@ -9,7 +9,7 @@ import {
 } from "../Service/incident.js";
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
-import { getProviders_by_community_id, functionCreateProviders } from "../Service/provider.js";
+import { getProviders_by_community_id, functionCreateProviders, deleteProviders } from "../Service/provider.js";
 import { getCommunities_admin } from "../Service/dataprofile.js";
 import {
   createBill,
@@ -262,6 +262,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         getProviders_by_community_id(community_id)
           .then((res) => res.json())
           .then((data) => setStore({ ...store, providers: data }))
+          .catch((err) => console.error(err));
+      },
+      deleteProvider: (provider_id) => {
+        const store = getStore();
+        deleteProviders(provider_id)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setStore({ ...store, providers: [] });
+            getProviders()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((provider) => {
+                  setStore({
+                    ...store,
+                    providers: [...store.providers, provider],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          })
           .catch((err) => console.error(err));
       },
       addBill: (body, community_id, incident_id) => {

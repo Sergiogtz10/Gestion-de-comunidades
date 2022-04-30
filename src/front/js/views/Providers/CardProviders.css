@@ -2,11 +2,16 @@
     border-radius: 10px;
     background-color: white;
     font-weight: 300;
-    color: #264653;
     border-color: #2A9D8F;
     width: 18rem;
 }
 .card-header{
     background-color: #2A9D8F;
     color: white;
+}
+#input_color{
+    
+    background-color: #E9C46A;
+    color: #264653;
+    font-weight: 600;
 }
