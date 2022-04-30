@@ -20,7 +20,6 @@ const FormNewIncident = () => {
 
   useEffect(() => {
     actions.getUser();
-    actions.getCommunity();
   }, []);
 
   const createIncident = (e) => {

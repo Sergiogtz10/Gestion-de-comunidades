@@ -89,7 +89,7 @@ const ExpensesAndBills = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -173,7 +173,7 @@ const ExpensesAndBills = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
