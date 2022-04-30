@@ -12,6 +12,7 @@ const Bill = () => {
   useEffect(() => {
     actions.getBill(bill_id);
   }, []);
+  //prueba
   return (
     <div className="container-fluid m-auto mt-5 content">
       <div>
