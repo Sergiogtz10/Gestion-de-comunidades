@@ -8,7 +8,7 @@ owner=2
 #GET ALL PROVIDERS 
 def get_all_providers(community_id):
     provider_list=[]
-    providers=db.session.query(Provider).filter(Provider.community_id==community_id)
+    providers=db.session.query(Provider).all()
     
     if not providers: 
         return jsonify("There are no providers"),404
