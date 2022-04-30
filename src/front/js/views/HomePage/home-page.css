@@ -7,8 +7,6 @@
   margin-top: 0.4rem;
 }
 .table-name-not-first {
-  border: 1px solid #264653;
-  background-color: #e0e0e028;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
@@ -17,8 +15,6 @@
 }
 
 .title-and-table {
-  border: 1px solid #264653;
-  background-color: #e0e0e028;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;

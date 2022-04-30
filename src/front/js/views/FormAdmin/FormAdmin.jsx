@@ -15,7 +15,7 @@ const initialStateErr = {
   repeat_password: "",
 };
 const FormAdmin = () => {
-  const {store, actions} = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [admin, setAdmin] = useState({
     first_name: "",
     last_name: "",
@@ -84,12 +84,12 @@ const FormAdmin = () => {
         id="card"
         style={{ width: "700px" }}
       >
-        <h4 id="title" className="text-center p-1">
+        <h4 id="title" className="text-center p-1" style={{ color: "white" }}>
           Registrarse como administrador
         </h4>
         <hr className="my-3"></hr>
         <form onChange={handleChange} onSubmit={handleClick}>
-          <div className="mb-3 d-flex">
+          <div className="mb-3 d-flex justify-content-center">
             <div className="px-3">
               <label className="form-label">Nombre</label>
               <input
@@ -115,7 +115,7 @@ const FormAdmin = () => {
               ) : null}
             </div>
           </div>
-          <div className="mb-3 d-flex">
+          <div className="mb-3 d-flex justify-content-center">
             <div className="px-3">
               <label className="form-label">Email</label>
               <input
@@ -141,7 +141,7 @@ const FormAdmin = () => {
               ) : null}
             </div>
           </div>
-          <div className="mb-3 d-flex">
+          <div className="mb-3 d-flex justify-content-center">
             <div className="px-3">
               <label className="form-label">Contraseña</label>
               <input

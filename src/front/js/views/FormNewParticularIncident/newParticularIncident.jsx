@@ -59,8 +59,13 @@ const FormNewParticularIncident = () => {
     <div className="container-fluid m-auto mt-5 content">
       <h1>Nueva Incidencia</h1>
       <hr className="my-3"></hr>
-      <form className="card p-5" onSubmit={(e) => createIncident(e)}>
-        <div className="py-3 w-50">
+      <form
+        className="container fluid card text-center justify-content-center p-3"
+        id="card"
+        style={{ width: "500px" }}
+        onSubmit={(e) => createIncident(e)}
+      >
+        <div className="py-3 w-100 container">
           <label className="form-label">Descripción</label>
           <textarea
             type="text"
@@ -76,7 +81,7 @@ const FormNewParticularIncident = () => {
           ) : null}
         </div>
 
-        <div className="py-3 w-25">
+        <div className="py-3 w-100 container">
           <label className="form-label">Zona</label>
           <input
             type="text"
@@ -90,7 +95,7 @@ const FormNewParticularIncident = () => {
           {err.zone != "" ? <div className="error">{err.zone}</div> : null}
         </div>
 
-        <div className="py-3 w-25">
+        <div className="py-3 w-100 container">
           <label className="form-label">Gravedad</label>
           <select
             className="form-select"
@@ -107,13 +112,13 @@ const FormNewParticularIncident = () => {
           ) : null}
         </div>
 
-        <div className="py-3 text-end">
+        <div className="py-3 text-center">
           <button className="btn btn-primary create" type="submit">
             Crear
           </button>
         </div>
       </form>
-      <div className="py-3 text-start ">
+      <div className="py-3 text-center ">
         <Link
           className="btn btn-primary atras"
           to={"/incidencias/particulares"}

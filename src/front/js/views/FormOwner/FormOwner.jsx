@@ -27,7 +27,6 @@ const FormOwner = () => {
   });
 
   const community_id = useParams();
-  
 
   const [redirect, setRedirect] = useState(false);
 
@@ -76,7 +75,6 @@ const FormOwner = () => {
       newerr.password == "" &&
       newerr.repeat_password == ""
     ) {
-      
       let newUserOwner = { ...owner };
       delete newUserOwner.repeat_password;
       postRegisterOwner(newUserOwner, community_id.id)
@@ -84,14 +82,19 @@ const FormOwner = () => {
         .then(() => setRedirect(true))
         .catch((error) => console.log(error));
     }
-    
   };
   return (
     <div>
       <div className="p-5">
-        <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "700px" }}>
-        <h4 id="title" className="text-center p-1">Registrase como propietario</h4>
-        <hr className="my-3"></hr>
+        <div
+          className="container fluid card text-center justify-content-center p-3"
+          id="card"
+          style={{ width: "550px" }}
+        >
+          <h4 id="title" className="text-center p-1" style={{ color: "white" }}>
+            Registrase como propietario
+          </h4>
+          <hr className="my-3"></hr>
           <form onChange={handleChange} onSubmit={handleClick}>
             <div className="mb-3 d-flex container-fluid">
               <div className="px-3">
@@ -104,9 +107,7 @@ const FormOwner = () => {
                   placeholder="Nombre"
                 ></input>
                 {err.first_name != "" ? (
-                  <div id="valid">
-                    {err.first_name}
-                  </div>
+                  <div id="valid">{err.first_name}</div>
                 ) : null}
               </div>
               <div className="px-3">
@@ -119,9 +120,7 @@ const FormOwner = () => {
                   placeholder="Apellidos"
                 ></input>
                 {err.last_name != "" ? (
-                  <div id="valid">
-                    {err.last_name}
-                  </div>
+                  <div id="valid">{err.last_name}</div>
                 ) : null}
               </div>
               <div className="px-3">
@@ -134,13 +133,11 @@ const FormOwner = () => {
                   placeholder="Piso"
                 ></input>
                 {err.flat_number != "" ? (
-                  <div id="valid">
-                    {err.flat_number}
-                  </div>
+                  <div id="valid">{err.flat_number}</div>
                 ) : null}
               </div>
             </div>
-            <div className="mb-3 d-flex">
+            <div className="mb-3 d-flex container-fluid">
               <div className="px-3">
                 <label className="form-label">Email</label>
                 <input
@@ -150,11 +147,7 @@ const FormOwner = () => {
                   id="Email"
                   placeholder="Email"
                 ></input>
-                {err.email != "" ? (
-                  <div id="valid">
-                    {err.email}
-                  </div>
-                ) : null}
+                {err.email != "" ? <div id="valid">{err.email}</div> : null}
               </div>
               <div>
                 <label className="form-label">Telefono</label>
@@ -166,13 +159,11 @@ const FormOwner = () => {
                   placeholder="Teléfono"
                 ></input>
                 {err.phone_number != "" ? (
-                  <div id="valid">
-                    {err.phone_number}
-                  </div>
+                  <div id="valid">{err.phone_number}</div>
                 ) : null}
               </div>
             </div>
-            <div className="mb-3 d-flex">
+            <div className="mb-3 d-flex container-fluid">
               <div className="px-3">
                 <label className="form-label">Contraseña</label>
                 <input
@@ -183,9 +174,7 @@ const FormOwner = () => {
                   placeholder="Contraseña"
                 ></input>
                 {err.password != "" ? (
-                  <div id="valid">
-                    {err.password}
-                  </div>
+                  <div id="valid">{err.password}</div>
                 ) : null}
               </div>
               <div>
@@ -198,9 +187,7 @@ const FormOwner = () => {
                   placeholder="Repetir"
                 ></input>
                 {err.repeat_password != "" ? (
-                  <div id="valid">
-                    {err.repeat_password}
-                  </div>
+                  <div id="valid">{err.repeat_password}</div>
                 ) : null}
               </div>
             </div>

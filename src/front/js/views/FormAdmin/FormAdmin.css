@@ -1,9 +1,7 @@
-#card{
-    border-radius: 10px;
+#card {
+  border-radius: 30px;
 }
-#valid{
-    font-size:small;
-    color: #E76F51;
+#valid {
+  font-size: small;
+  color: #e76f51;
 }
-
-

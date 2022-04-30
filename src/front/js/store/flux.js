@@ -9,7 +9,11 @@ import {
 } from "../Service/incident.js";
 import { getUser } from "../Service/users.js";
 import { getCommunity_by_user_id } from "../Service/rel.js";
-import { getProviders_by_community_id } from "../Service/provider.js";
+import {
+  getProviders_by_community_id,
+  functionCreateProviders,
+  deleteProviders,
+} from "../Service/provider.js";
 import { getCommunities_admin } from "../Service/dataprofile.js";
 import {
   createBill,
@@ -265,6 +269,27 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ ...store, providers: data }))
           .catch((err) => console.error(err));
       },
+      deleteProvider: (provider_id) => {
+        const store = getStore();
+        deleteProviders(provider_id)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setStore({ ...store, providers: [] });
+            getProviders()
+              .then((res) => res.json())
+              .then((data) => {
+                data.map((provider) => {
+                  setStore({
+                    ...store,
+                    providers: [...store.providers, provider],
+                  });
+                });
+              })
+              .catch((err) => console.error(err));
+          })
+          .catch((err) => console.error(err));
+      },
       addBill: (body, community_id, incident_id) => {
         console.log(body, community_id, incident_id);
         createBill(body, community_id, incident_id)
@@ -290,7 +315,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         setStore({ ...store, owner_incidents: filteredList });
       },
-
+      createProviders: (body, community) => {
+        const store = getStore();
+        functionCreateProviders(body, community)
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({
+              ...store,
+              providers: [...store.providers, data],
+            });
+          });
+      },
       getCommunitiesAdmin: () => {
         const store = getStore();
         console.log(store.community);
@@ -400,6 +435,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ ...store, expenses: [...store.expenses, data] })
           )
           .catch((err) => console.log(err));
+      },
+
+      setCommunity: (community) => {
+        const store = getStore();
+        setStore({ ...store, community: community });
       },
     },
   };

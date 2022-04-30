@@ -23,6 +23,11 @@ import FormNewExpense from "../views/FormNewExpense/FormNewExpense.jsx";
 import Bill from "../views/billDetail/billDetail.jsx";
 import ExpensesAndBills from "../views/expensesAndBills/expensesAndBills.jsx";
 import HomePage from "../views/HomePage/HomePage.jsx";
+<<<<<<< HEAD
+=======
+import Providers from "../views/Providers/Providers.jsx";
+import FormProviders from "../views/Providers/FormProviders.jsx";
+>>>>>>> 6698a2d6f64edc66160d8561fb786b5fd4aca44c
 
 import injectContext from "../store/appContext";
 
@@ -95,6 +100,17 @@ const Layout = () => {
               <Navbar />
               <HomePage />
             </Route>
+<<<<<<< HEAD
+=======
+            <Route exact path="/form/provider">
+              <Navbar />
+              <FormProviders />
+            </Route>
+            <Route exact path="/providers/:community_id">
+              <Navbar />
+              <Providers />
+            </Route>
+>>>>>>> 6698a2d6f64edc66160d8561fb786b5fd4aca44c
             <Route>
               <h1>Not found!</h1>
             </Route>

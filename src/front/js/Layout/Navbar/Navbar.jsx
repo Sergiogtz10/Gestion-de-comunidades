@@ -113,10 +113,6 @@ const Navbar = () => {
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
             </div>
-            <NavbarLinkMobile linkName="Actividades" redirect="/actividades" />
-            <div className="d-flex justify-content-start">
-              <div className="separation-mobile"></div>
-            </div>
             <NavbarLinkMobile linkName="Facturas" redirect="/facturas" />
             <div className="d-flex justify-content-start">
               <div className="separation-mobile"></div>
@@ -216,25 +212,7 @@ const Navbar = () => {
                 />
               </>
             ) : null}
-            <div className="d-flex justify-content-center">
-              <div className="separation"></div>
-            </div>
-            <NavbarLinkDesktop
-              link="/actividades"
-              clickFunction={handleClick}
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#e9c46a"
-                  className="bi bi-calendar-event-fill navbar-icon mb-1"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
-                </svg>
-              }
-              pClassName="text-navbar-router"
-              linkName="ACTIVIDADES"
-            />
+
             <div className="d-flex justify-content-center">
               <div className="separation"></div>
             </div>
@@ -258,7 +236,7 @@ const Navbar = () => {
               <div className="separation"></div>
             </div>
             <NavbarLinkDesktop
-              link="/proveedores"
+              link="/providers/:community_id"
               clickFunction={handleClick}
               icon={
                 <svg

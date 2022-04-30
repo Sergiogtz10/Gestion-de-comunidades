@@ -6,7 +6,6 @@ import "./incidencias.css";
 
 const Incidencias = () => {
   const { store, actions } = useContext(Context);
-  
   useEffect(() => {
     actions.getUser();
     actions.getIncidents();
@@ -72,7 +71,6 @@ const Incidencias = () => {
         }
       });
       actions.setIncidents(filteredList);
-      
     }
   };
 
@@ -94,6 +92,7 @@ const Incidencias = () => {
           <form className="form-inline col-5 offset-md-7">
             <input
               className="form-control mr-sm-2"
+              id="input_color"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -104,7 +103,7 @@ const Incidencias = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -128,6 +127,7 @@ const Incidencias = () => {
                       <input
                         defaultValue={inc.description}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             descriptionChange(inc, e);
@@ -143,6 +143,7 @@ const Incidencias = () => {
                       <input
                         defaultValue={inc.zone}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             zoneChange(inc, e);
@@ -157,6 +158,7 @@ const Incidencias = () => {
                     {store.role.role_id == 1 ? (
                       <select
                         className="form-select"
+                        id="input_color"
                         value={
                           inc.severity == "Leve"
                             ? "Leve"
@@ -178,6 +180,7 @@ const Incidencias = () => {
                     {store.role.role_id == 1 ? (
                       <select
                         className="form-select"
+                        id="input_color"
                         value={
                           inc.status == "Recibido"
                             ? "Recibido"

@@ -6,13 +6,10 @@ const Body = () => {
   return (
     <div>
       <div>
-        <div
-          id="backgroundbody"
-          className="container-fluid d-flex justify-content-end"
-        >
+        <div id="backgroundbody" className="container-fluid row">
           <div
             id="divtitle"
-            className="container text-center"
+            className="container align-items-center text-center"
             style={{ width: "400px" }}
           >
             <div className="background-white">
@@ -26,7 +23,7 @@ const Body = () => {
               </h2>
             </div>
           </div>
-          <div id="login" className="ms-auto">
+          <div id="login">
             <div className="d-flex flex-column text-center row">
               <h5 id="titlelogin">INICIA SESIÓN O REGÍSTRATE</h5>
               <hr className="my-1"></hr>
