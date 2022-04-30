@@ -82,12 +82,13 @@ const FormAdmin = () => {
       <div
         className="container fluid card text-center justify-content-center p-3"
         id="card"
-        style={{ width: "700px" }}
+        style={{ width: "550px" }}
       >
         <h4 id="title" className="text-center p-1">
           Registrarse como administrador
         </h4>
         <hr className="my-3"></hr>
+        <div className="text-center container-fluid">
         <form onChange={handleChange} onSubmit={handleClick}>
           <div className="mb-3 d-flex">
             <div className="px-3">
@@ -174,7 +175,8 @@ const FormAdmin = () => {
               Registrarse
             </button>
           </div>
-        </form>
+          </form>
+        </div>  
       </div>
       {redirect ? <Redirect to="/form/community"></Redirect> : null}
     </div>

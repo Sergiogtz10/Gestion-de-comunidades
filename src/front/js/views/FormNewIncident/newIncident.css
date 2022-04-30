@@ -6,6 +6,10 @@ body {
   font-weight: 300;
   color: white;
 }
+#card{
+  border-radius: 30px;
+  text-align: center;
+}
 
 #title {
   color: #2a9d8f;
