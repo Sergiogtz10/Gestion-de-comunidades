@@ -17,7 +17,7 @@ const Bill = () => {
       <div>
         <h1>Factura</h1>
         <hr className="my-3"></hr>
-        <div>
+        <div >
           <ul className="list-group list-group-flush">
             <li className="list-group-item">Concepto: {store.bill.details}</li>
             <li className="list-group-item">Cantidad:{store.bill.amount}</li>

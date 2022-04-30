@@ -231,10 +231,13 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="py-3 " id="divselect">
+            <div
+              className="py-3 container justify-content-center"
+              id="divselect"
+            >
               <p>Selección de comunidades</p>
               <select
-                className="form-select container"
+                className="form-select"
                 multiple
                 id="select"
                 aria-label="Default select example"

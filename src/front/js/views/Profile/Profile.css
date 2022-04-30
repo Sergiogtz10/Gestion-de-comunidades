@@ -10,8 +10,8 @@
 }
 
 #inputprofile {
-  background-color: #2a9d8f;
-  color: white;
+  background-color: white;
+  color: rgb(0, 0, 0);
   font-weight: 500;
   border-style: groove;
   border-color: white;
@@ -23,7 +23,6 @@
 }
 #divselect {
   width: 400px;
-  margin-left: 22px;
 }
 
 #select {

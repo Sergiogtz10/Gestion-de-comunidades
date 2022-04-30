@@ -89,8 +89,8 @@ const FormOwner = () => {
   return (
     <div>
       <div className="p-5">
-        <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "700px" }}>
-        <h4 id="title" className="text-center p-1">Registrase como propietario</h4>
+        <div className="container fluid card text-center justify-content-center p-3" id="card" style={{ width: "550px" }}>
+        <h4 id="title" className="text-center p-1" style={{ color: "white" }}>Registrase como propietario</h4>
         <hr className="my-3"></hr>
           <form onChange={handleChange} onSubmit={handleClick}>
             <div className="mb-3 d-flex container-fluid">
@@ -140,7 +140,7 @@ const FormOwner = () => {
                 ) : null}
               </div>
             </div>
-            <div className="mb-3 d-flex">
+            <div className="mb-3 d-flex container-fluid">
               <div className="px-3">
                 <label className="form-label">Email</label>
                 <input
@@ -172,7 +172,7 @@ const FormOwner = () => {
                 ) : null}
               </div>
             </div>
-            <div className="mb-3 d-flex">
+            <div className="mb-3 d-flex container-fluid">
               <div className="px-3">
                 <label className="form-label">Contraseña</label>
                 <input
