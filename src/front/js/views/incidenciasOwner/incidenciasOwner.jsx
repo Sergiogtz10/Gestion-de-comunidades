@@ -97,6 +97,7 @@ const IncidenciasOwner = () => {
           <form className="form-inline col-5 offset-md-7">
             <input
               className="form-control mr-sm-2"
+              id="input_color"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -107,7 +108,7 @@ const IncidenciasOwner = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -131,6 +132,7 @@ const IncidenciasOwner = () => {
                         {store.role.role_id == 1 ? (
                           <input
                             defaultValue={inc.description}
+                            id="input_color"
                             className="form-control"
                             onKeyDown={(e) => {
                               if (e.keyCode == 13 || e.keyCode == 9) {
@@ -147,6 +149,7 @@ const IncidenciasOwner = () => {
                           <input
                             defaultValue={inc.zone}
                             className="form-control"
+                            id="input_color"
                             onKeyDown={(e) => {
                               if (e.keyCode == 13 || e.keyCode == 9) {
                                 zoneChange(inc, e);
@@ -161,6 +164,7 @@ const IncidenciasOwner = () => {
                         {store.role.role_id == 1 ? (
                           <select
                             className="form-select"
+                            id="input_color"
                             value={
                               inc.severity == "Leve"
                                 ? "Leve"
@@ -182,6 +186,7 @@ const IncidenciasOwner = () => {
                         {store.role.role_id == 1 ? (
                           <select
                             className="form-select"
+                            id="input_color"
                             value={
                               inc.status == "Recibido"
                                 ? "Recibido"
@@ -296,6 +301,7 @@ const IncidenciasOwner = () => {
                           <input
                             defaultValue={inc.description}
                             className="form-control"
+                            id="input_color"
                             onKeyDown={(e) => {
                               if (e.keyCode == 13 || e.keyCode == 9) {
                                 descriptionChange(inc, e);
@@ -311,6 +317,7 @@ const IncidenciasOwner = () => {
                           <input
                             defaultValue={inc.zone}
                             className="form-control"
+                            id="input_color"
                             onKeyDown={(e) => {
                               if (e.keyCode == 13 || e.keyCode == 9) {
                                 zoneChange(inc, e);
@@ -325,6 +332,7 @@ const IncidenciasOwner = () => {
                         {store.role.role_id == 1 ? (
                           <select
                             className="form-select"
+                            id="input_color"
                             value={
                               inc.severity == "Leve"
                                 ? "Leve"
@@ -346,6 +354,7 @@ const IncidenciasOwner = () => {
                         {store.role.role_id == 1 ? (
                           <select
                             className="form-select"
+                            id="input_color"
                             value={
                               inc.status == "Recibido"
                                 ? "Recibido"

@@ -427,6 +427,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           )
           .catch((err) => console.log(err));
       },
+
+      setCommunity: (community) => {
+        const store = getStore();
+        setStore({ ...store, community: community });
+      },
     },
   };
 };

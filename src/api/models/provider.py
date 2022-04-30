@@ -18,5 +18,6 @@ class Provider(db.Model):
         return {
             "id": self.id,
             "name":self.name,
-            "service":self.service
+            "service":self.service,
+            "community_id":self.community_id
         }

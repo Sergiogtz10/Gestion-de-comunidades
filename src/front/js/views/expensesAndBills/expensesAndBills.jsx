@@ -89,7 +89,7 @@ const ExpensesAndBills = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -109,6 +109,7 @@ const ExpensesAndBills = () => {
                     {store.role.role_id == 1 ? (
                       <input
                         defaultValue={exp.details}
+                        id="input_color"
                         className="form-control"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
@@ -125,6 +126,7 @@ const ExpensesAndBills = () => {
                       <input
                         defaultValue={exp.amount}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             amountChange(exp, e);
@@ -142,6 +144,7 @@ const ExpensesAndBills = () => {
                         type="text"
                         defaultValue={exp.date}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             dateChange(exp, e);
@@ -173,7 +176,7 @@ const ExpensesAndBills = () => {
           ""
         )}
       </div>
-      <table className="table">
+      <table className="table table-light table-striped">
         <thead className="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -194,6 +197,7 @@ const ExpensesAndBills = () => {
                       <input
                         defaultValue={exp.details}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             billDetailsChange(exp, e);
@@ -209,6 +213,7 @@ const ExpensesAndBills = () => {
                       <input
                         defaultValue={exp.amount}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             billAmountChange(exp, e);
@@ -226,6 +231,7 @@ const ExpensesAndBills = () => {
                         type="text"
                         defaultValue={exp.date}
                         className="form-control"
+                        id="input_color"
                         onKeyDown={(e) => {
                           if (e.keyCode == 13 || e.keyCode == 9) {
                             billDateChange(exp, e);

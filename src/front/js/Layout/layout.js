@@ -58,6 +58,7 @@ const Layout = () => {
               <Login />
             </Route>
             <Route exact path="/profile">
+              <Navbar />
               <Profile />
             </Route>
             <Route exact path="/incidencias/comunidad">

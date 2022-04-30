@@ -4,7 +4,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100), unique=False, nullable=False)
     last_name = db.Column(db.String(120), unique=False, nullable=False)
-    flat_number = db.Column(db.String(80), unique=True, nullable=True)
+    flat_number = db.Column(db.String(80), unique=False, nullable=True)
     phone_number = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)

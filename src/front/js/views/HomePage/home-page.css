@@ -1,0 +1,43 @@
+.table-name {
+  color: #e9c46a;
+  font-weight: 600;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  font-size: 1.7rem;
+  margin-top: 0.4rem;
+}
+.table-name-not-first{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 5rem;
+}
+
+.title-and-table {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.div-table {
+  border: 2px solid #264653;
+  border-radius: 0.2rem;
+  width: 100%;
+}
+
+.boton-ver-mas-homePage {
+  margin-top: 0.5rem;
+  background-color: #264653;
+  color: white;
+}
+.boton-ver-mas-homePage:hover {
+  background-color: #264653c4;
+  color: white;
+}
+
+.empty {
+  height: 4rem;
+}
