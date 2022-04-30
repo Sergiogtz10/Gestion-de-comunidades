@@ -19,7 +19,7 @@ const HomePage = () => {
 
   return (
     <div className="container-fluid content mt-5 me-2">
-      <h1>Home</h1>
+      <h1>Bienvenido a MasterKey</h1>
       <div className="title-and-table">
         <div className="table-name d-flex justify-content-center">
           ÚLTIMAS INCIDENCIAS DE LA COMUNIDAD

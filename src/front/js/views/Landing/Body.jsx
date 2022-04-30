@@ -19,7 +19,7 @@ const Body = () =>{
                         <h5 id="titlelogin">INICIA SESIÓN O REGÍSTRATE</h5>
                         <hr className="my-1"></hr>
                         <Link to="/Login">
-                            <button   type="button" className="btn btn-success text-center mt-4 col-md-10" id="boton">Iniciar sesión</button>
+                            <button type="button" className="btn btn-success text-center mt-4 col-md-10" id="boton">Iniciar sesión</button>
                         </Link>
                         <Link to="/form/admin">
                             <button type="button" className="btn btn-success mt-4 col-md-10" id="boton">Registrarse</button>
