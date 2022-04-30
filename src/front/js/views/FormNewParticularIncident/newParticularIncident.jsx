@@ -69,7 +69,7 @@ const FormNewParticularIncident = () => {
       </div>
       <form className="container fluid card text-center justify-content-center p-3"id="card" style={{ width: "500px" }} onSubmit={(e) => createIncident(e)}>
         <div className="py-3 w-100 container">
-          <label className="form-label">Descripción</label>
+          <label className="form-label fs-5">Descripción</label>
           <textarea
             type="text"
             className="form-control shadow-sm"
@@ -85,7 +85,7 @@ const FormNewParticularIncident = () => {
         </div>
 
         <div className="py-3 w-100 container">
-          <label className="form-label">Zona</label>
+          <label className="form-label fs-5">Zona</label>
           <input
             type="text"
             className="form-control shadow-sm"
@@ -99,7 +99,7 @@ const FormNewParticularIncident = () => {
         </div>
 
         <div className="py-3 w-100 container">
-          <label className="form-label">Gravedad</label>
+          <label className="form-label fs-5">Gravedad</label>
           <select
             className="form-select"
             defaultValue={""}

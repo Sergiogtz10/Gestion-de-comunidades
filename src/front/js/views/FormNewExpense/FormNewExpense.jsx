@@ -53,7 +53,7 @@ const FormExpense = () => {
       </div>
       <form className="container fluid card text-center justify-content-center p-3"id="card" style={{ width: "500px" }} onSubmit={(e) => createExpense(e)}>
         <div className="py-3 w-100 container">
-          <label className="form-label ">Concepto</label>
+          <label className="form-label fs-5">Concepto</label>
           <textarea
             type="text"
             className="form-control  shadow-sm"
@@ -69,7 +69,7 @@ const FormExpense = () => {
         </div>
 
         <div className="py-3 w-100 container">
-          <label className="form-label">Cantidad</label>
+          <label className="form-label fs-5">Cantidad</label>
           <input
             type="number"
             className="form-control shadow-sm"
@@ -83,7 +83,7 @@ const FormExpense = () => {
         </div>
 
         <div className="py-3 w-100 container">
-          <label className="form-label">Fecha</label>
+          <label className="form-label fs-5">Fecha</label>
           <input
             type="text"
             className="form-control shadow-sm"
