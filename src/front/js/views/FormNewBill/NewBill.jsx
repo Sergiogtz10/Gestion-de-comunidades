@@ -55,8 +55,8 @@ const FormFactura = () => {
     <div className="container-fluid m-auto mt-5 content">
       <h1>Nueva Factura</h1>
       <hr className="my-3"></hr>
-      <form className="card p-5" onSubmit={(e) => createBill(e)}>
-        <div className="py-3 w-50">
+      <form className="container fluid card text-center justify-content-center p-3"id="card" style={{ width: "500px" }} onSubmit={(e) => createBill(e)}>
+        <div className="py-3 w-100 container">
           <label className="form-label">Concepto</label>
           <textarea
             type="text"
@@ -72,7 +72,7 @@ const FormFactura = () => {
           ) : null}
         </div>
 
-        <div className="py-3 w-25">
+        <div className="py-3 w-100 container">
           <label className="form-label">Cantidad</label>
           <input
             type="number"
@@ -86,7 +86,7 @@ const FormFactura = () => {
           {err.amount != "" ? <div className="error">{err.amount}</div> : null}
         </div>
 
-        <div className="py-3 w-25">
+        <div className="py-3 w-100 container">
           <label className="form-label">Proveedor</label>
           <select
             className="form-select"
@@ -106,7 +106,7 @@ const FormFactura = () => {
           ) : null}
         </div>
 
-        <div className="py-3 w-25">
+        <div className="py-3 w-100 container">
           <label className="form-label">Añadir documento</label>
           <input
             type="file"
